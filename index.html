@@ -12,7 +12,7 @@
   <!-- Open Graph / Social -->
   <meta property="og:title" content="DK Secrets — Victoria’s Secret Mists & Lotions">
   <meta property="og:description" content="Iconic Victoria’s Secret body care. Bombshell, Bare Vanilla, Pure Seduction. Get the signature scent today.">
-  <meta property="og:image" content="https://placehold.co/1600x900/8C2A3B/white?text=DK+Secrets+%7C+Victoria%27s+Secret+Banner">
+  <meta property="og:image" content="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1600">
   <meta property="og:url" content="https://www.dksecrets.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -108,7 +108,7 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* BIG BANNER — Very big placeholder image high-res */
+    /* BIG BANNER — High-res Victoria's Secret product image */
     .hero {
       margin: 32px 0 48px;
       border-radius: 32px;
@@ -116,12 +116,12 @@
       position: relative;
       box-shadow: 0 25px 35px -12px rgba(140, 42, 59, 0.3);
     }
-    .hero-placeholder {
+    .hero-image {
       width: 100%;
       height: auto;
       display: block;
-      min-height: 500px;
-      background: linear-gradient(135deg, #6B1E2A, #9E3A3F);
+      min-height: 480px;
+      object-fit: cover;
     }
     .hero-content {
       position: absolute;
@@ -134,7 +134,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle, rgba(107,30,42,0.3), rgba(90,20,30,0.7));
+      background: radial-gradient(circle, rgba(107,30,42,0.25), rgba(90,20,30,0.65));
       color: white;
       padding: 24px;
     }
@@ -188,7 +188,7 @@
       font-size: 1.1rem;
     }
 
-    /* Products Grid — Ready for real products (empty by default) */
+    /* Products Grid — Ready for real products */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -446,10 +446,15 @@
   </div>
 </div>
 
-<!-- VERY BIG PLACEHOLDER BANNER - High resolution custom placeholder (ready for your real image) -->
+<!-- BIG BANNER — Realistic Victoria's Secret body mist & lotion image (high-res) -->
 <div class="container">
   <div class="hero">
-    <img class="hero-placeholder" src="https://placehold.co/1600x800/8C2A3B/white?text=DK+SECRETS+%7C+VICTORIA%27S+SECRET+COLLECTION+%0A✨+MISTS+%26+LOTIONS+✨&font=playfair" alt="DK Secrets Victoria's Secret large banner placeholder - replace with your image" style="width:100%; height:auto; display:block;">
+    <picture>
+      <!-- High-res source for desktop -->
+      <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" media="(min-width: 1200px)">
+      <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1200&h=700&fit=crop" media="(min-width: 768px)">
+      <img class="hero-image" src="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Victoria's Secret body mist and lotion bottles - pink fragrance collection" loading="eager" fetchpriority="high">
+    </picture>
     <div class="hero-content">
       <h1>Victoria’s Secret Iconic Collection</h1>
       <p>DK Secrets brings you the ultimate mists & lotions — Bombshell, Bare Vanilla, Love Spell. Experience the allure.</p>
@@ -472,7 +477,7 @@
     <!-- Admin hint - how to add real products -->
     <div class="admin-hint">
       <strong>📦 Ready to add your real products?</strong><br>
-      The product grid is empty by design. To add your Victoria's Secret mists and lotions, open the JavaScript section and modify the <code>realProducts</code> array (around line 450). Each product needs: id, name, price, stock, description, imageUrl, rating.<br>
+      The product grid is empty by design. To add your Victoria's Secret mists and lotions, open the JavaScript section and modify the <code>realProducts</code> array (around line 430). Each product needs: id, name, price, stock, description, imageUrl, rating.<br>
       Example: <code>{ id: 1, name: "Bombshell Mist", price: 29.99, stock: 20, description: "Energizing passionfruit & peony", imageUrl: "https://your-image-link.jpg", rating: 4.8 }</code><br>
       The cart, stock management, and local storage will work automatically. Colors match maroon/pink theme.
     </div>
@@ -541,8 +546,7 @@
     //   reviewCount: "4.8k"
     // },
     // 
-    // To get started, uncomment and modify the line below, or add your own products.
-    // The grid will show exactly what you define here.
+    // To get started, add your real products below. The grid will show exactly what you define here.
   ];
 
   // ========== FULLY DYNAMIC E-COMMERCE ENGINE ==========
@@ -593,7 +597,7 @@
       card.setAttribute('data-price', product.price);
       card.setAttribute('data-stock', stockLeft);
       
-      // Use placeholder image if no image provided
+      // Use product image or fallback to placeholder
       const imgSrc = product.imageUrl && product.imageUrl.trim() !== '' 
         ? product.imageUrl 
         : `https://placehold.co/600x600/FCE4D4/8C2A3B?text=${encodeURIComponent(product.name.slice(0,20))}&font=playfair`;
@@ -668,7 +672,6 @@
     if (savedCart) cart = JSON.parse(savedCart);
     if (savedStock) {
       const saved = JSON.parse(savedStock);
-      // Merge saved stock with current productStock (preserve real product structure)
       for (let id in saved) {
         if (productStock[id]) productStock[id].stock = saved[id].stock;
       }
@@ -814,3 +817,4 @@
 </script>
 </body>
 </html>
+

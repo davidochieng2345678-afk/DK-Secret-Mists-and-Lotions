@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details | DK World Kenya</title>
+  <title>Product Details | DK Secrets</title>
+  <meta name="description" content="View full details of Victoria's Secret mists and lotions. Shop authentic products at DK Secrets Kenya.">
+  <link rel="canonical" href="https://dk-secret-mists-and-lotions.web.app/product.html">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
     
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -29,7 +32,7 @@
       text-decoration: none;
     }
     .logo span { background: none; color: #8C2A3B; }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
     .nav-links a { text-decoration: none; font-weight: 600; color: #8C2A3B; cursor: pointer; }
     .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
     .cart-count {
@@ -43,16 +46,26 @@
     }
     .user-email { font-size: 0.8rem; color: #6B1E2A; margin-right: 12px; }
     
+    /* Breadcrumb */
     .breadcrumb { margin: 24px 0; font-size: 0.85rem; color: #a64b3a; }
     .breadcrumb a { color: #8C2A3B; text-decoration: none; }
     
+    /* Product Detail */
     .product-detail {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       margin: 40px 0;
     }
-    .product-image { width: 100%; border-radius: 28px; background: #f9ede5; }
+    .product-gallery { position: sticky; top: 20px; }
+    .main-image { width: 100%; border-radius: 28px; background: #f9ede5; cursor: pointer; }
+    .thumbnail-grid { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .thumbnail {
+      width: 80px; height: 80px; border-radius: 16px; object-fit: cover;
+      cursor: pointer; border: 2px solid transparent; transition: 0.2s;
+    }
+    .thumbnail.active { border-color: #C75C4A; }
+    
     .product-info h1 { font-size: 2.2rem; color: #6B1E2A; margin-bottom: 16px; }
     .product-price { font-size: 2rem; font-weight: 800; color: #C75C4A; margin: 20px 0; }
     .product-stock {
@@ -76,8 +89,86 @@
       border-radius: 60px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%;
     }
     .add-to-cart-btn:disabled { background: #ccc; cursor: not-allowed; }
+    .wishlist-product-btn {
+      background: none; border: 1px solid #f0cdc0; border-radius: 60px;
+      padding: 14px; width: 100%; margin-top: 16px; cursor: pointer;
+      font-weight: 600; color: #8C2A3B;
+    }
+    .wishlist-product-btn.active { background: #fce4e4; border-color: #C75C4A; }
     
-    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; }
+    /* Tabs */
+    .product-tabs { margin: 60px 0; border-top: 1px solid #f0cdc0; padding-top: 40px; }
+    .tab-buttons { display: flex; gap: 32px; border-bottom: 2px solid #f0cdc0; margin-bottom: 24px; flex-wrap: wrap; }
+    .tab-btn { background: none; border: none; font-size: 1rem; font-weight: 600; padding: 12px 0; cursor: pointer; color: #a64b3a; }
+    .tab-btn.active { color: #8C2A3B; border-bottom: 2px solid #8C2A3B; margin-bottom: -2px; }
+    .tab-content { display: none; line-height: 1.6; color: #5a4a3e; }
+    .tab-content.active { display: block; }
+    .ingredients-list { list-style: none; padding: 0; }
+    .ingredients-list li { padding: 8px 0; border-bottom: 1px solid #f0cdc0; }
+    .review-card { background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 1px solid #f0cdc0; }
+    .reviewer { font-weight: 700; color: #6B1E2A; }
+    .review-stars { color: #e6b422; font-size: 0.85rem; margin: 5px 0; }
+    .review-date { font-size: 0.7rem; color: #a64b3a; }
+    .write-review { margin-top: 30px; padding: 20px; background: #fff5f2; border-radius: 24px; }
+    .write-review textarea { width: 100%; padding: 12px; border-radius: 16px; border: 1px solid #f0cdc0; margin: 12px 0; }
+    .rating-input { display: flex; gap: 8px; margin: 12px 0; }
+    .rating-input span { font-size: 1.5rem; cursor: pointer; color: #ddd; }
+    .rating-input span.selected { color: #e6b422; }
+    
+    /* Related Products */
+    .related-section { margin: 60px 0; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .related-card {
+      background: white; border-radius: 20px; overflow: hidden;
+      text-align: center; padding-bottom: 16px; border: 1px solid #f0cdc0;
+      cursor: pointer; transition: 0.2s; text-decoration: none; display: block;
+    }
+    .related-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .related-img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .related-name { font-weight: 700; margin: 12px; color: #6B1E2A; }
+    .related-price { color: #C75C4A; }
+    
+    /* Footer */
+    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; text-align: center; }
+    .copyright { font-size: 0.8rem; }
+    
+    /* Cart Sidebar */
+    .cart-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 1000; visibility: hidden; opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-sidebar {
+      position: fixed; top: 0; right: -420px; width: 400px; max-width: 90vw;
+      height: 100%; background: #fff9f7; z-index: 1001; padding: 28px 24px;
+      transition: right 0.3s ease; display: flex; flex-direction: column;
+      border-left: 3px solid #C75C4A; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex; justify-content: space-between;
+      margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    .cart-footer-note { text-align: center; font-size: 0.7rem; margin-top: 12px; color: #a64b3a; }
+    
+    .loading { text-align: center; padding: 60px; font-size: 1.2rem; color: #a64b3a; }
+    .back-to-top {
+      position: fixed; bottom: 30px; right: 30px;
+      background: #8C2A3B; color: white; width: 50px; height: 50px;
+      border-radius: 50%; border: none; cursor: pointer; font-size: 1.5rem;
+      display: none; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 99;
+    }
+    .back-to-top:hover { background: #C75C4A; }
     @media (max-width: 768px) {
       .product-detail { grid-template-columns: 1fr; gap: 30px; }
       .container { padding: 0 20px; }
@@ -88,9 +179,11 @@
 
 <div class="container">
   <div class="navbar">
-    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
+    <a href="index.html" class="logo">DK<span> Secrets</span></a>
     <div class="nav-links">
       <a href="index.html">Shop</a>
+      <a href="index.html">Mists</a>
+      <a href="index.html">Lotions</a>
       <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
       <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
     </div>
@@ -100,24 +193,59 @@
 <div class="container">
   <div class="breadcrumb"><a href="index.html">Home</a> / <span id="productNameBreadcrumb">Product</span></div>
   <div class="product-detail" id="productDetail"><div class="loading">Loading product...</div></div>
+  <div class="product-tabs" id="productTabs" style="display:none;">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="description">Description</button>
+      <button class="tab-btn" data-tab="ingredients">Ingredients</button>
+      <button class="tab-btn" data-tab="reviews">Customer Reviews</button>
+      <button class="tab-btn" data-tab="shipping">Shipping Info</button>
+    </div>
+    <div id="tab-description" class="tab-content active"></div>
+    <div id="tab-ingredients" class="tab-content"></div>
+    <div id="tab-reviews" class="tab-content"></div>
+    <div id="tab-shipping" class="tab-content">
+      <p>🚚 Free delivery for orders over KSh 5,000</p>
+      <p>📍 Delivery within Nairobi: 1-2 business days</p>
+      <p>📍 Other Kenyan cities: 2-4 business days</p>
+      <p>🔄 7-day return policy for unopened items</p>
+    </div>
+  </div>
+  <div class="related-section" id="relatedSection" style="display:none;">
+    <h3 class="section-title">You May Also Like</h3>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
 </div>
 
 <footer>
-  <div class="container"><div class="copyright"><p>DK World Kenya - Authentic Victoria's Secret</p></div></div>
+  <div class="container">
+    <div class="copyright"><p>© 2025 DK Secrets - Authentic Victoria's Secret</p></div>
+  </div>
 </footer>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+  <div class="cart-footer-note">Free delivery over KSh 5,000</div>
+</div>
+
+<button id="backToTop" class="back-to-top" title="Back to top">↑</button>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getFirestore, doc, getDoc, setDoc, collection, getDocs, query, where, addDoc, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
   import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
   
   const firebaseConfig = {
-    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
-    authDomain: "dkworld-kenya.firebaseapp.com",
-    projectId: "dkworld-kenya",
-    storageBucket: "dkworld-kenya.firebasestorage.app",
-    messagingSenderId: "263537160242",
-    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+    apiKey: "AIzaSyDnMnyROtTSjvAswLAYAmpJrFf0wZEaYIM",
+    authDomain: "dk-secret-mists-and-lotions.firebaseapp.com",
+    projectId: "dk-secret-mists-and-lotions",
+    storageBucket: "dk-secret-mists-and-lotions.firebasestorage.app",
+    messagingSenderId: "153687274132",
+    appId: "1:153687274132:web:e9de13864e001be927ba81"
   };
   
   const app = initializeApp(firebaseConfig);
@@ -128,23 +256,137 @@
   let cart = [];
   let product = null;
   let quantity = 1;
-  
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
   
-  async function loadProduct() {
-    if (!productId) {
-      document.getElementById('productDetail').innerHTML = '<div class="loading">Product not found.</div>';
+  // Cart functions (same as index)
+  async function loadCart() {
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      const cartDoc = await getDoc(cartRef);
+      cart = cartDoc.exists() ? cartDoc.data().items : [];
+    } else {
+      cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+    }
+    updateCartCount();
+    updateSidebarCart();
+  }
+  async function saveCart() {
+    if (currentUser) {
+      await setDoc(doc(db, "carts", currentUser.uid), { items: cart, updatedAt: new Date() }, { merge: true });
+    } else {
+      localStorage.setItem('dkCart', JSON.stringify(cart));
+    }
+    updateCartCount();
+    updateSidebarCart();
+  }
+  function updateCartCount() {
+    const count = cart.reduce((s,i) => s + i.quantity, 0);
+    document.getElementById('cartCount').innerText = count;
+  }
+  async function addToCart(p, qty) {
+    const existing = cart.find(i => i.id === p.id);
+    if (existing) {
+      existing.quantity += qty;
+    } else {
+      cart.push({ id: p.id, name: p.name, price: p.price, quantity: qty });
+    }
+    await saveCart();
+    alert(`${qty} × ${p.name} added to cart!`);
+  }
+  
+  // Sidebar
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+  document.getElementById('cartIcon').onclick = openCartSidebar;
+  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); window.location.href = 'cart.html'; });
+  
+  async function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
       return;
     }
+    let total = 0;
+    let html = '';
+    for (let item of cart) {
+      const prodRef = doc(db, "products", item.id);
+      const prodSnap = await getDoc(prodRef);
+      if (!prodSnap.exists()) continue;
+      const prod = prodSnap.data();
+      const itemTotal = prod.price * item.quantity;
+      total += itemTotal;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${prod.name}</strong><br>Qty: ${item.quantity} × KSh ${(prod.price * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${(total * 145).toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const id = btn.dataset.id;
+        cart = cart.filter(i => i.id !== id);
+        await saveCart();
+        updateSidebarCart();
+      });
+    });
+  }
+  
+  // Wishlist toggle
+  async function toggleWishlist(productId, name, price, image) {
+    if (!currentUser) { alert("Sign in to save to wishlist"); return; }
+    const wishlistRef = doc(db, "wishlists", currentUser.uid);
+    const wishlistDoc = await getDoc(wishlistRef);
+    let items = wishlistDoc.exists() ? wishlistDoc.data().items : [];
+    const exists = items.find(i => i.id === productId);
+    if (exists) {
+      items = items.filter(i => i.id !== productId);
+      alert("Removed from wishlist");
+    } else {
+      items.push({ id: productId, name, price, image, addedAt: new Date() });
+      alert("Added to wishlist");
+    }
+    await setDoc(wishlistRef, { items, updatedAt: new Date() }, { merge: true });
+    updateWishlistButton();
+  }
+  async function updateWishlistButton() {
+    if (!currentUser || !product) return;
+    const wishlistRef = doc(db, "wishlists", currentUser.uid);
+    const wishlistDoc = await getDoc(wishlistRef);
+    const wishlistIds = wishlistDoc.exists() ? wishlistDoc.data().items.map(i => i.id) : [];
+    const btn = document.getElementById('wishlistProductBtn');
+    if (btn) {
+      if (wishlistIds.includes(product.id)) {
+        btn.classList.add('active');
+        btn.innerHTML = '💔 Remove from Wishlist';
+      } else {
+        btn.classList.remove('active');
+        btn.innerHTML = '❤️ Add to Wishlist';
+      }
+    }
+  }
+  
+  // Load product
+  async function loadProduct() {
+    if (!productId) { document.getElementById('productDetail').innerHTML = '<div class="loading">Product not found.</div>'; return; }
     const productRef = doc(db, "products", productId);
     const productSnap = await getDoc(productRef);
-    if (!productSnap.exists()) {
-      document.getElementById('productDetail').innerHTML = '<div class="loading">Product not found.</div>';
-      return;
-    }
+    if (!productSnap.exists()) { document.getElementById('productDetail').innerHTML = '<div class="loading">Product not found.</div>'; return; }
     product = { id: productSnap.id, ...productSnap.data() };
     renderProduct();
+    loadReviews();
+    loadRelatedProducts();
+    updateWishlistButton();
+    document.getElementById('productTabs').style.display = 'block';
+    document.getElementById('relatedSection').style.display = 'block';
   }
   
   function renderProduct() {
@@ -152,9 +394,13 @@
     const stockStatus = stock > 10 ? 'in-stock' : (stock > 0 ? 'low-stock' : 'out-of-stock');
     const stockText = stock > 10 ? `In Stock (${stock} available)` : (stock > 0 ? `Low Stock (${stock} left)` : 'Out of Stock');
     const priceKsh = (product.price * 145).toLocaleString();
-    
     document.getElementById('productDetail').innerHTML = `
-      <img class="product-image" src="${product.imageUrl || 'https://placehold.co/800x800/FCE4D4/8C2A3B?text=' + encodeURIComponent(product.name)}" alt="${product.name}">
+      <div class="product-gallery">
+        <img class="main-image" id="mainImage" src="${product.imageUrl || 'https://placehold.co/800x800/FCE4D4/8C2A3B?text=' + encodeURIComponent(product.name)}" alt="${product.name}">
+        <div class="thumbnail-grid" id="thumbnailGrid">
+          <img class="thumbnail active" src="${product.imageUrl || 'https://placehold.co/800x800/FCE4D4/8C2A3B?text=' + encodeURIComponent(product.name)}" alt="Main">
+        </div>
+      </div>
       <div class="product-info">
         <h1>${product.name}</h1>
         <div class="product-price">KSh ${priceKsh}</div>
@@ -166,87 +412,99 @@
           <button class="qty-btn" id="qtyPlus">+</button>
         </div>
         <button class="add-to-cart-btn" id="addToCartBtn" ${stock === 0 ? 'disabled' : ''}>Add to Cart</button>
+        <button class="wishlist-product-btn" id="wishlistProductBtn">❤️ Add to Wishlist</button>
       </div>
     `;
-    
     document.getElementById('productNameBreadcrumb').innerText = product.name;
+    document.getElementById('tab-description').innerHTML = `<p>${product.fullDescription || product.description || 'No description.'}</p>`;
+    document.getElementById('tab-ingredients').innerHTML = `<ul class="ingredients-list">${(product.ingredients || 'Ingredients not specified.').split(',').map(i => `<li>✨ ${i.trim()}</li>`).join('')}</ul>`;
     
-    // Quantity controls
     const qtyInput = document.getElementById('qtyInput');
-    document.getElementById('qtyMinus').onclick = () => {
-      if (quantity > 1) { quantity--; qtyInput.value = quantity; }
-    };
-    document.getElementById('qtyPlus').onclick = () => {
-      if (quantity < stock) { quantity++; qtyInput.value = quantity; }
-    };
-    qtyInput.onchange = (e) => {
-      let val = parseInt(e.target.value);
-      quantity = Math.min(Math.max(val, 1), stock);
-      qtyInput.value = quantity;
-    };
-    
-    document.getElementById('addToCartBtn').onclick = () => addToCart();
+    document.getElementById('qtyMinus').onclick = () => { if (quantity > 1) { quantity--; qtyInput.value = quantity; } };
+    document.getElementById('qtyPlus').onclick = () => { if (quantity < stock) { quantity++; qtyInput.value = quantity; } };
+    qtyInput.onchange = (e) => { let val = parseInt(e.target.value); quantity = Math.min(Math.max(val, 1), stock); qtyInput.value = quantity; };
+    document.getElementById('addToCartBtn').onclick = () => addToCart(product, quantity);
+    document.getElementById('wishlistProductBtn').onclick = () => toggleWishlist(product.id, product.name, product.price, product.imageUrl);
   }
   
-  async function addToCart() {
-    if (!product) return;
-    if (product.stock <= 0) {
-      alert("Out of stock!");
-      return;
-    }
-    if (quantity > product.stock) {
-      alert(`Only ${product.stock} left in stock!`);
-      return;
-    }
-    
-    // Load current cart
-    if (currentUser) {
-      const cartRef = doc(db, "carts", currentUser.uid);
-      const cartDoc = await getDoc(cartRef);
-      let cartItems = cartDoc.exists() ? cartDoc.data().items : [];
-      const existingIndex = cartItems.findIndex(item => item.id === product.id);
-      if (existingIndex !== -1) {
-        if (cartItems[existingIndex].quantity + quantity > product.stock) {
-          alert(`Only ${product.stock} left in stock!`);
-          return;
-        }
-        cartItems[existingIndex].quantity += quantity;
-      } else {
-        cartItems.push({ id: product.id, name: product.name, price: product.price, quantity: quantity });
-      }
-      await setDoc(cartRef, { items: cartItems, updatedAt: new Date() }, { merge: true });
+  // Reviews
+  async function loadReviews() {
+    const reviewsRef = collection(db, "reviews");
+    const q = query(reviewsRef, where("productId", "==", productId), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    const container = document.getElementById('tab-reviews');
+    if (querySnapshot.empty) {
+      container.innerHTML = '<p>No reviews yet. Be the first to review!</p>';
     } else {
-      let localCart = JSON.parse(localStorage.getItem('dkCart')) || [];
-      const existingIndex = localCart.findIndex(item => item.id === product.id);
-      if (existingIndex !== -1) {
-        if (localCart[existingIndex].quantity + quantity > product.stock) {
-          alert(`Only ${product.stock} left in stock!`);
-          return;
-        }
-        localCart[existingIndex].quantity += quantity;
-      } else {
-        localCart.push({ id: product.id, name: product.name, price: product.price, quantity: quantity });
-      }
-      localStorage.setItem('dkCart', JSON.stringify(localCart));
+      let html = '';
+      querySnapshot.forEach(docSnap => {
+        const r = docSnap.data();
+        html += `<div class="review-card"><div class="reviewer">${r.userName}</div><div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><div class="review-date">${new Date(r.createdAt?.toDate()).toLocaleDateString()}</div><p>${r.comment}</p></div>`;
+      });
+      container.innerHTML = html;
     }
-    alert(`${quantity} × ${product.name} added to cart!`);
-    updateCartCount();
+    if (currentUser) {
+      container.innerHTML += `
+        <div class="write-review">
+          <h4>Write a Review</h4>
+          <div class="rating-input" id="ratingInput">${[1,2,3,4,5].map(s => `<span data-rating="${s}">☆</span>`).join('')}</div>
+          <textarea id="reviewComment" rows="3" placeholder="Share your experience..."></textarea>
+          <button id="submitReviewBtn" class="auth-btn">Submit Review</button>
+        </div>
+      `;
+      let selectedRating = 0;
+      document.querySelectorAll('#ratingInput span').forEach(star => {
+        star.addEventListener('click', () => {
+          selectedRating = parseInt(star.dataset.rating);
+          document.querySelectorAll('#ratingInput span').forEach((s, i) => { s.innerHTML = i < selectedRating ? '★' : '☆'; });
+        });
+      });
+      document.getElementById('submitReviewBtn').onclick = async () => {
+        if (!selectedRating) return alert("Select a rating");
+        const comment = document.getElementById('reviewComment').value;
+        if (!comment) return alert("Write a review");
+        await addDoc(collection(db, "reviews"), {
+          productId: productId,
+          userId: currentUser.uid,
+          userName: currentUser.email,
+          rating: selectedRating,
+          comment: comment,
+          createdAt: new Date()
+        });
+        alert("Review submitted!");
+        loadReviews();
+      };
+    }
   }
   
-  async function updateCartCount() {
-    let count = 0;
-    if (currentUser) {
-      const cartRef = doc(db, "carts", currentUser.uid);
-      const cartDoc = await getDoc(cartRef);
-      if (cartDoc.exists()) {
-        count = cartDoc.data().items.reduce((sum, i) => sum + i.quantity, 0);
-      }
-    } else {
-      const localCart = JSON.parse(localStorage.getItem('dkCart')) || [];
-      count = localCart.reduce((sum, i) => sum + i.quantity, 0);
-    }
-    document.getElementById('cartCount').innerText = count;
+  // Related products
+  async function loadRelatedProducts() {
+    const productsRef = collection(db, "products");
+    const q = query(productsRef, where("category", "==", product.category || 'mist'), limit(4));
+    const querySnapshot = await getDocs(q);
+    const container = document.getElementById('relatedGrid');
+    let html = '';
+    querySnapshot.forEach(docSnap => {
+      if (docSnap.id === productId) return;
+      const p = docSnap.data();
+      html += `<div class="related-card" onclick="location.href='product.html?id=${docSnap.id}'">
+        <img class="related-img" src="${p.imageUrl || 'https://placehold.co/400x400/FCE4D4/8C2A3B'}" alt="${p.name}">
+        <div class="related-name">${p.name}</div>
+        <div class="related-price">KSh ${(p.price * 145).toLocaleString()}</div>
+      </div>`;
+    });
+    container.innerHTML = html || '<p>No related products found.</p>';
   }
+  
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
   
   // Auth UI
   function updateAuthUI(user) {
@@ -257,24 +515,25 @@
     } else {
       authSection.innerHTML = `<button class="auth-btn" id="authButton">Sign In</button>`;
       document.getElementById('authButton').onclick = () => {
-        const email = prompt("Email:");
-        const password = prompt("Password:");
-        if (email && password) {
-          signInWithEmailAndPassword(auth, email, password).catch(() => {
-            if (confirm("Create new account?")) createUserWithEmailAndPassword(auth, email, password);
-          });
-        }
+        const email = prompt("Email:"); const password = prompt("Password:");
+        if (email && password) signInWithEmailAndPassword(auth, email, password).catch(() => {
+          if (confirm("Create account?")) createUserWithEmailAndPassword(auth, email, password);
+        });
       };
     }
   }
   
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { if (window.scrollY > 300) backBtn.style.display = 'flex'; else backBtn.style.display = 'none'; });
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
   onAuthStateChanged(auth, async (user) => {
     currentUser = user;
     updateAuthUI(user);
-    await updateCartCount();
+    await loadCart();
+    if (product) updateWishlistButton();
   });
-  
-  document.getElementById('cartIcon').onclick = () => window.location.href = 'cart.html';
   
   loadProduct();
 </script>

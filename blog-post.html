@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Blog Post | DK World Kenya</title>
+  <meta name="description" id="metaDescription" content="Read the latest beauty tips and Victoria's Secret fragrance guides.">
+  <link rel="canonical" id="canonicalUrl" href="https://dkworld-kenya.web.app/blog-post.html">
+  <meta property="og:title" id="ogTitle">
+  <meta property="og:description" id="ogDescription">
+  <meta property="og:image" id="ogImage">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #f0cdc0;
+      margin-bottom: 40px;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: #8C2A3B; }
+    
+    .post-header { margin-bottom: 32px; }
+    .post-category {
+      display: inline-block;
+      background: #f9e0e4;
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #8C2A3B;
+      margin-bottom: 16px;
+    }
+    .post-title { font-size: 2.5rem; color: #6B1E2A; margin-bottom: 16px; }
+    .post-meta {
+      display: flex;
+      gap: 24px;
+      color: #a64b3a;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .featured-image {
+      width: 100%;
+      border-radius: 28px;
+      margin: 24px 0;
+    }
+    .post-content {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #2d2a27;
+    }
+    .post-content h2 { color: #6B1E2A; margin: 32px 0 16px; }
+    .post-content p { margin-bottom: 20px; }
+    .post-content ul, .post-content ol { margin: 16px 0 16px 32px; }
+    .tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .tag { background: #f0cdc0; padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; }
+    
+    .related-posts {
+      margin: 60px 0;
+      border-top: 1px solid #f0cdc0;
+      padding-top: 40px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 24px;
+    }
+    .related-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #f0cdc0;
+      text-decoration: none;
+      color: inherit;
+    }
+    .related-img { width: 100%; height: 150px; object-fit: cover; }
+    .related-card h4 { padding: 12px; color: #6B1E2A; }
+    
+    .comments-section {
+      margin: 40px 0;
+      padding: 32px;
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #f0cdc0;
+    }
+    .comment-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid #f0cdc0;
+      margin: 12px 0;
+    }
+    .comment-btn {
+      background: #8C2A3B;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 60px;
+      cursor: pointer;
+    }
+    .comment {
+      border-bottom: 1px solid #f0cdc0;
+      padding: 16px 0;
+    }
+    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; text-align: center; }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
+    <div class="nav-links">
+      <a href="index.html">Shop</a>
+      <a href="blog.html">Blog</a>
+    </div>
+  </div>
+  
+  <div id="postContent">
+    <div class="loading">Loading article...</div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2025 DK World Kenya - Authentic Victoria's Secret</p>
+  </div>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
+    authDomain: "dkworld-kenya.firebaseapp.com",
+    projectId: "dkworld-kenya",
+    storageBucket: "dkworld-kenya.firebasestorage.app",
+    messagingSenderId: "263537160242",
+    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get('id');
+  let currentUser = null;
+  
+  async function loadPost() {
+    if (!postId) {
+      document.getElementById('postContent').innerHTML = '<div class="loading">Post not found.</div>';
+      return;
+    }
+    const postRef = doc(db, "blog_posts", postId);
+    const postSnap = await getDoc(postRef);
+    if (!postSnap.exists()) {
+      document.getElementById('postContent').innerHTML = '<div class="loading">Post not found.</div>';
+      return;
+    }
+    const post = postSnap.data();
+    renderPost(post);
+    loadComments();
+    loadRelatedPosts(post.category, postId);
+    updateMetaTags(post);
+  }
+  
+  function renderPost(post) {
+    const container = document.getElementById('postContent');
+    container.innerHTML = `
+      <div class="post-header">
+        <span class="post-category">${post.category || 'Beauty'}</span>
+        <h1 class="post-title">${post.title}</h1>
+        <div class="post-meta">
+          <span>📅 ${new Date(post.publishedAt?.toDate()).toLocaleDateString()}</span>
+          <span>✍️ ${post.author || 'DK Team'}</span>
+          <span>⏱️ ${post.readTime || '5 min read'}</span>
+        </div>
+      </div>
+      <img class="featured-image" src="${post.featuredImage || 'https://placehold.co/800x400/FCE4D4/8C2A3B?text=Blog'}" alt="${post.title}">
+      <div class="post-content">${post.content}</div>
+      <div class="tags">
+        ${(post.tags || []).map(tag => `<span class="tag">#${tag}</span>`).join('')}
+      </div>
+      <div class="comments-section">
+        <h3>💬 Comments (${post.commentCount || 0})</h3>
+        <div id="commentsList"></div>
+        <div id="commentFormArea"></div>
+      </div>
+      <div class="related-posts">
+        <h3>📖 You May Also Like</h3>
+        <div class="related-grid" id="relatedGrid"></div>
+      </div>
+    `;
+    
+    // Comment form if logged in
+    if (currentUser) {
+      document.getElementById('commentFormArea').innerHTML = `
+        <form id="commentForm">
+          <textarea id="commentText" rows="3" placeholder="Share your thoughts..." required></textarea>
+          <button type="submit" class="comment-btn">Post Comment</button>
+        </form>
+      `;
+      document.getElementById('commentForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const text = document.getElementById('commentText').value;
+        if (!text) return;
+        await addDoc(collection(db, "blog_comments"), {
+          postId: postId,
+          userId: currentUser.uid,
+          userName: currentUser.email,
+          comment: text,
+          createdAt: serverTimestamp()
+        });
+        document.getElementById('commentText').value = '';
+        loadComments();
+        // Increment comment count in post
+        const newCount = (post.commentCount || 0) + 1;
+        await setDoc(postRef, { commentCount: newCount }, { merge: true });
+      });
+    } else {
+      document.getElementById('commentFormArea').innerHTML = `<p><a href="index.html">Sign in</a> to leave a comment.</p>`;
+    }
+  }
+  
+  async function loadComments() {
+    const q = query(collection(db, "blog_comments"), where("postId", "==", postId), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    const commentsDiv = document.getElementById('commentsList');
+    if (querySnapshot.empty) {
+      commentsDiv.innerHTML = '<p>No comments yet. Be the first!</p>';
+      return;
+    }
+    commentsDiv.innerHTML = querySnapshot.docs.map(doc => `
+      <div class="comment">
+        <strong>${doc.data().userName}</strong> <span style="font-size:0.7rem; color:#a64b3a;">${new Date(doc.data().createdAt?.toDate()).toLocaleString()}</span>
+        <p>${doc.data().comment}</p>
+      </div>
+    `).join('');
+  }
+  
+  async function loadRelatedPosts(category, currentId) {
+    const q = query(collection(db, "blog_posts"), where("category", "==", category), where("__name__", "!=", currentId), orderBy("publishedAt", "desc"), limit(3));
+    const querySnapshot = await getDocs(q);
+    const grid = document.getElementById('relatedGrid');
+    if (querySnapshot.empty) {
+      grid.innerHTML = '<p>No related posts found.</p>';
+      return;
+    }
+    grid.innerHTML = querySnapshot.docs.map(doc => `
+      <a href="blog-post.html?id=${doc.id}" class="related-card">
+        <img class="related-img" src="${doc.data().featuredImage || 'https://placehold.co/400x200'}" alt="${doc.data().title}">
+        <h4>${doc.data().title}</h4>
+      </a>
+    `).join('');
+  }
+  
+  function updateMetaTags(post) {
+    document.title = `${post.title} | DK World Kenya Blog`;
+    document.getElementById('pageTitle').innerText = document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', post.excerpt || post.content.substring(0, 150));
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', post.title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', post.excerpt || '');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', post.featuredImage || '');
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', `https://dkworld-kenya.web.app/blog-post.html?id=${postId}`);
+    
+    // Add JSON-LD schema for Article
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "image": post.featuredImage,
+      "datePublished": post.publishedAt?.toDate().toISOString(),
+      "author": { "@type": "Person", "name": post.author || "DK Team" },
+      "publisher": { "@type": "Organization", "name": "DK World Kenya", "logo": "https://dkworld-kenya.web.app/logo.png" }
+    });
+    document.head.appendChild(script);
+  }
+  
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    if (postId) loadPost();
+  });
+  
+  // Fallback if no auth needed for reading post
+  if (!postId) loadPost();
+</script>
+</body>
+</html>

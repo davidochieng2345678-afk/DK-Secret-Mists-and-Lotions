@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | DK World Kenya</title>
+  <meta name="description" content="Complete your purchase of Victoria's Secret mists and lotions. Secure checkout with M-Pesa, Visa, Mastercard.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .logo span { background: none; color: #8C2A3B; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
+    .cart-count {
+      position: absolute; top: -8px; right: -12px; background: #C75C4A;
+      color: white; font-size: 0.7rem; border-radius: 50%;
+      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+    }
+    .auth-btn {
+      background: #8C2A3B; color: white; padding: 8px 20px; border-radius: 40px;
+      border: none; cursor: pointer;
+    }
+    
+    .breadcrumb { margin: 24px 0; font-size: 0.85rem; color: #a64b3a; }
+    .breadcrumb a { color: #8C2A3B; text-decoration: none; }
+    
+    .checkout-container {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 48px;
+      margin: 40px 0 80px;
+    }
+    
+    /* Forms */
+    .checkout-form h2 { color: #6B1E2A; margin-bottom: 24px; }
+    .form-section {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      margin-bottom: 32px;
+      border: 1px solid #f0cdc0;
+    }
+    .form-section h3 { color: #6B1E2A; margin-bottom: 20px; font-size: 1.3rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-weight: 600; color: #8C2A3B; font-size: 0.85rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid #f0cdc0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+    .form-group input:focus { outline: none; border-color: #C75C4A; }
+    
+    /* Payment Methods */
+    .payment-methods-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid #f0cdc0;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .payment-option.selected { border-color: #C75C4A; background: #fff5f2; }
+    .payment-option input { width: 20px; height: 20px; cursor: pointer; }
+    .payment-option label { cursor: pointer; flex: 1; font-weight: 500; }
+    .mpesa-details { margin-top: 16px; padding: 16px; background: #f9ede5; border-radius: 16px; display: none; }
+    .mpesa-details.active { display: block; }
+    
+    /* Order Summary */
+    .order-summary {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid #f0cdc0;
+      position: sticky;
+      top: 20px;
+    }
+    .order-summary h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-item-summary {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 2px solid #f0cdc0;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #6B1E2A;
+    }
+    .place-order-btn {
+      background: #8C2A3B;
+      color: white;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: 0.2s;
+    }
+    .place-order-btn:hover { background: #C75C4A; }
+    .place-order-btn:disabled { background: #ccc; cursor: not-allowed; }
+    
+    .empty-cart { text-align: center; padding: 80px; background: white; border-radius: 28px; }
+    .loading { text-align: center; padding: 60px; font-size: 1.2rem; color: #a64b3a; }
+    
+    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; }
+    .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 40px; }
+    .copyright { text-align: center; font-size: 0.8rem; }
+    
+    @media (max-width: 968px) {
+      .checkout-container { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .container { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
+    <div class="nav-links">
+      <a href="index.html">Shop</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+      <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / Checkout</div>
+  <div id="checkoutContent"><div class="loading">Loading checkout...</div></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4 style="color:#f2dad0;">DK World Kenya</h4><p>Official Reseller</p></div>
+      <div><p>📍 Nairobi, Kenya</p><p>📞 +254 700 000 000</p><p>✉️ hello@dkworld.co.ke</p></div>
+      <div><p>🔒 Secure Checkout | M-Pesa | Visa | Mastercard</p></div>
+    </div>
+    <div class="copyright"><p>© 2025 DK World Kenya - Authentic Victoria's Secret</p></div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
+    authDomain: "dkworld-kenya.firebaseapp.com",
+    projectId: "dkworld-kenya",
+    storageBucket: "dkworld-kenya.firebasestorage.app",
+    messagingSenderId: "263537160242",
+    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+  let currentUser = null;
+  let cartItems = [];
+  let subtotal = 0;
+  let shipping = 0;
+  let tax = 0;
+  let total = 0;
+  let discount = 0;
+  
+  async function loadCheckout() {
+    if (!currentUser) {
+      document.getElementById('checkoutContent').innerHTML = `
+        <div class="empty-cart">
+          <h2>Please Sign In to Checkout</h2>
+          <p>You need to be logged in to complete your purchase.</p>
+          <button class="auth-btn" id="loginToCheckout" style="margin-top:20px;">Sign In</button>
+        </div>
+      `;
+      document.getElementById('loginToCheckout')?.addEventListener('click', () => {
+        const email = prompt("Email:");
+        const password = prompt("Password:");
+        if (email && password) signInWithEmailAndPassword(auth, email, password).catch(() => alert("Login failed"));
+      });
+      return;
+    }
+    
+    // Load cart from Firestore
+    const cartRef = doc(db, "carts", currentUser.uid);
+    const cartDoc = await getDoc(cartRef);
+    cartItems = cartDoc.exists() ? cartDoc.data().items : [];
+    
+    if (cartItems.length === 0) {
+      document.getElementById('checkoutContent').innerHTML = `
+        <div class="empty-cart">
+          <h2>Your cart is empty</h2>
+          <p>Add some products before checkout.</p>
+          <a href="index.html" style="background:#8C2A3B; color:white; padding:12px 32px; border-radius:60px; text-decoration:none; display:inline-block; margin-top:20px;">Continue Shopping</a>
+        </div>
+      `;
+      return;
+    }
+    
+    // Fetch product details and calculate totals
+    let cartDetails = [];
+    subtotal = 0;
+    for (let item of cartItems) {
+      const productRef = doc(db, "products", item.id);
+      const prodSnap = await getDoc(productRef);
+      if (prodSnap.exists()) {
+        const prod = prodSnap.data();
+        const itemTotal = prod.price * item.quantity;
+        subtotal += itemTotal;
+        cartDetails.push({ ...item, product: prod });
+      }
+    }
+    
+    const freeShippingThreshold = 34.48;
+    shipping = subtotal >= freeShippingThreshold ? 0 : 5.99;
+    tax = subtotal * 0.08;
+    total = subtotal + shipping + tax - discount;
+    
+    renderCheckoutForm(cartDetails);
+    renderOrderSummary(cartDetails);
+  }
+  
+  function renderCheckoutForm(cartDetails) {
+    const container = document.getElementById('checkoutContent');
+    container.innerHTML = `
+      <div class="checkout-container">
+        <div class="checkout-form">
+          <h2>Checkout</h2>
+          
+          <div class="form-section">
+            <h3>Contact Information</h3>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="John Doe" required></div>
+              <div class="form-group"><label>Email *</label><input type="email" id="email" value="${currentUser.email}" readonly disabled style="background:#f5f5f5;"></div>
+            </div>
+            <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" placeholder="0712345678" required></div>
+          </div>
+          
+          <div class="form-section">
+            <h3>Shipping Address</h3>
+            <div class="form-group"><label>Street Address *</label><input type="text" id="address" placeholder="Street, building, apartment" required></div>
+            <div class="form-row">
+              <div class="form-group"><label>City *</label><input type="text" id="city" placeholder="Nairobi" required></div>
+              <div class="form-group"><label>County *</label><input type="text" id="county" placeholder="Nairobi" required></div>
+            </div>
+            <div class="form-group"><label>Postal Code (optional)</label><input type="text" id="postalCode" placeholder="00100"></div>
+          </div>
+          
+          <div class="form-section">
+            <h3>Payment Method</h3>
+            <div class="payment-methods-grid">
+              <div class="payment-option" data-method="mpesa">
+                <input type="radio" name="paymentMethod" value="mpesa" id="mpesaRadio"> 
+                <label for="mpesaRadio">💳 M-Pesa - Pay with Lipa Na M-Pesa</label>
+              </div>
+              <div class="payment-option" data-method="card">
+                <input type="radio" name="paymentMethod" value="card" id="cardRadio"> 
+                <label for="cardRadio">💳 Credit/Debit Card (Visa/Mastercard)</label>
+              </div>
+              <div class="payment-option" data-method="bank">
+                <input type="radio" name="paymentMethod" value="bank" id="bankRadio"> 
+                <label for="bankRadio">🏦 Bank Transfer</label>
+              </div>
+            </div>
+            <div id="mpesaDetails" class="mpesa-details">
+              <p>📱 Send payment to:</p>
+              <p><strong>Paybill: 123456</strong></p>
+              <p><strong>Account Number: ${currentUser.uid.slice(-8)}</strong></p>
+              <p>Amount: <strong id="mpesaAmount">KSh 0</strong></p>
+              <p>You will receive a confirmation SMS. Enter M-Pesa transaction code below:</p>
+              <input type="text" id="mpesaCode" placeholder="M-Pesa transaction code" style="width:100%; margin-top:12px; padding:10px; border-radius:12px; border:1px solid #f0cdc0;">
+            </div>
+          </div>
+          
+          <button class="place-order-btn" id="placeOrderBtn">Place Order</button>
+        </div>
+        <div class="order-summary" id="orderSummarySidebar"></div>
+      </div>
+    `;
+    
+    // Payment method selection
+    document.querySelectorAll('.payment-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        const method = opt.dataset.method;
+        const mpesaDiv = document.getElementById('mpesaDetails');
+        if (method === 'mpesa') {
+          mpesaDiv.classList.add('active');
+          document.getElementById('mpesaAmount').innerText = `KSh ${(total * 145).toLocaleString()}`;
+        } else {
+          mpesaDiv.classList.remove('active');
+        }
+      });
+    });
+    
+    document.getElementById('placeOrderBtn').addEventListener('click', async () => {
+      await placeOrder();
+    });
+  }
+  
+  function renderOrderSummary(cartDetails) {
+    const subtotalKsh = (subtotal * 145).toLocaleString();
+    const shippingKsh = shipping === 0 ? 'FREE' : `KSh ${(shipping * 145).toLocaleString()}`;
+    const taxKsh = (tax * 145).toLocaleString();
+    const totalKsh = (total * 145).toLocaleString();
+    
+    let itemsHtml = '';
+    for (let item of cartDetails) {
+      itemsHtml += `
+        <div class="cart-item-summary">
+          <span>${item.product.name} x ${item.quantity}</span>
+          <span>KSh ${(item.product.price * item.quantity * 145).toLocaleString()}</span>
+        </div>
+      `;
+    }
+    
+    document.getElementById('orderSummarySidebar').innerHTML = `
+      <h3>Order Summary</h3>
+      ${itemsHtml}
+      <div class="summary-row"><span>Subtotal</span><span>KSh ${subtotalKsh}</span></div>
+      <div class="summary-row"><span>Shipping</span><span>${shippingKsh}</span></div>
+      <div class="summary-row"><span>Tax (8%)</span><span>KSh ${taxKsh}</span></div>
+      ${discount > 0 ? `<div class="summary-row discount-row"><span>Discount</span><span>- KSh ${(discount * 145).toLocaleString()}</span></div>` : ''}
+      <div class="summary-total"><span>Total</span><span>KSh ${totalKsh}</span></div>
+    `;
+  }
+  
+  async function placeOrder() {
+    const fullName = document.getElementById('fullName')?.value;
+    const phone = document.getElementById('phone')?.value;
+    const address = document.getElementById('address')?.value;
+    const city = document.getElementById('city')?.value;
+    const county = document.getElementById('county')?.value;
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+    
+    if (!fullName || !phone || !address || !city || !county || !paymentMethod) {
+      alert("Please fill in all required fields and select a payment method.");
+      return;
+    }
+    
+    if (paymentMethod === 'mpesa') {
+      const mpesaCode = document.getElementById('mpesaCode')?.value;
+      if (!mpesaCode) {
+        alert("Please enter your M-Pesa transaction code.");
+        return;
+      }
+    }
+    
+    const orderData = {
+      userId: currentUser.uid,
+      customerName: fullName,
+      email: currentUser.email,
+      phone: phone,
+      shippingAddress: { address, city, county, postalCode: document.getElementById('postalCode')?.value },
+      items: cartItems,
+      subtotal: subtotal,
+      shipping: shipping,
+      tax: tax,
+      discount: discount,
+      total: total,
+      paymentMethod: paymentMethod,
+      mpesaCode: paymentMethod === 'mpesa' ? document.getElementById('mpesaCode')?.value : null,
+      status: 'pending',
+      createdAt: serverTimestamp()
+    };
+    
+    try {
+      const orderRef = await addDoc(collection(db, "orders"), orderData);
+      // Clear cart
+      const cartRef = doc(db, "carts", currentUser.uid);
+      await setDoc(cartRef, { items: [], updatedAt: new Date() });
+      // Redirect to confirmation
+      window.location.href = `order-confirmation.html?id=${orderRef.id}`;
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("There was an error processing your order. Please try again.");
+    }
+  }
+  
+  async function updateCartCount() {
+    let count = 0;
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      const cartDoc = await getDoc(cartRef);
+      if (cartDoc.exists()) count = cartDoc.data().items.reduce((s,i) => s + i.quantity, 0);
+    }
+    document.getElementById('cartCount').innerText = count;
+  }
+  
+  // Auth UI
+  function updateAuthUI(user) {
+    const authSection = document.getElementById('authSection');
+    if (user) {
+      authSection.innerHTML = `<span style="margin-right:12px;">${user.email}</span> <button class="auth-btn" id="authButton">Logout</button>`;
+      document.getElementById('authButton').onclick = () => signOut(auth);
+    } else {
+      authSection.innerHTML = `<button class="auth-btn" id="authButton">Sign In</button>`;
+      document.getElementById('authButton').onclick = () => {
+        const email = prompt("Email:");
+        const password = prompt("Password:");
+        if (email && password) {
+          signInWithEmailAndPassword(auth, email, password).catch(() => {
+            if (confirm("Create account?")) createUserWithEmailAndPassword(auth, email, password);
+          });
+        }
+      };
+    }
+  }
+  
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    updateAuthUI(user);
+    await loadCheckout();
+    await updateCartCount();
+  });
+  
+  document.getElementById('cartIcon').onclick = () => window.location.href = 'cart.html';
+</script>
+</body>
+</html>

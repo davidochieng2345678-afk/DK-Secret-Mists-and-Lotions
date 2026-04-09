@@ -3,48 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>DK Secrets | Victoria’s Secret Mist & Lotion — Iconic Fragrances</title>
-  <meta name="description" content="Shop the world’s best Victoria's Secret body mists & lotions at DK Secrets. Bombshell, Bare Vanilla, Love Spell & more. Fast shipping & exclusive deals.">
-  <meta name="keywords" content="Victoria's Secret, body mist, body lotion, Bombshell, Bare Vanilla, Love Spell, fragrance mist, VS lotion, DK Secrets">
-  <meta name="author" content="DK Secrets">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.dksecrets.com/">
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="DK Secrets — Victoria’s Secret Mists & Lotions">
-  <meta property="og:description" content="Iconic Victoria’s Secret body care. Bombshell, Bare Vanilla, Pure Seduction. Get the signature scent today.">
-  <meta property="og:image" content="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1600">
-  <meta property="og:url" content="https://www.dksecrets.com/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Preconnect & Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>DK World Kenya | Victoria's Secret Mists & Lotions</title>
+  <meta name="description" content="Shop authentic Victoria's Secret body mists and lotions in Kenya. Fast delivery Nairobi, Mombasa, Kisumu. DK World Kenya - Official Reseller.">
+  <meta name="keywords" content="Victoria's Secret Kenya, body mist Nairobi, Bombshell Kenya, Love Spell, Bare Vanilla">
+  <link rel="canonical" href="https://dkworld-kenya.web.app/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fffaf7;
-      color: #2d2a27;
-      scroll-behavior: smooth;
-    }
-
-    h1, h2, h3, .logo, .btn, .nav-links a, .price, .cart-count {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* Header / Navigation - Maroon/Pink/Red theme */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -57,392 +25,161 @@
     .logo {
       font-size: 2rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
       background: linear-gradient(135deg, #8C2A3B, #C75C4A);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-decoration: none;
     }
-    .logo span {
-      background: none;
-      color: #8C2A3B;
-      font-weight: 700;
+    .logo span { background: none; color: #8C2A3B; }
+    .nav-links { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: #8C2A3B; cursor: pointer; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
+    .cart-count {
+      position: absolute; top: -8px; right: -12px; background: #C75C4A;
+      color: white; font-size: 0.7rem; border-radius: 50%;
+      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
     }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .nav-links a {
+    .auth-btn {
+      background: #8C2A3B;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      color: #8C2A3B;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+      border: none;
       cursor: pointer;
+      font-size: 0.9rem;
     }
-    .nav-links a:hover {
-      color: #C75C4A;
-    }
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-      font-size: 1.6rem;
-      color: #8C2A3B;
-    }
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -12px;
-      background: #C75C4A;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* BIG BANNER — High-res Victoria's Secret product image */
+    .user-email { font-size: 0.8rem; color: #6B1E2A; margin-right: 12px; }
+    
     .hero {
       margin: 32px 0 48px;
       border-radius: 32px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 25px 35px -12px rgba(140, 42, 59, 0.3);
-    }
-    .hero-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      min-height: 480px;
-      object-fit: cover;
-    }
-    .hero-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      min-height: 400px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      background: radial-gradient(circle, rgba(107,30,42,0.25), rgba(90,20,30,0.65));
       color: white;
-      padding: 24px;
     }
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 800;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-    .hero-content p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      max-width: 650px;
-      margin-bottom: 28px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      font-weight: 400;
-    }
+    .hero-content h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 16px; }
+    .hero-content p { font-size: 1.1rem; margin-bottom: 28px; max-width: 600px; }
     .btn-primary {
-      background: #ffffff;
-      color: #8C2A3B;
-      padding: 14px 42px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: 0.2s;
-      display: inline-block;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.2);
-      font-family: 'Inter', sans-serif;
-      border: none;
-      cursor: pointer;
+      background: white; color: #8C2A3B; padding: 12px 36px;
+      border-radius: 60px; text-decoration: none; font-weight: 700;
+      display: inline-block; border: none; cursor: pointer;
     }
-    .btn-primary:hover {
-      background: #FFE4DC;
-      transform: scale(1.02);
-    }
-
-    /* Section Titles */
+    
     .section-title {
-      font-size: 2.3rem;
-      font-weight: 700;
-      text-align: center;
-      margin: 56px 0 12px;
+      font-size: 2rem;
       color: #6B1E2A;
-      letter-spacing: -0.2px;
-    }
-    .subtitle {
       text-align: center;
-      color: #A64B3A;
-      margin-bottom: 40px;
-      font-size: 1.1rem;
+      margin: 40px 0 20px;
     }
-
-    /* Products Grid */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 42px;
-      margin: 30px 0 70px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin: 40px 0;
     }
     .product-card {
       background: white;
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.3s;
-      box-shadow: 0 15px 30px -10px rgba(107,30,42,0.12);
       text-align: center;
-      padding-bottom: 24px;
+      padding-bottom: 20px;
       border: 1px solid #f0cdc0;
+      cursor: pointer;
+      transition: 0.2s;
     }
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 28px 40px -12px rgba(107,30,42,0.25);
-    }
-    .product-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: #f9ede5;
-    }
-    .product-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 20px 16px 6px;
-      font-family: 'Playfair Display', serif;
-      color: #6B1E2A;
-    }
-    .product-desc {
-      padding: 0 16px;
-      color: #7a4a3c;
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-    }
-    .price {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #C75C4A;
-      margin-bottom: 18px;
-    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .product-img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #f9ede5; }
+    .product-title { font-size: 1.2rem; font-weight: 700; margin: 16px 12px 8px; color: #6B1E2A; }
+    .product-price { font-size: 1.4rem; font-weight: 800; color: #C75C4A; margin: 8px 0; }
+    .product-stock { font-size: 0.75rem; color: #a64b3a; margin-bottom: 12px; }
     .add-to-cart {
       background: #8C2A3B;
-      border: none;
       color: white;
-      padding: 12px 26px;
+      border: none;
+      padding: 10px 24px;
       border-radius: 40px;
-      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-    }
-    .add-to-cart:hover {
-      background: #C75C4A;
-    }
-    .stock-badge {
-      display: inline-block;
-      background: #f9e0e4;
-      color: #8C2A3B;
-      font-size: 0.7rem;
-      padding: 3px 12px;
-      border-radius: 30px;
-      margin-top: 6px;
+      margin-top: 8px;
       font-weight: 600;
+      transition: 0.2s;
     }
-    .rating-stars {
-      color: #e6b422;
-      font-size: 0.85rem;
-      margin: 5px 0;
-    }
-
-    /* CTA Banner */
+    .add-to-cart:hover { background: #C75C4A; }
+    .add-to-cart:disabled { background: #ccc; cursor: not-allowed; }
+    .loading { text-align: center; padding: 60px; font-size: 1.2rem; color: #a64b3a; }
+    
     .cta-banner {
       background: linear-gradient(105deg, #F7D9D0, #F3CABA);
       border-radius: 48px;
-      padding: 60px 32px;
+      padding: 50px 30px;
       text-align: center;
-      margin: 40px 0 70px;
-      border: 1px solid #e6b8a8;
+      margin: 40px 0;
     }
-    .cta-banner h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #6B1E2A;
-    }
-    .cta-banner p {
-      max-width: 560px;
-      margin: 0 auto 20px;
-      font-size: 1rem;
-    }
-
-    /* Cart Sidebar */
-    .cart-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s;
-    }
-    .cart-sidebar {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 400px;
-      max-width: 90vw;
-      height: 100%;
-      background: #fff9f7;
-      z-index: 1001;
-      padding: 28px 24px;
-      box-shadow: -5px 0 30px rgba(107,30,42,0.2);
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Inter', sans-serif;
-      border-left: 3px solid #C75C4A;
-    }
-    .cart-sidebar h3 {
-      font-size: 1.9rem;
-      margin-bottom: 24px;
-      border-bottom: 1px solid #f0cdc0;
-      padding-bottom: 12px;
-      color: #6B1E2A;
-    }
-    .cart-items-list {
-      flex: 1;
-      overflow-y: auto;
-      margin-bottom: 20px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #f3ded6;
-    }
-    .cart-total {
-      font-weight: 800;
-      font-size: 1.5rem;
-      margin: 16px 0;
-      text-align: right;
-      border-top: 2px solid #f0cdc0;
-      padding-top: 16px;
-      color: #C75C4A;
-    }
-    .checkout-btn {
-      background: #C75C4A;
-      width: 100%;
-      border: none;
-      padding: 14px;
-      color: white;
-      font-weight: bold;
-      border-radius: 60px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .close-cart {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      position: absolute;
-      top: 16px;
-      right: 22px;
-      cursor: pointer;
-      color: #6B1E2A;
-    }
+    .cta-banner h3 { font-size: 1.8rem; color: #6B1E2A; margin-bottom: 12px; }
+    
     footer {
       background: #1f1210;
       color: #f2cfc4;
       padding: 48px 0 24px;
       margin-top: 64px;
     }
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-    .copyright {
-      text-align: center;
-      margin-top: 48px;
-      font-size: 0.8rem;
-    }
+    .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+    .copyright { text-align: center; margin-top: 48px; font-size: 0.8rem; }
+    
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
-      .navbar { flex-direction: column; }
-      .hero-content h1 { font-size: 2rem; }
-      .btn-primary { padding: 10px 24px; }
-      .products-grid { gap: 24px; }
+      .nav-links { gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <div class="container">
   <div class="navbar">
-    <div class="logo">DK<span> Secrets</span></div>
+    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
     <div class="nav-links">
-      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Victoria's Secret</a>
-      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Mists</a>
-      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Lotions</a>
-      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Bundles</a>
-      <div class="cart-icon" id="cartIcon">
-        🛒 <span class="cart-count" id="cartCount">0</span>
+      <a href="#products">Shop</a>
+      <a href="#products">Mists</a>
+      <a href="#products">Lotions</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+      <div id="authSection">
+        <button class="auth-btn" id="authButton">Sign In</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- BIG BANNER — Realistic Victoria's Secret body mist & lotion image -->
 <div class="container">
   <div class="hero">
-    <picture>
-      <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" media="(min-width: 1200px)">
-      <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1200&h=700&fit=crop" media="(min-width: 768px)">
-      <img class="hero-image" src="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Victoria's Secret body mist and lotion bottles - pink fragrance collection" loading="eager" fetchpriority="high">
-    </picture>
     <div class="hero-content">
-      <h1>Victoria’s Secret Iconic Collection</h1>
-      <p>DK Secrets brings you the ultimate mists & lotions — Bombshell, Bare Vanilla, Love Spell. Experience the allure.</p>
-      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" class="btn-primary">Shop Best Sellers →</a>
+      <h1>Victoria's Secret Kenya</h1>
+      <p>Authentic mists & lotions delivered to Nairobi, Mombasa, Kisumu</p>
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
     </div>
   </div>
 </div>
 
 <main>
-  <!-- PRODUCT SECTION - BEAUTIFUL REAL PRODUCT EXAMPLES -->
   <div class="container" id="products">
-    <h2 class="section-title">Signature Victoria's Secret Mists & Lotions</h2>
-    <div class="subtitle">The most seductive, long-lasting fragrances — now at DK Secrets</div>
-    
+    <h2 class="section-title">Our Signature Collection</h2>
     <div class="products-grid" id="productGrid">
-      <!-- Products will be injected dynamically via JavaScript -->
+      <div class="loading">Loading products from Firebase...</div>
     </div>
   </div>
-
-  <!-- Conversion Trust Banner -->
+  
   <div class="container">
     <div class="cta-banner">
-      <h3>✨ Buy 2, Get 15% OFF + Free Shipping ✨</h3>
-      <p>Authentic Victoria’s Secret | 100% Genuine | Fast 2-Day Delivery Available</p>
-      <button class="btn-primary" id="scrollToShop" style="background:#8C2A3B; color:white;">Shop The Collection →</button>
+      <h3>✨ Free Delivery on Orders Over KSh 5,000 ✨</h3>
+      <p>Authentic Victoria's Secret | 100% Genuine | Fast Delivery in Kenya</p>
+      <button class="btn-primary" style="background:#8C2A3B; color:white;" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
     </div>
   </div>
 </main>
@@ -450,331 +187,185 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4 style="color:#f2dad0;">DK Secrets</h4>
-        <p>Authorized Reseller of Victoria’s Secret Body Care</p>
-        <p>© 2025 — Allure & Radiance</p>
-      </div>
-      <div class="footer-col">
-        <p>💖 Customer Care</p>
-        <p>Shipping & Returns</p>
-        <p>Authenticity Guarantee</p>
-        <p>Contact</p>
-      </div>
-      <div class="footer-col">
-        <p>🌸 Fragrance Guide</p>
-        <p>Gift Sets</p>
-        <p>Rewards Club</p>
-      </div>
+      <div><h4 style="color:#f2dad0;">DK World Kenya</h4><p>Official Reseller</p><p>© 2025 DK World Kenya</p></div>
+      <div><p>📍 Nairobi, Kenya</p><p>📞 +254 700 000 000</p><p>✉️ hello@dkworld.co.ke</p></div>
+      <div><p>🔒 Secure Checkout</p><p>Free Delivery Over KSh 5,000</p></div>
     </div>
-    <div class="copyright">
-      <p>🔒 Secure Checkout | Genuine Victoria’s Secret Products | DK Secrets Official Partner</p>
-    </div>
+    <div class="copyright"><p>All products are 100% authentic Victoria's Secret</p></div>
   </div>
 </footer>
 
-<!-- Cart Sidebar -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-sidebar" id="cartSidebar">
-  <button class="close-cart" id="closeCartBtn">&times;</button>
-  <h3>Your Luxe Bag</h3>
-  <div class="cart-items-list" id="cartItemsList"><div class="empty-cart">Your cart is waiting for a touch of VS magic.</div></div>
-  <div class="cart-total" id="cartTotalPrice">$0.00</div>
-  <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout →</button>
-</div>
-
-<script>
-  // ============================================================
-  // REAL PRODUCTS - VICTORIA'S SECRET MISTS & LOTIONS
-  // Replace these with your actual products
-  // ============================================================
-  const realProducts = [
-    {
-      id: 1,
-      name: "Bombshell Eau de Parfum Mist",
-      price: 29.99,
-      stock: 25,
-      description: "Energizing blend of passionfruit, peony & vanilla. The iconic VS signature scent that turns heads.",
-      imageUrl: "https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
-      rating: 4.9,
-      reviewCount: "4.8k"
-    },
-    {
-      id: 2,
-      name: "Bare Vanilla Cashmere Lotion",
-      price: 32.99,
-      stock: 18,
-      description: "Whipped shea butter & warm vanilla bean. 24hr moisture with a soft cashmere scent that lingers.",
-      imageUrl: "https://images.pexels.com/photos/4041392/beauty-products-on-table-4041392.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
-      rating: 4.8,
-      reviewCount: "5.2k"
-    },
-    {
-      id: 3,
-      name: "Love Spell Fragrance Duo",
-      price: 54.99,
-      stock: 12,
-      description: "Cherry blossom & peach. Complete set with matching mist + lotion for irresistible layering.",
-      imageUrl: "https://images.pexels.com/photos/5426021/aromatic-bottles-and-flowers-5426021.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
-      rating: 4.9,
-      reviewCount: "6.1k"
-    },
-    {
-      id: 4,
-      name: "Pure Seduction Fine Fragrance Mist",
-      price: 28.99,
-      stock: 30,
-      description: "Plum & freesia — sweet, flirtatious, and long-lasting. A fan favorite for everyday glamour.",
-      imageUrl: "https://images.pexels.com/photos/7474202/glass-bottle-with-liquid-and-flower-7474202.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
-      rating: 4.7,
-      reviewCount: "3.9k"
-    }
-  ];
-
-  // ========== FULLY DYNAMIC E-COMMERCE ENGINE ==========
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
   
-  let productStock = {};
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
+    authDomain: "dkworld-kenya.firebaseapp.com",
+    projectId: "dkworld-kenya",
+    storageBucket: "dkworld-kenya.firebasestorage.app",
+    messagingSenderId: "263537160242",
+    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+  let currentUser = null;
   let cart = [];
-
-  // Initialize productStock from realProducts
-  function initProducts() {
-    productStock = {};
-    realProducts.forEach(prod => {
-      productStock[prod.id] = {
-        name: prod.name,
-        price: prod.price,
-        stock: prod.stock,
-        description: prod.description,
-        imageUrl: prod.imageUrl,
-        rating: prod.rating,
-        reviewCount: prod.reviewCount || `${prod.rating}k+`
-      };
-    });
-  }
-
-  // Render product grid dynamically
-  function renderProductGrid() {
-    const grid = document.getElementById('productGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    realProducts.forEach(product => {
-      const stockLeft = productStock[product.id]?.stock ?? product.stock;
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.setAttribute('data-id', product.id);
-      card.setAttribute('data-name', product.name);
-      card.setAttribute('data-price', product.price);
-      card.setAttribute('data-stock', stockLeft);
-      
-      card.innerHTML = `
-        <img class="product-img" src="${product.imageUrl}" alt="${product.name}" loading="lazy" onerror="this.src='https://placehold.co/600x600/FCE4D4/8C2A3B?text=${encodeURIComponent(product.name.slice(0,20))}'">
-        <div class="product-title">${escapeHtml(product.name)}</div>
-        <div class="rating-stars">${getStarRating(product.rating)} (${product.reviewCount} reviews)</div>
-        <div class="product-desc">${escapeHtml(product.description)}</div>
-        <div class="price">$${product.price.toFixed(2)}</div>
-        <div class="stock-badge" id="stock-${product.id}">In Stock: ${stockLeft}</div>
-        <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
-      `;
-      grid.appendChild(card);
-    });
-    updateStockBadges();
-    bindAddToCartButtons();
+  
+  // Helper: Update cart count badge
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').innerText = count;
   }
   
-  function getStarRating(rating) {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5;
-    let stars = '★'.repeat(fullStars);
-    if (halfStar) stars += '½';
-    stars += '☆'.repeat(5 - Math.ceil(rating));
-    return stars;
-  }
-  
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-  
-  function updateStockBadges() {
-    for (let id in productStock) {
-      const badge = document.getElementById(`stock-${id}`);
-      if (badge) {
-        let stockLeft = productStock[id].stock;
-        badge.innerText = stockLeft > 0 ? `In Stock: ${stockLeft}` : "Out of Stock";
-        badge.style.background = stockLeft <= 0 ? "#f0c0c0" : "#f9e0e4";
-        const addBtn = document.querySelector(`.product-card[data-id="${id}"] .add-to-cart`);
-        if (addBtn) {
-          if (stockLeft <= 0) {
-            addBtn.disabled = true;
-            addBtn.style.background = "#a57c6e";
-            addBtn.innerText = "Out of Stock";
-          } else {
-            addBtn.disabled = false;
-            addBtn.innerText = "Add to Cart";
-            addBtn.style.background = "#8C2A3B";
-          }
-        }
+  // Load cart from Firestore or localStorage
+  async function loadCart() {
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      const cartDoc = await getDoc(cartRef);
+      if (cartDoc.exists()) {
+        cart = cartDoc.data().items || [];
+      } else {
+        cart = [];
       }
+    } else {
+      const localCart = localStorage.getItem('dkCart');
+      cart = localCart ? JSON.parse(localCart) : [];
     }
+    updateCartCount();
   }
   
-  function saveData() {
-    localStorage.setItem('vsCartDynamicDK', JSON.stringify(cart));
-    localStorage.setItem('vsStockDynamicDK', JSON.stringify(productStock));
-    updateCartUI();
-    updateStockBadges();
-  }
-  
-  function loadData() {
-    const savedCart = localStorage.getItem('vsCartDynamicDK');
-    const savedStock = localStorage.getItem('vsStockDynamicDK');
-    if (savedCart) cart = JSON.parse(savedCart);
-    if (savedStock) {
-      const saved = JSON.parse(savedStock);
-      for (let id in saved) {
-        if (productStock[id]) productStock[id].stock = saved[id].stock;
-      }
+  // Save cart to Firestore or localStorage
+  async function saveCart() {
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      await setDoc(cartRef, { items: cart, updatedAt: new Date() }, { merge: true });
+    } else {
+      localStorage.setItem('dkCart', JSON.stringify(cart));
     }
-    updateStockBadges();
-    updateCartUI();
+    updateCartCount();
   }
   
-  function addToCart(productId) {
-    const stockAvailable = productStock[productId]?.stock;
-    if (!stockAvailable || stockAvailable <= 0) {
-      alert("Sorry, this item is out of stock.");
-      return false;
+  // Add to cart
+  async function addToCart(productId, productName, productPrice, stock) {
+    if (stock <= 0) {
+      alert("Sorry, this item is out of stock!");
+      return;
     }
     const existing = cart.find(item => item.id === productId);
     if (existing) {
-      if (existing.quantity + 1 > productStock[productId].stock) {
-        alert(`Only ${productStock[productId].stock} left in stock.`);
-        return false;
+      if (existing.quantity + 1 > stock) {
+        alert(`Only ${stock} left in stock!`);
+        return;
       }
-      existing.quantity += 1;
+      existing.quantity++;
     } else {
-      cart.push({ id: productId, quantity: 1 });
+      cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
     }
-    productStock[productId].stock -= 1;
-    saveData();
-    openCart();
-    return true;
+    await saveCart();
+    alert(`${productName} added to cart!`);
   }
   
-  function removeOneItem(productId) {
-    const idx = cart.findIndex(item => item.id === productId);
-    if (idx !== -1) {
-      const item = cart[idx];
-      if (item.quantity > 1) {
-        item.quantity -= 1;
-      } else {
-        cart.splice(idx, 1);
+  // Load products from Firestore
+  async function loadProducts() {
+    const productGrid = document.getElementById('productGrid');
+    try {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      if (querySnapshot.empty) {
+        productGrid.innerHTML = '<div class="loading">No products yet. Add products to Firestore "products" collection.</div>';
+        return;
       }
-      productStock[productId].stock += 1;
-      saveData();
+      
+      let productsHtml = '';
+      querySnapshot.forEach((docSnap) => {
+        const product = { id: docSnap.id, ...docSnap.data() };
+        const stock = product.stock || 0;
+        const priceKsh = (product.price * 145).toLocaleString(); // USD to KSh approx
+        productsHtml += `
+          <div class="product-card" onclick="window.location.href='product.html?id=${product.id}'">
+            <img class="product-img" src="${product.imageUrl || 'https://placehold.co/600x600/FCE4D4/8C2A3B?text=' + encodeURIComponent(product.name)}" alt="${product.name}" loading="lazy">
+            <div class="product-title">${product.name}</div>
+            <div class="product-price">KSh ${priceKsh}</div>
+            <div class="product-stock">${stock > 0 ? `In Stock: ${stock}` : 'Out of Stock'}</div>
+            <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-stock="${stock}" ${stock === 0 ? 'disabled' : ''}>Add to Cart</button>
+          </div>
+        `;
+      });
+      productGrid.innerHTML = productsHtml;
+      
+      // Attach event listeners to Add to Cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const id = btn.dataset.id;
+          const name = btn.dataset.name;
+          const price = parseFloat(btn.dataset.price);
+          const stock = parseInt(btn.dataset.stock);
+          await addToCart(id, name, price, stock);
+        });
+      });
+    } catch (error) {
+      console.error("Error loading products:", error);
+      productGrid.innerHTML = '<div class="loading">Error loading products. Check Firebase configuration.</div>';
     }
   }
   
-  function updateCartUI() {
-    const cartCountSpan = document.getElementById('cartCount');
-    const cartContainer = document.getElementById('cartItemsList');
-    const totalSpan = document.getElementById('cartTotalPrice');
-    let totalItems = 0;
-    let totalPrice = 0;
-    
-    if (cartContainer) {
-      if (cart.length === 0) {
-        cartContainer.innerHTML = '<div class="empty-cart">Your cart is waiting for a touch of VS magic.</div>';
-      } else {
-        cartContainer.innerHTML = '';
-        cart.forEach(cartItem => {
-          const prod = productStock[cartItem.id];
-          if (!prod) return;
-          const itemTotal = prod.price * cartItem.quantity;
-          totalItems += cartItem.quantity;
-          totalPrice += itemTotal;
-          const div = document.createElement('div');
-          div.className = 'cart-item';
-          div.innerHTML = `
-            <div><strong>${escapeHtml(prod.name)}</strong><br><small>Qty: ${cartItem.quantity} × $${prod.price.toFixed(2)}</small></div>
-            <div><button class="remove-one-dyn" data-id="${cartItem.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:5px 12px; cursor:pointer; color:#8C2A3B;">− Remove</button></div>
-          `;
-          cartContainer.appendChild(div);
-        });
-        document.querySelectorAll('.remove-one-dyn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const id = parseInt(btn.getAttribute('data-id'));
-            removeOneItem(id);
+  // Authentication UI
+  const authSection = document.getElementById('authSection');
+  function updateAuthUI(user) {
+    if (user) {
+      authSection.innerHTML = `<span class="user-email">${user.email}</span> <button class="auth-btn" id="authButton">Logout</button>`;
+      document.getElementById('authButton').onclick = async () => {
+        await signOut(auth);
+        // Clear local cart and reload
+        cart = [];
+        localStorage.removeItem('dkCart');
+        updateCartCount();
+      };
+    } else {
+      authSection.innerHTML = `<button class="auth-btn" id="authButton">Sign In</button>`;
+      document.getElementById('authButton').onclick = () => {
+        const email = prompt("Enter your email:");
+        const password = prompt("Enter your password:");
+        if (email && password) {
+          signInWithEmailAndPassword(auth, email, password).catch(async (error) => {
+            if (error.code === 'auth/user-not-found') {
+              if (confirm("User not found. Create a new account?")) {
+                try {
+                  await createUserWithEmailAndPassword(auth, email, password);
+                  alert("Account created! You are now signed in.");
+                } catch (err) {
+                  alert("Error creating account: " + err.message);
+                }
+              }
+            } else {
+              alert("Login error: " + error.message);
+            }
           });
-        });
-      }
+        }
+      };
     }
-    if (cartCountSpan) cartCountSpan.innerText = totalItems;
-    if (totalSpan) totalSpan.innerText = `$${totalPrice.toFixed(2)}`;
-    updateStockBadges();
   }
   
-  // Cart sidebar handlers
-  const cartIcon = document.getElementById('cartIcon');
-  const cartSidebar = document.getElementById('cartSidebar');
-  const cartOverlay = document.getElementById('cartOverlay');
-  const closeCartBtn = document.getElementById('closeCartBtn');
-  function openCart() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
-  function closeCart() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
-  cartIcon.addEventListener('click', openCart);
-  closeCartBtn.addEventListener('click', closeCart);
-  cartOverlay.addEventListener('click', closeCart);
-  
-  function bindAddToCartButtons() {
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.removeEventListener('click', handleAddToCart);
-      btn.addEventListener('click', handleAddToCart);
-    });
-  }
-  
-  function handleAddToCart(e) {
-    const card = e.currentTarget.closest('.product-card');
-    const id = parseInt(card.getAttribute('data-id'));
-    addToCart(id);
-  }
-  
-  // Checkout simulation
-  document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-    if (cart.length === 0) alert("Your cart is empty. Add some Victoria's Secret favorites!");
-    else {
-      let total = 0;
-      cart.forEach(item => { total += productStock[item.id]?.price * item.quantity || 0; });
-      alert(`✨ Thank you for your order! Total: $${total.toFixed(2)} ✨\nYour VS mists & lotions will arrive soon.`);
-    }
+  // Auth state listener
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    updateAuthUI(user);
+    await loadCart();
+    // Re-render products to reflect stock? No need, but cart is updated.
   });
   
-  // Scroll to products
-  document.getElementById('scrollToShop')?.addEventListener('click', () => {
-    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-  });
+  // Cart icon click
+  document.getElementById('cartIcon').onclick = () => {
+    window.location.href = 'cart.html';
+  };
   
-  // Initialize everything
-  initProducts();
-  renderProductGrid();
-  loadData();
-  
-  // SEO schema
-  const schema = document.createElement('script');
-  schema.type = 'application/ld+json';
-  schema.textContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Victoria's Secret Mists & Lotions Collection - DK Secrets",
-    "description": "Authentic Victoria’s Secret body mists and lotions. Dynamic inventory and maroon/pink theme.",
-    "brand": { "@type": "Brand", "name": "Victoria's Secret" }
-  });
-  document.head.appendChild(schema);
+  // Initialize
+  loadProducts();
 </script>
 </body>
 </html>

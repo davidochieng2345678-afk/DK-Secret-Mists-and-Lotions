@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>DK Secrets | Victoria's Secret Mists & Lotions – Maroon Edition</title>
-  <meta name="description" content="Shop Victoria's Secret body mists & lotions at DK Secrets. Bombshell, Bare Vanilla, Love Spell. Dynamic shopping cart, real-time inventory, maroon & pink theme.">
-  <meta name="keywords" content="Victoria's Secret, body mist, body lotion, Bombshell, Bare Vanilla, Love Spell, DK Secrets, maroon, pink">
+  <title>DK Secrets | Victoria’s Secret Mist & Lotion — Iconic Fragrances</title>
+  <meta name="description" content="Shop the world’s best Victoria's Secret body mists & lotions at DK Secrets. Bombshell, Bare Vanilla, Love Spell & more. Fast shipping & exclusive deals.">
+  <meta name="keywords" content="Victoria's Secret, body mist, body lotion, Bombshell, Bare Vanilla, Love Spell, fragrance mist, VS lotion, DK Secrets">
   <meta name="author" content="DK Secrets">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.dksecrets.com/">
-  <!-- Open Graph -->
-  <meta property="og:title" content="DK Secrets — Victoria’s Secret Mists & Lotions | Maroon Collection">
-  <meta property="og:description" content="Iconic Victoria's Secret body care in rich maroon & pink theme. Shop the dynamic collection now.">
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="DK Secrets — Victoria’s Secret Mists & Lotions">
+  <meta property="og:description" content="Iconic Victoria’s Secret body care. Bombshell, Bare Vanilla, Pure Seduction. Get the signature scent today.">
   <meta property="og:image" content="https://images.pexels.com/photos/7002633/victoria-secret-products-on-display-7002633.jpg?auto=compress&cs=tinysrgb&w=1600">
   <meta property="og:url" content="https://www.dksecrets.com/">
+  <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Fonts & Preconnect -->
+  <meta name="twitter:title" content="DK Secrets — Victoria’s Secret Mists & Lotions">
+  <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -28,8 +30,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff5f2;  /* soft pinkish background */
-      color: #2c1a14;
+      background: #fffaf7;
+      color: #2d2a27;
       scroll-behavior: smooth;
     }
 
@@ -43,17 +45,7 @@
       padding: 0 32px;
     }
 
-    /* ========= REDISH / MAROONISH / PINKISH COLOR THEME ========= */
-    :root {
-      --deep-maroon: #6b1e2a;
-      --rich-burgundy: #8c2a3b;
-      --soft-pink: #f9e0e4;
-      --rose-blush: #f4c2c2;
-      --warm-crimson: #b63b4b;
-      --dark-rose: #a12a3c;
-      --pale-pink: #ffe9ed;
-    }
-
+    /* Header / Navigation */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -61,43 +53,48 @@
       padding: 20px 0;
       flex-wrap: wrap;
       gap: 20px;
-      border-bottom: 2px solid var(--rose-blush);
+      border-bottom: 1px solid rgba(230, 180, 150, 0.3);
     }
     .logo {
       font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, var(--deep-maroon), var(--warm-crimson));
+      background: linear-gradient(135deg, #c25b3a, #a13e21);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
     .logo span {
       background: none;
-      color: var(--rich-burgundy);
-      font-weight: 700;
+      color: #5a3a2c;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
     }
     .nav-links a {
       text-decoration: none;
-      font-weight: 600;
-      color: var(--deep-maroon);
+      font-weight: 500;
+      color: #3d2c23;
       transition: 0.2s;
       font-family: 'Inter', sans-serif;
+      font-size: 1rem;
     }
     .nav-links a:hover {
-      color: var(--warm-crimson);
+      color: #c25b3a;
     }
     .cart-icon {
       position: relative;
       cursor: pointer;
       font-size: 1.6rem;
-      color: var(--deep-maroon);
     }
     .cart-count {
       position: absolute;
       top: -8px;
       right: -12px;
-      background: var(--warm-crimson);
+      background: #c25b3a;
       color: white;
       font-size: 0.7rem;
       font-weight: bold;
@@ -110,13 +107,13 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* HERO BANNER - Maroon/Pink overlay */
+    /* BIG BANNER — high-res Victoria's Secret theme */
     .hero {
       margin: 32px 0 48px;
-      border-radius: 36px;
+      border-radius: 32px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 25px 35px -10px rgba(107, 30, 42, 0.25);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
     }
     .hero picture img {
       width: 100%;
@@ -136,7 +133,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle, rgba(107,30,42,0.3), rgba(90,20,30,0.65));
+      background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.45));
       color: white;
       padding: 24px;
     }
@@ -145,16 +142,18 @@
       font-weight: 800;
       text-shadow: 0 4px 20px rgba(0,0,0,0.4);
       margin-bottom: 16px;
+      letter-spacing: -0.02em;
     }
     .hero-content p {
       font-size: clamp(1rem, 4vw, 1.4rem);
       max-width: 650px;
       margin-bottom: 28px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
       font-weight: 400;
     }
     .btn-primary {
-      background: var(--warm-crimson);
-      color: white;
+      background: #ffffff;
+      color: #a13e21;
       padding: 14px 42px;
       font-size: 1.1rem;
       font-weight: 700;
@@ -162,31 +161,33 @@
       text-decoration: none;
       transition: 0.2s;
       display: inline-block;
-      box-shadow: 0 8px 20px rgba(107,30,42,0.4);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+      font-family: 'Inter', sans-serif;
       border: none;
       cursor: pointer;
-      font-family: 'Inter', sans-serif;
     }
     .btn-primary:hover {
-      background: var(--deep-maroon);
+      background: #ffefe5;
       transform: scale(1.02);
     }
 
+    /* Section Titles */
     .section-title {
       font-size: 2.3rem;
       font-weight: 700;
       text-align: center;
-      margin: 56px 0 12px;
-      color: var(--deep-maroon);
+      margin: 56px 0 20px;
+      color: #2c1e17;
+      letter-spacing: -0.2px;
     }
     .subtitle {
       text-align: center;
-      color: var(--rich-burgundy);
+      color: #7a5a4a;
       margin-bottom: 40px;
       font-size: 1.1rem;
     }
 
-    /* Products Grid */
+    /* Products Grid — VS inspired */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -198,42 +199,42 @@
       border-radius: 28px;
       overflow: hidden;
       transition: transform 0.25s ease, box-shadow 0.3s;
-      box-shadow: 0 15px 30px -8px rgba(107,30,42,0.12);
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
       text-align: center;
       padding-bottom: 24px;
-      border: 1px solid var(--rose-blush);
+      border: 1px solid rgba(230, 180, 150, 0.3);
     }
     .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 28px 40px -12px rgba(107,30,42,0.25);
+      box-shadow: 0 28px 40px -12px rgba(0,0,0,0.2);
     }
     .product-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
-      background: var(--pale-pink);
+      background: #f9ede5;
     }
     .product-title {
       font-size: 1.5rem;
       font-weight: 700;
       margin: 20px 16px 6px;
       font-family: 'Playfair Display', serif;
-      color: var(--deep-maroon);
+      color: #2b211c;
     }
     .product-desc {
       padding: 0 16px;
-      color: #7a4a3c;
+      color: #6f5341;
       font-size: 0.85rem;
       margin-bottom: 12px;
     }
     .price {
       font-size: 1.6rem;
       font-weight: 800;
-      color: var(--warm-crimson);
+      color: #c25b3a;
       margin-bottom: 18px;
     }
     .add-to-cart {
-      background: var(--deep-maroon);
+      background: #1e1713;
       border: none;
       color: white;
       padding: 12px 26px;
@@ -245,39 +246,36 @@
       font-family: 'Inter', sans-serif;
     }
     .add-to-cart:hover {
-      background: var(--warm-crimson);
+      background: #c25b3a;
     }
-    .rating-stars {
-      color: #e6b422;
-      font-size: 0.85rem;
-      margin: 5px 0;
-    }
-
-    /* Dynamic Stock Badge */
-    .stock-badge {
-      display: inline-block;
-      background: var(--rose-blush);
-      color: var(--deep-maroon);
+    .badge {
+      background: #e6c3af;
+      color: #6b2e14;
       font-size: 0.7rem;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 30px;
-      margin-top: 6px;
-      font-weight: 600;
+      display: inline-block;
+      margin-top: 8px;
     }
 
+    /* CTA Banner */
     .cta-banner {
-      background: linear-gradient(115deg, #f9e0e4, #f7cdd4);
+      background: linear-gradient(105deg, #f7e4d9, #f0d5c4);
       border-radius: 48px;
       padding: 60px 32px;
       text-align: center;
       margin: 40px 0 70px;
-      border: 1px solid var(--rose-blush);
     }
     .cta-banner h3 {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 12px;
-      color: var(--deep-maroon);
+      color: #341f15;
+    }
+    .cta-banner p {
+      max-width: 560px;
+      margin: 0 auto 20px;
+      font-size: 1rem;
     }
 
     /* Cart Sidebar */
@@ -300,22 +298,20 @@
       width: 400px;
       max-width: 90vw;
       height: 100%;
-      background: #fff9f7;
+      background: white;
       z-index: 1001;
       padding: 28px 24px;
-      box-shadow: -5px 0 30px rgba(107,30,42,0.2);
+      box-shadow: -5px 0 30px rgba(0,0,0,0.2);
       transition: right 0.3s ease;
       display: flex;
       flex-direction: column;
       font-family: 'Inter', sans-serif;
-      border-left: 3px solid var(--warm-crimson);
     }
     .cart-sidebar h3 {
       font-size: 1.9rem;
       margin-bottom: 24px;
-      border-bottom: 1px solid var(--rose-blush);
+      border-bottom: 1px solid #f0dbcf;
       padding-bottom: 12px;
-      color: var(--deep-maroon);
     }
     .cart-items-list {
       flex: 1;
@@ -327,19 +323,18 @@
       justify-content: space-between;
       margin-bottom: 18px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #f3ded6;
+      border-bottom: 1px solid #f3e2d8;
     }
     .cart-total {
       font-weight: 800;
       font-size: 1.5rem;
       margin: 16px 0;
       text-align: right;
-      border-top: 2px solid var(--rose-blush);
+      border-top: 2px solid #f0dbcf;
       padding-top: 16px;
-      color: var(--warm-crimson);
     }
     .checkout-btn {
-      background: var(--warm-crimson);
+      background: #c25b3a;
       width: 100%;
       border: none;
       padding: 14px;
@@ -348,6 +343,7 @@
       border-radius: 60px;
       font-size: 1rem;
       cursor: pointer;
+      transition: 0.2s;
     }
     .close-cart {
       background: none;
@@ -357,11 +353,10 @@
       top: 16px;
       right: 22px;
       cursor: pointer;
-      color: var(--deep-maroon);
     }
     footer {
-      background: #1f1210;
-      color: #f2cfc4;
+      background: #1f1814;
+      color: #e2cfc2;
       padding: 48px 0 24px;
       margin-top: 64px;
     }
@@ -380,6 +375,12 @@
       .container { padding: 0 20px; }
       .navbar { flex-direction: column; }
       .hero-content h1 { font-size: 2rem; }
+      .btn-primary { padding: 10px 24px; }
+    }
+    .rating-stars {
+      color: #e6b422;
+      font-size: 0.85rem;
+      margin: 5px 0;
     }
   </style>
 </head>
@@ -401,75 +402,72 @@
   </div>
 </div>
 
-<!-- High-Res Banner with Maroon/Pink Overlay -->
+<!-- HIGH RESOLUTION BIG BANNER - VS Inspired Luxe -->
 <div class="container">
   <div class="hero">
     <picture>
       <source srcset="https://images.pexels.com/photos/3943871/woman-holding-pink-body-mist-3943871.jpg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" media="(min-width: 1200px)">
       <source srcset="https://images.pexels.com/photos/3943871/woman-holding-pink-body-mist-3943871.jpg?auto=compress&cs=tinysrgb&w=1200&h=700&fit=crop" media="(min-width: 768px)">
-      <img src="https://images.pexels.com/photos/3943871/woman-holding-pink-body-mist-3943871.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Victoria's Secret mist and lotion collection maroon theme" class="hero-image" loading="eager" fetchpriority="high">
+      <img src="https://images.pexels.com/photos/3943871/woman-holding-pink-body-mist-3943871.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Victoria's Secret body mist and lotion display at DK Secrets" class="hero-image" loading="eager" fetchpriority="high">
     </picture>
     <div class="hero-content">
-      <h1>Maroon Seduction Collection</h1>
-      <p>Victoria's Secret Mists & Lotions — deep, romantic, iconic. Now in a bold new palette.</p>
-      <a href="#products" class="btn-primary">Shop The Edit →</a>
+      <h1>Victoria’s Secret Iconic Collection</h1>
+      <p>DK Secrets brings you the ultimate mists & lotions — Bombshell, Bare Vanilla, Love Spell. Experience the allure.</p>
+      <a href="#products" class="btn-primary">Shop Best Sellers →</a>
     </div>
   </div>
 </div>
 
 <main>
   <div class="container" id="products">
-    <h2 class="section-title">Victoria's Secret Signature Duos</h2>
-    <div class="subtitle">Rich maroon notes meet seductive fragrance. Fully dynamic inventory & real-time cart.</div>
+    <h2 class="section-title">Signature Victoria's Secret Mists & Lotions</h2>
+    <div class="subtitle">The most seductive, long-lasting fragrances — now at DK Secrets</div>
     <div class="products-grid" id="productGrid">
-      <!-- Product 1: Bombshell Mist - dynamic stock managed by JS -->
-      <div class="product-card" data-id="1" data-name="Victoria's Secret Bombshell Mist" data-price="29.99" data-stock="12">
-        <img class="product-img" src="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Bombshell Mist">
+      <!-- Product 1: Bombshell Mist -->
+      <div class="product-card" data-id="1" data-name="Victoria's Secret Bombshell Mist" data-price="29.99">
+        <img class="product-img" src="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Victoria's Secret Bombshell Mist" loading="lazy">
         <div class="product-title">Bombshell Mist</div>
-        <div class="rating-stars">★★★★★ (4.8k+)</div>
-        <div class="product-desc">Passionfruit, peony & vanilla. Energizing & feminine.</div>
+        <div class="rating-stars">★★★★★ (4.8k+ reviews)</div>
+        <div class="product-desc">Energizing blend of passionfruit, peony & vanilla. Signature VS iconic scent.</div>
         <div class="price">$29.99</div>
-        <div class="stock-badge" id="stock-1">In Stock: 12</div>
         <button class="add-to-cart" data-id="1">Add to Cart</button>
       </div>
       <!-- Product 2: Bare Vanilla Lotion -->
-      <div class="product-card" data-id="2" data-name="Victoria's Secret Bare Vanilla Lotion" data-price="32.99" data-stock="8">
-        <img class="product-img" src="https://images.pexels.com/photos/4041392/beauty-products-on-table-4041392.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Bare Vanilla Lotion">
+      <div class="product-card" data-id="2" data-name="Victoria's Secret Bare Vanilla Lotion" data-price="32.99">
+        <img class="product-img" src="https://images.pexels.com/photos/4041392/beauty-products-on-table-4041392.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Bare Vanilla Lotion Victoria's Secret" loading="lazy">
         <div class="product-title">Bare Vanilla Lotion</div>
-        <div class="rating-stars">★★★★★ (5.2k+)</div>
-        <div class="product-desc">Whipped shea & vanilla bean, 24hr moisture.</div>
+        <div class="rating-stars">★★★★★ (5.2k+ reviews)</div>
+        <div class="product-desc">Whipped shea & vanilla bean. 24hr moisture + soft cashmere scent.</div>
         <div class="price">$32.99</div>
-        <div class="stock-badge" id="stock-2">In Stock: 8</div>
         <button class="add-to-cart" data-id="2">Add to Cart</button>
       </div>
-      <!-- Product 3: Love Spell Duo -->
-      <div class="product-card" data-id="3" data-name="VS Love Spell Duo (Mist + Lotion)" data-price="54.99" data-stock="5">
-        <img class="product-img" src="https://images.pexels.com/photos/5426021/aromatic-bottles-and-flowers-5426021.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Love Spell Duo">
+      <!-- Product 3: Love Spell Mist + Lotion Duo -->
+      <div class="product-card" data-id="3" data-name="VS Love Spell Duo (Mist + Lotion)" data-price="54.99">
+        <img class="product-img" src="https://images.pexels.com/photos/5426021/aromatic-bottles-and-flowers-5426021.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Love Spell Mist and Lotion Set" loading="lazy">
         <div class="product-title">Love Spell Duo</div>
-        <div class="rating-stars">★★★★★ (6.1k+)</div>
-        <div class="product-desc">Cherry blossom & peach. Mist + lotion set.</div>
+        <div class="rating-stars">★★★★★ (6.1k+ reviews)</div>
+        <div class="product-desc">Cherry blossom & peach. Mist + lotion set for irresistible layering.</div>
         <div class="price">$54.99</div>
-        <div class="stock-badge" id="stock-3">In Stock: 5</div>
         <button class="add-to-cart" data-id="3">Add to Cart</button>
       </div>
       <!-- Product 4: Pure Seduction Mist -->
-      <div class="product-card" data-id="4" data-name="Victoria's Secret Pure Seduction Mist" data-price="28.99" data-stock="15">
-        <img class="product-img" src="https://images.pexels.com/photos/7474202/glass-bottle-with-liquid-and-flower-7474202.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Pure Seduction Mist">
+      <div class="product-card" data-id="4" data-name="Victoria's Secret Pure Seduction Mist" data-price="28.99">
+        <img class="product-img" src="https://images.pexels.com/photos/7474202/glass-bottle-with-liquid-and-flower-7474202.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Pure Seduction Mist" loading="lazy">
         <div class="product-title">Pure Seduction Mist</div>
-        <div class="rating-stars">★★★★☆ (3.9k+)</div>
-        <div class="product-desc">Plum & freesia — sweet, flirtatious.</div>
+        <div class="rating-stars">★★★★☆ (3.9k+ reviews)</div>
+        <div class="product-desc">Plum & freesia — sweet, flirtatious, long-lasting fragrance.</div>
         <div class="price">$28.99</div>
-        <div class="stock-badge" id="stock-4">In Stock: 15</div>
         <button class="add-to-cart" data-id="4">Add to Cart</button>
       </div>
     </div>
   </div>
 
+  <!-- Conversion Trust Banner -->
   <div class="container">
     <div class="cta-banner">
-      <h3>✨ Maroon & Pink Exclusive: Buy 2, Get 15% OFF + Free Shipping ✨</h3>
-      <p>Authentic Victoria’s Secret | Dynamic Pricing | Limited Stock</p>
-      <button class="btn-primary" id="scrollToShop" style="background:var(--deep-maroon);">Explore Collection →</button>
+      <h3>✨ Buy 2, Get 15% OFF + Free Shipping ✨</h3>
+      <p>Authentic Victoria’s Secret | 100% Genuine | Fast 2-Day Delivery Available</p>
+      <button class="btn-primary" id="scrollToShop" style="background:#a13e21; color:white;">Shop The Collection →</button>
     </div>
   </div>
 </main>
@@ -477,11 +475,26 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col"><h4 style="color:#f2cfc4;">DK Secrets</h4><p>Authorized VS Reseller • Maroon Edit</p><p>© 2025 — Seductive Scents</p></div>
-      <div class="footer-col"><p>💖 Customer Care</p><p>Shipping & Returns</p><p>Authenticity</p></div>
-      <div class="footer-col"><p>🌸 Fragrance Guide</p><p>Gift Sets</p><p>Rewards</p></div>
+      <div class="footer-col">
+        <h4 style="color:#f2dad0;">DK Secrets</h4>
+        <p>Authorized Reseller of Victoria’s Secret Body Care</p>
+        <p>© 2025 — Allure & Radiance</p>
+      </div>
+      <div class="footer-col">
+        <p>💖 Customer Care</p>
+        <p>Shipping & Returns</p>
+        <p>Authenticity Guarantee</p>
+        <p>Contact</p>
+      </div>
+      <div class="footer-col">
+        <p>🌸 Fragrance Guide</p>
+        <p>Gift Sets</p>
+        <p>Rewards Club</p>
+      </div>
     </div>
-    <div class="copyright"><p>🔒 Secure Checkout | Dynamic Inventory System</p></div>
+    <div class="copyright">
+      <p>🔒 Secure Checkout | Genuine Victoria’s Secret Products | DK Secrets Official Partner</p>
+    </div>
   </div>
 </footer>
 
@@ -489,102 +502,46 @@
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <button class="close-cart" id="closeCartBtn">&times;</button>
-  <h3>Your Maroon Bag</h3>
-  <div class="cart-items-list" id="cartItemsList"><div class="empty-cart">Add your favorite VS mist or lotion.</div></div>
+  <h3>Your Luxe Bag</h3>
+  <div class="cart-items-list" id="cartItemsList"><div class="empty-cart">Your cart is waiting for a touch of VS magic.</div></div>
   <div class="cart-total" id="cartTotalPrice">$0.00</div>
   <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout →</button>
 </div>
 
 <script>
-  // ---------- FULLY DYNAMIC E-COMMERCE ----------
-  // Product stock (initial)
-  let productStock = {
-    1: { name: "Victoria's Secret Bombshell Mist", price: 29.99, stock: 12 },
-    2: { name: "Victoria's Secret Bare Vanilla Lotion", price: 32.99, stock: 8 },
-    3: { name: "VS Love Spell Duo (Mist + Lotion)", price: 54.99, stock: 5 },
-    4: { name: "Victoria's Secret Pure Seduction Mist", price: 28.99, stock: 15 }
-  };
+  // Cart management
+  let cart = [];
 
-  let cart = []; // each item { id, quantity }
-
-  // Helper: update stock badges on UI dynamically
-  function updateStockBadges() {
-    for (let id in productStock) {
-      const badge = document.getElementById(`stock-${id}`);
-      if (badge) {
-        let stockLeft = productStock[id].stock;
-        badge.innerText = stockLeft > 0 ? `In Stock: ${stockLeft}` : "Out of Stock";
-        badge.style.background = stockLeft <= 0 ? "#f0c0c0" : "#f9e0e4";
-        const addBtn = document.querySelector(`.product-card[data-id="${id}"] .add-to-cart`);
-        if (addBtn) {
-          if (stockLeft <= 0) {
-            addBtn.disabled = true;
-            addBtn.style.background = "#a57c6e";
-            addBtn.innerText = "Out of Stock";
-          } else {
-            addBtn.disabled = false;
-            addBtn.innerText = "Add to Cart";
-            addBtn.style.background = "var(--deep-maroon)";
-          }
-        }
-      }
-    }
-  }
-
-  // Save cart + stock to localStorage (fully dynamic)
-  function saveData() {
-    localStorage.setItem('vsCartDynamic', JSON.stringify(cart));
-    localStorage.setItem('vsStockDynamic', JSON.stringify(productStock));
-    updateCartUI();
-    updateStockBadges();
-  }
-
-  function loadData() {
-    const savedCart = localStorage.getItem('vsCartDynamic');
-    const savedStock = localStorage.getItem('vsStockDynamic');
-    if (savedCart) cart = JSON.parse(savedCart);
-    if (savedStock) productStock = JSON.parse(savedStock);
-    updateStockBadges();
+  function saveCart() {
+    localStorage.setItem('vsCartDK', JSON.stringify(cart));
     updateCartUI();
   }
 
-  // Add to cart with stock validation
-  function addToCart(productId) {
-    const stockAvailable = productStock[productId]?.stock;
-    if (!stockAvailable || stockAvailable <= 0) {
-      alert("Sorry, this item is out of stock.");
-      return false;
+  function loadCart() {
+    const saved = localStorage.getItem('vsCartDK');
+    if(saved) {
+      try { cart = JSON.parse(saved); } catch(e) { cart = []; }
     }
-    const existing = cart.find(item => item.id === productId);
-    if (existing) {
-      if (existing.quantity + 1 > productStock[productId].stock) {
-        alert(`Only ${productStock[productId].stock} left in stock.`);
-        return false;
-      }
-      existing.quantity += 1;
-    } else {
-      cart.push({ id: productId, quantity: 1 });
-    }
-    // reduce stock dynamically
-    productStock[productId].stock -= 1;
-    saveData();
-    // open cart sidebar
+    updateCartUI();
+  }
+
+  function addToCart(id, name, price) {
+    const existing = cart.find(item => item.id === id);
+    if(existing) existing.quantity += 1;
+    else cart.push({ id, name, price, quantity: 1 });
+    saveCart();
+    const countSpan = document.getElementById('cartCount');
+    if(countSpan) countSpan.style.transform = 'scale(1.2)';
+    setTimeout(() => { if(countSpan) countSpan.style.transform = ''; }, 200);
     openCart();
-    return true;
   }
 
-  // Remove one item (increase stock back)
-  function removeOneItem(productId) {
-    const idx = cart.findIndex(item => item.id === productId);
-    if (idx !== -1) {
-      const item = cart[idx];
-      if (item.quantity > 1) {
-        item.quantity -= 1;
-      } else {
-        cart.splice(idx, 1);
-      }
-      productStock[productId].stock += 1;
-      saveData();
+  function removeOneItem(id) {
+    const idx = cart.findIndex(item => item.id === id);
+    if(idx !== -1) {
+      if(cart[idx].quantity > 1) cart[idx].quantity -= 1;
+      else cart.splice(idx, 1);
+      saveCart();
     }
   }
 
@@ -592,12 +549,93 @@
     const cartCountSpan = document.getElementById('cartCount');
     const cartContainer = document.getElementById('cartItemsList');
     const totalSpan = document.getElementById('cartTotalPrice');
-    let totalItems = 0;
-    let totalPrice = 0;
-
-    if (cartContainer) {
-      if (cart.length === 0) {
-        cartContainer.innerHTML = '<div class="empty-cart">Your maroon bag awaits VS magic.</div>';
+    let totalItems = 0, totalPrice = 0;
+    if(cartContainer) {
+      if(cart.length === 0) {
+        cartContainer.innerHTML = '<div class="empty-cart">Your cart is waiting for a touch of VS magic.</div>';
       } else {
         cartContainer.innerHTML = '';
-        cart.fc 
+        cart.forEach(item => {
+          totalItems += item.quantity;
+          totalPrice += item.price * item.quantity;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <div><strong>${item.name}</strong><br><small>Qty: ${item.quantity} × $${item.price.toFixed(2)}</small></div>
+            <div><button class="remove-one-item" data-id="${item.id}" style="background:#f0dbcf; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">− Remove</button></div>
+          `;
+          cartContainer.appendChild(div);
+        });
+        document.querySelectorAll('.remove-one-item').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = parseInt(btn.getAttribute('data-id'));
+            removeOneItem(id);
+          });
+        });
+      }
+    }
+    if(cartCountSpan) cartCountSpan.innerText = totalItems;
+    if(totalSpan) totalSpan.innerText = `$${totalPrice.toFixed(2)}`;
+  }
+
+  // Sidebar functions
+  const cartIcon = document.getElementById('cartIcon');
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCart() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCart() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  cartIcon.addEventListener('click', openCart);
+  closeCartBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  // Add to cart event binding
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = btn.closest('.product-card');
+      const id = parseInt(card.getAttribute('data-id'));
+      const name = card.getAttribute('data-name');
+      const price = parseFloat(card.getAttribute('data-price'));
+      addToCart(id, name, price);
+    });
+  });
+
+  // Checkout demo
+  document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+    if(cart.length === 0) alert("Your cart is empty. Add Victoria’s Secret mists or lotions to continue.");
+    else alert(`✨ Thank you! Your order total: ${document.getElementById('cartTotalPrice').innerText}. ✨\n(Shipping & secure payment coming soon — your VS favorites will arrive fast!)`);
+  });
+
+  // Scroll to products
+  document.getElementById('scrollToShop')?.addEventListener('click', () => {
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+  });
+  document.querySelector('.hero-content .btn-primary')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  loadCart();
+
+  // SEO Schema for Victoria's Secret Products (Aggregate)
+  const vsSchema = document.createElement('script');
+  vsSchema.type = 'application/ld+json';
+  vsSchema.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Victoria's Secret Mists & Lotions Collection",
+    "description": "Authentic Victoria’s Secret body mists and lotions: Bombshell, Bare Vanilla, Love Spell, Pure Seduction. Long-lasting fragrance and hydration.",
+    "brand": { "@type": "Brand", "name": "Victoria's Secret" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "28.99",
+      "highPrice": "54.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "18400" }
+  });
+  document.head.appendChild(vsSchema);
+</script>
+</body>
+</html>

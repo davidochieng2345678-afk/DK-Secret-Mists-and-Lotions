@@ -184,17 +184,56 @@
   </div>
 </main>
 
+
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div><h4 style="color:#f2dad0;">DK World Kenya</h4><p>Official Reseller</p><p>© 2025 DK World Kenya</p></div>
-      <div><p>📍 Nairobi, Kenya</p><p>📞 +254 700 000 000</p><p>✉️ hello@dkworld.co.ke</p></div>
-      <div><p>🔒 Secure Checkout</p><p>Free Delivery Over KSh 5,000</p></div>
+      <div class="footer-col">
+        <h4 style="color:#f2dad0;">DK World Kenya</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#">📘 Facebook</a>
+          <a href="#">📸 Instagram</a>
+          <a href="#">🐦 Twitter</a>
+          <a href="#">📱 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="index.html" style="color:#f2cfc4;">Shop</a></p>
+        <p><a href="#" style="color:#f2cfc4;">About Us</a></p>
+        <p><a href="#" style="color:#f2cfc4;">Contact</a></p>
+        <p><a href="#" style="color:#f2cfc4;">FAQs</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 700 000 000</p>
+        <p>✉️ hello@dkworld.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <div class="payment-icons-footer">💳 M-Pesa | Visa | Mastercard</div>
+        <p><strong>Secure Checkout</strong></p>
+        <p>🔒 100% encrypted</p>
+      </div>
     </div>
-    <div class="copyright"><p>All products are 100% authentic Victoria's Secret</p></div>
+    <div class="copyright">
+      <p>© 2025 DK World Kenya. All products are 100% authentic Victoria's Secret.</p>
+      <p>Free delivery for orders over KSh 5,000 | Same-day dispatch in Nairobi</p>
+    </div>
   </div>
 </footer>
 
+<style>
+.footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 40px; }
+.footer-col p { margin: 8px 0; }
+.social-links { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+.social-links a { color: #f2cfc4; text-decoration: none; }
+.payment-icons-footer { margin: 8px 0; }
+.copyright { text-align: center; margin-top: 32px; font-size: 0.8rem; }
+</style>
+  
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
   import { getFirestore, collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";

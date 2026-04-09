@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Blog Manager | DK World Kenya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { color: #6B1E2A; margin-bottom: 20px; }
+    .blog-form {
+      background: white;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid #f0cdc0;
+      margin-bottom: 40px;
+    }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-weight: 600; color: #8C2A3B; margin-bottom: 8px; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid #f0cdc0;
+      font-family: inherit;
+    }
+    textarea { min-height: 200px; }
+    .btn-primary {
+      background: #8C2A3B;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .blog-list {
+      background: white;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid #f0cdc0;
+    }
+    .blog-item {
+      border-bottom: 1px solid #f0cdc0;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .delete-btn {
+      background: #fce4e4;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #c75c4a;
+    }
+    .status { font-size: 0.8rem; color: #2e7d64; }
+    .loading { text-align: center; padding: 40px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>📝 Blog Post Manager</h1>
+  <div id="authWarning" class="blog-form" style="display:none;">
+    <p>Please sign in with admin account to manage blog posts.</p>
+    <button id="signInBtn" class="btn-primary">Sign In</button>
+  </div>
+  
+  <div id="adminContent" style="display:none;">
+    <div class="blog-form">
+      <h2>Create New Post</h2>
+      <div class="form-group"><label>Title</label><input type="text" id="postTitle" placeholder="How to layer Victoria's Secret mists"></div>
+      <div class="form-group"><label>Category</label><input type="text" id="postCategory" placeholder="Beauty Tips"></div>
+      <div class="form-group"><label>Excerpt (SEO description)</label><textarea id="postExcerpt" rows="2" placeholder="Short summary..."></textarea></div>
+      <div class="form-group"><label>Full Content (HTML allowed)</label><textarea id="postContent" rows="8" placeholder="Write your article here..."></textarea></div>
+      <div class="form-group"><label>Featured Image URL</label><input type="text" id="postImage" placeholder="https://..."></div>
+      <div class="form-group"><label>Tags (comma separated)</label><input type="text" id="postTags" placeholder="Victoria's Secret, body mist, layering"></div>
+      <div class="form-group"><label>Author</label><input type="text" id="postAuthor" value="DK Team"></div>
+      <div class="form-group"><label>Read Time (minutes)</label><input type="text" id="postReadTime" value="5"></div>
+      <button id="publishBtn" class="btn-primary">Publish Post</button>
+    </div>
+    
+    <div class="blog-list">
+      <h2>Existing Posts</h2>
+      <div id="postsList">Loading...</div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
+    authDomain: "dkworld-kenya.firebaseapp.com",
+    projectId: "dkworld-kenya",
+    storageBucket: "dkworld-kenya.firebasestorage.app",
+    messagingSenderId: "263537160242",
+    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+  let currentUser = null;
+  const adminEmail = "davidochieng99@gmail.com"; // Your admin email
+  
+  function showAuthWarning() {
+    document.getElementById('authWarning').style.display = 'block';
+    document.getElementById('adminContent').style.display = 'none';
+  }
+  
+  function showAdmin() {
+    document.getElementById('authWarning').style.display = 'none';
+    document.getElementById('adminContent').style.display = 'block';
+    loadPosts();
+  }
+  
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    if (user && user.email === adminEmail) {
+      showAdmin();
+    } else {
+      showAuthWarning();
+    }
+  });
+  
+  document.getElementById('signInBtn')?.addEventListener('click', () => {
+    const email = prompt("Admin email:");
+    const password = prompt("Password:");
+    if (email && password) {
+      signInWithEmailAndPassword(auth, email, password).catch(err => alert("Login failed: " + err.message));
+    }
+  });
+  
+  async function loadPosts() {
+    const postsRef = collection(db, "blog_posts");
+    const snapshot = await getDocs(postsRef);
+    const container = document.getElementById('postsList');
+    if (snapshot.empty) {
+      container.innerHTML = '<p>No posts yet.</p>';
+      return;
+    }
+    let html = '';
+    snapshot.forEach(docSnap => {
+      const post = docSnap.data();
+      html += `
+        <div class="blog-item">
+          <div>
+            <strong>${post.title}</strong><br>
+            <span class="status">${post.category} | ${new Date(post.publishedAt?.toDate()).toLocaleDateString()}</span>
+          </div>
+          <button class="delete-btn" data-id="${docSnap.id}">Delete</button>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        if (confirm("Delete this post?")) {
+          await deleteDoc(doc(db, "blog_posts", btn.dataset.id));
+          loadPosts();
+        }
+      });
+    });
+  }
+  
+  document.getElementById('publishBtn')?.addEventListener('click', async () => {
+    const title = document.getElementById('postTitle').value;
+    const category = document.getElementById('postCategory').value;
+    const excerpt = document.getElementById('postExcerpt').value;
+    const content = document.getElementById('postContent').value;
+    const imageUrl = document.getElementById('postImage').value;
+    const tagsRaw = document.getElementById('postTags').value;
+    const author = document.getElementById('postAuthor').value;
+    const readTime = document.getElementById('postReadTime').value;
+    
+    if (!title || !content) {
+      alert("Title and content are required.");
+      return;
+    }
+    
+    const tags = tagsRaw.split(',').map(t => t.trim());
+    
+    await addDoc(collection(db, "blog_posts"), {
+      title,
+      category: category || "General",
+      excerpt: excerpt || content.substring(0, 150),
+      content: content,
+      featuredImage: imageUrl || "https://placehold.co/800x400/FCE4D4/8C2A3B?text=Blog",
+      tags,
+      author: author || "DK Team",
+      readTime: readTime || "5 min read",
+      publishedAt: serverTimestamp(),
+      commentCount: 0
+    });
+    
+    alert("Post published!");
+    // Clear form
+    document.getElementById('postTitle').value = '';
+    document.getElementById('postCategory').value = '';
+    document.getElementById('postExcerpt').value = '';
+    document.getElementById('postContent').value = '';
+    document.getElementById('postImage').value = '';
+    document.getElementById('postTags').value = '';
+    loadPosts();
+  });
+</script>
+</body>
+</html>

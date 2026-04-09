@@ -177,13 +177,17 @@
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
   <div class="navbar">
     <a href="index.html" class="logo">DK<span> Secrets</span></a>
     <div class="nav-links">
-      <a href="index.html">Shop</a>
-      <a href="index.html">Mists</a>
-      <a href="index.html">Lotions</a>
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#products">Mists</a>
+      <a href="index.html#products">Lotions</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+        <button id="searchBtn" class="search-btn">🔍</button>
+      </div>
       <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
       <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
     </div>

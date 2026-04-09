@@ -183,7 +183,52 @@
     </div>
   </div>
 </main>
+<!-- You May Also Like -->
+<div class="recommended-section">
+  <h3>You May Also Like</h3>
+  <div class="recommended-grid" id="recommendedGrid">
+    <div class="loading">Loading recommendations...</div>
+  </div>
+</div>
 
+<style>
+.recommended-section { margin: 60px 0 40px; }
+.recommended-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 24px; }
+.recommended-card { background: white; border-radius: 20px; overflow: hidden; text-align: center; padding-bottom: 16px; border: 1px solid #f0cdc0; cursor: pointer; transition: 0.2s; }
+.recommended-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.recommended-img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.recommended-name { font-weight: 700; margin: 12px; color: #6B1E2A; }
+.recommended-price { color: #C75C4A; }
+</style>
+
+<script>
+async function loadRecommended() {
+  const productsRef = collection(db, "products");
+  const querySnapshot = await getDocs(productsRef);
+  let products = [];
+  querySnapshot.forEach(doc => {
+    const p = doc.data();
+    if (!cartItems.some(i => i.id === doc.id)) {
+      products.push({ id: doc.id, ...p });
+    }
+  });
+  products = products.slice(0, 4);
+  const container = document.getElementById('recommendedGrid');
+  if (products.length === 0) {
+    container.innerHTML = '<p>No recommendations available.</p>';
+    return;
+  }
+  container.innerHTML = products.map(p => `
+    <div class="recommended-card" onclick="window.location.href='product.html?id=${p.id}'">
+      <img class="recommended-img" src="${p.imageUrl || 'https://placehold.co/400x400/FCE4D4/8C2A3B'}" alt="${p.name}">
+      <div class="recommended-name">${p.name}</div>
+      <div class="recommended-price">KSh ${(p.price * 145).toLocaleString()}</div>
+    </div>
+  `).join('');
+}
+// Call inside fetchCart() after renderCart()
+loadRecommended();
+</script>
 
 <footer>
   <div class="container">

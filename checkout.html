@@ -40,14 +40,23 @@
   </style>
 </head>
 <body>
-
-<div class="container">
+    <div class="container">
   <div class="navbar">
     <a href="index.html" class="logo">DK<span> Secrets</span></a>
-    <div id="authSection"><button class="auth-btn" id="authButton" style="background:#8C2A3B; color:white; padding:8px 20px; border-radius:40px; border:none;">Sign In</button></div>
+    <div class="nav-links">
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#products">Mists</a>
+      <a href="index.html#products">Lotions</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+        <button id="searchBtn" class="search-btn">🔍</button>
+      </div>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+      <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
+    </div>
   </div>
-  <div id="checkoutContent"><div class="empty-cart">Loading checkout...</div></div>
 </div>
+
 <footer><div class="container"><p>© 2025 DK Secrets - Authentic Victoria's Secret</p></div></footer>
 
 <script type="module">

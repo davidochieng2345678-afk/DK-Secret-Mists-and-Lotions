@@ -16,7 +16,6 @@
   <meta property="og:url" content="https://www.dksecrets.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DK Secrets — Victoria’s Secret Mists & Lotions">
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,6 +80,7 @@
       transition: 0.2s;
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
+      cursor: pointer;
     }
     .nav-links a:hover {
       color: #C75C4A;
@@ -188,10 +188,10 @@
       font-size: 1.1rem;
     }
 
-    /* Products Grid — Ready for real products */
+    /* Products Grid */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 42px;
       margin: 30px 0 70px;
     }
@@ -263,25 +263,6 @@
       color: #e6b422;
       font-size: 0.85rem;
       margin: 5px 0;
-    }
-
-    /* Empty State for Products */
-    .empty-products-message {
-      text-align: center;
-      padding: 60px 20px;
-      background: #fff5f2;
-      border-radius: 32px;
-      border: 2px dashed #f0cdc0;
-      margin: 40px 0;
-    }
-    .empty-products-message p {
-      font-size: 1.2rem;
-      color: #8C2A3B;
-      margin-bottom: 16px;
-    }
-    .empty-products-message small {
-      color: #a64b3a;
-      font-family: monospace;
     }
 
     /* CTA Banner */
@@ -407,24 +388,7 @@
       .navbar { flex-direction: column; }
       .hero-content h1 { font-size: 2rem; }
       .btn-primary { padding: 10px 24px; }
-    }
-
-    /* Admin hint styling */
-    .admin-hint {
-      background: #faf0eb;
-      border-radius: 20px;
-      padding: 20px;
-      margin: 20px 0;
-      text-align: left;
-      border-left: 5px solid #C75C4A;
-      font-size: 0.85rem;
-    }
-    .admin-hint code {
-      background: #fff0e6;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-family: monospace;
-      color: #8C2A3B;
+      .products-grid { gap: 24px; }
     }
   </style>
 </head>
@@ -435,10 +399,10 @@
   <div class="navbar">
     <div class="logo">DK<span> Secrets</span></div>
     <div class="nav-links">
-      <a href="#">Victoria's Secret</a>
-      <a href="#">Mists</a>
-      <a href="#">Lotions</a>
-      <a href="#">Bundles</a>
+      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Victoria's Secret</a>
+      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Mists</a>
+      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Lotions</a>
+      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Bundles</a>
       <div class="cart-icon" id="cartIcon">
         🛒 <span class="cart-count" id="cartCount">0</span>
       </div>
@@ -446,11 +410,10 @@
   </div>
 </div>
 
-<!-- BIG BANNER — Realistic Victoria's Secret body mist & lotion image (high-res) -->
+<!-- BIG BANNER — Realistic Victoria's Secret body mist & lotion image -->
 <div class="container">
   <div class="hero">
     <picture>
-      <!-- High-res source for desktop -->
       <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" media="(min-width: 1200px)">
       <source srcset="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=1200&h=700&fit=crop" media="(min-width: 768px)">
       <img class="hero-image" src="https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Victoria's Secret body mist and lotion bottles - pink fragrance collection" loading="eager" fetchpriority="high">
@@ -458,28 +421,19 @@
     <div class="hero-content">
       <h1>Victoria’s Secret Iconic Collection</h1>
       <p>DK Secrets brings you the ultimate mists & lotions — Bombshell, Bare Vanilla, Love Spell. Experience the allure.</p>
-      <a href="#products" class="btn-primary">Shop Best Sellers →</a>
+      <a onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" class="btn-primary">Shop Best Sellers →</a>
     </div>
   </div>
 </div>
 
 <main>
-  <!-- PRODUCT SECTION - EMPTY BY DEFAULT, READY FOR REAL PRODUCTS -->
+  <!-- PRODUCT SECTION - BEAUTIFUL REAL PRODUCT EXAMPLES -->
   <div class="container" id="products">
     <h2 class="section-title">Signature Victoria's Secret Mists & Lotions</h2>
     <div class="subtitle">The most seductive, long-lasting fragrances — now at DK Secrets</div>
     
-    <!-- Dynamic product grid (will be populated by JavaScript with real products) -->
     <div class="products-grid" id="productGrid">
-      <!-- Products will be injected dynamically via JavaScript. No dummy products present. -->
-    </div>
-    
-    <!-- Admin hint - how to add real products -->
-    <div class="admin-hint">
-      <strong>📦 Ready to add your real products?</strong><br>
-      The product grid is empty by design. To add your Victoria's Secret mists and lotions, open the JavaScript section and modify the <code>realProducts</code> array (around line 430). Each product needs: id, name, price, stock, description, imageUrl, rating.<br>
-      Example: <code>{ id: 1, name: "Bombshell Mist", price: 29.99, stock: 20, description: "Energizing passionfruit & peony", imageUrl: "https://your-image-link.jpg", rating: 4.8 }</code><br>
-      The cart, stock management, and local storage will work automatically. Colors match maroon/pink theme.
+      <!-- Products will be injected dynamically via JavaScript -->
     </div>
   </div>
 
@@ -531,26 +485,53 @@
 
 <script>
   // ============================================================
-  // ADD YOUR REAL PRODUCTS HERE — REPLACE THIS ARRAY WITH YOUR OWN
+  // REAL PRODUCTS - VICTORIA'S SECRET MISTS & LOTIONS
+  // Replace these with your actual products
   // ============================================================
   const realProducts = [
-    // Example format (DELETE these examples and add your real products):
-    // {
-    //   id: 1,
-    //   name: "Victoria's Secret Bombshell Mist",
-    //   price: 29.99,
-    //   stock: 15,
-    //   description: "Energizing blend of passionfruit, peony & vanilla. Signature VS iconic scent.",
-    //   imageUrl: "https://your-image-url.jpg",
-    //   rating: 4.8,
-    //   reviewCount: "4.8k"
-    // },
-    // 
-    // To get started, add your real products below. The grid will show exactly what you define here.
+    {
+      id: 1,
+      name: "Bombshell Eau de Parfum Mist",
+      price: 29.99,
+      stock: 25,
+      description: "Energizing blend of passionfruit, peony & vanilla. The iconic VS signature scent that turns heads.",
+      imageUrl: "https://images.pexels.com/photos/4030978/pink-bottles-on-white-surface-4030978.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      rating: 4.9,
+      reviewCount: "4.8k"
+    },
+    {
+      id: 2,
+      name: "Bare Vanilla Cashmere Lotion",
+      price: 32.99,
+      stock: 18,
+      description: "Whipped shea butter & warm vanilla bean. 24hr moisture with a soft cashmere scent that lingers.",
+      imageUrl: "https://images.pexels.com/photos/4041392/beauty-products-on-table-4041392.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      rating: 4.8,
+      reviewCount: "5.2k"
+    },
+    {
+      id: 3,
+      name: "Love Spell Fragrance Duo",
+      price: 54.99,
+      stock: 12,
+      description: "Cherry blossom & peach. Complete set with matching mist + lotion for irresistible layering.",
+      imageUrl: "https://images.pexels.com/photos/5426021/aromatic-bottles-and-flowers-5426021.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      rating: 4.9,
+      reviewCount: "6.1k"
+    },
+    {
+      id: 4,
+      name: "Pure Seduction Fine Fragrance Mist",
+      price: 28.99,
+      stock: 30,
+      description: "Plum & freesia — sweet, flirtatious, and long-lasting. A fan favorite for everyday glamour.",
+      imageUrl: "https://images.pexels.com/photos/7474202/glass-bottle-with-liquid-and-flower-7474202.jpg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      rating: 4.7,
+      reviewCount: "3.9k"
+    }
   ];
 
   // ========== FULLY DYNAMIC E-COMMERCE ENGINE ==========
-  // This will work seamlessly once you add products to the array above.
   
   let productStock = {};
   let cart = [];
@@ -576,17 +557,6 @@
     const grid = document.getElementById('productGrid');
     if (!grid) return;
     
-    if (realProducts.length === 0) {
-      grid.innerHTML = `
-        <div class="empty-products-message">
-          <p>✨ No products added yet ✨</p>
-          <p>Your Victoria's Secret mists & lotions will appear here.</p>
-          <small>👉 Edit the "realProducts" array in the JavaScript section to add your products.</small>
-        </div>
-      `;
-      return;
-    }
-    
     grid.innerHTML = '';
     realProducts.forEach(product => {
       const stockLeft = productStock[product.id]?.stock ?? product.stock;
@@ -597,15 +567,10 @@
       card.setAttribute('data-price', product.price);
       card.setAttribute('data-stock', stockLeft);
       
-      // Use product image or fallback to placeholder
-      const imgSrc = product.imageUrl && product.imageUrl.trim() !== '' 
-        ? product.imageUrl 
-        : `https://placehold.co/600x600/FCE4D4/8C2A3B?text=${encodeURIComponent(product.name.slice(0,20))}&font=playfair`;
-      
       card.innerHTML = `
-        <img class="product-img" src="${imgSrc}" alt="${product.name}" loading="lazy" onerror="this.src='https://placehold.co/600x600/FCE4D4/8C2A3B?text=Image+Coming&font=playfair'">
+        <img class="product-img" src="${product.imageUrl}" alt="${product.name}" loading="lazy" onerror="this.src='https://placehold.co/600x600/FCE4D4/8C2A3B?text=${encodeURIComponent(product.name.slice(0,20))}'">
         <div class="product-title">${escapeHtml(product.name)}</div>
-        <div class="rating-stars">${getStarRating(product.rating)} (${product.reviewCount || product.rating + 'k+'} reviews)</div>
+        <div class="rating-stars">${getStarRating(product.rating)} (${product.reviewCount} reviews)</div>
         <div class="product-desc">${escapeHtml(product.description)}</div>
         <div class="price">$${product.price.toFixed(2)}</div>
         <div class="stock-badge" id="stock-${product.id}">In Stock: ${stockLeft}</div>
@@ -785,16 +750,12 @@
     else {
       let total = 0;
       cart.forEach(item => { total += productStock[item.id]?.price * item.quantity || 0; });
-      alert(`✨ Thank you for your order! Total: $${total.toFixed(2)} ✨\nYour VS mists & lotions will arrive soon. (Dynamic checkout demo)`);
+      alert(`✨ Thank you for your order! Total: $${total.toFixed(2)} ✨\nYour VS mists & lotions will arrive soon.`);
     }
   });
   
   // Scroll to products
   document.getElementById('scrollToShop')?.addEventListener('click', () => {
-    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-  });
-  document.querySelector('.hero-content .btn-primary')?.addEventListener('click', (e) => {
-    e.preventDefault();
     document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
   });
   
@@ -817,4 +778,3 @@
 </script>
 </body>
 </html>
-

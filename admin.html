@@ -3,214 +3,552 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Blog Manager | DK World Kenya</title>
+  <title>Admin Dashboard | DK Secrets</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fffaf7; padding: 20px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    h1 { color: #6B1E2A; margin-bottom: 20px; }
-    .blog-form {
-      background: white;
-      padding: 30px;
-      border-radius: 28px;
-      border: 1px solid #f0cdc0;
-      margin-bottom: 40px;
-    }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; font-weight: 600; color: #8C2A3B; margin-bottom: 8px; }
-    input, textarea, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid #f0cdc0;
-      font-family: inherit;
-    }
-    textarea { min-height: 200px; }
-    .btn-primary {
-      background: #8C2A3B;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 60px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .blog-list {
-      background: white;
-      padding: 30px;
-      border-radius: 28px;
-      border: 1px solid #f0cdc0;
-    }
-    .blog-item {
-      border-bottom: 1px solid #f0cdc0;
-      padding: 16px;
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 16px 0;
+      border-bottom: 2px solid #f0cdc0;
+      margin-bottom: 30px;
     }
-    .delete-btn {
-      background: #fce4e4;
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .logo span { background: none; color: #8C2A3B; }
+    .auth-btn {
+      background: #8C2A3B;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: white;
+      border: 1px solid #f0cdc0;
+      padding: 10px 24px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .tab-btn.active {
+      background: #8C2A3B;
+      color: white;
+      border-color: #8C2A3B;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid #f0cdc0;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    th { color: #6B1E2A; }
+    button {
+      background: #8C2A3B;
+      color: white;
       border: none;
       padding: 6px 12px;
       border-radius: 30px;
       cursor: pointer;
-      color: #c75c4a;
+      font-size: 0.8rem;
     }
-    .status { font-size: 0.8rem; color: #2e7d64; }
-    .loading { text-align: center; padding: 40px; }
+    button.delete-btn { background: #c75c4a; }
+    button.edit-btn { background: #2e7d64; margin-right: 8px; }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #8C2A3B;
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid #f0cdc0;
+      font-family: inherit;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #8C2A3B;
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #a64b3a;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: #a64b3a;
+      border-top: 1px solid #f0cdc0;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 12px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      tr { margin-bottom: 20px; border: 1px solid #f0cdc0; border-radius: 16px; padding: 12px; }
+      td { border: none; padding: 6px 0; }
+    }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>📝 Blog Post Manager</h1>
-  <div id="authWarning" class="blog-form" style="display:none;">
-    <p>Please sign in with admin account to manage blog posts.</p>
-    <button id="signInBtn" class="btn-primary">Sign In</button>
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> Secrets</span> Admin</a>
+    <div id="authArea"><button class="auth-btn" id="authBtn">Sign In</button></div>
   </div>
-  
-  <div id="adminContent" style="display:none;">
-    <div class="blog-form">
-      <h2>Create New Post</h2>
-      <div class="form-group"><label>Title</label><input type="text" id="postTitle" placeholder="How to layer Victoria's Secret mists"></div>
-      <div class="form-group"><label>Category</label><input type="text" id="postCategory" placeholder="Beauty Tips"></div>
-      <div class="form-group"><label>Excerpt (SEO description)</label><textarea id="postExcerpt" rows="2" placeholder="Short summary..."></textarea></div>
-      <div class="form-group"><label>Full Content (HTML allowed)</label><textarea id="postContent" rows="8" placeholder="Write your article here..."></textarea></div>
-      <div class="form-group"><label>Featured Image URL</label><input type="text" id="postImage" placeholder="https://..."></div>
-      <div class="form-group"><label>Tags (comma separated)</label><input type="text" id="postTags" placeholder="Victoria's Secret, body mist, layering"></div>
-      <div class="form-group"><label>Author</label><input type="text" id="postAuthor" value="DK Team"></div>
-      <div class="form-group"><label>Read Time (minutes)</label><input type="text" id="postReadTime" value="5"></div>
-      <button id="publishBtn" class="btn-primary">Publish Post</button>
+  <div id="adminContent" style="display: none;">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="products">📦 Products</button>
+      <button class="tab-btn" data-tab="orders">📋 Orders</button>
+      <button class="tab-btn" data-tab="blog">📝 Blog Posts</button>
     </div>
-    
-    <div class="blog-list">
-      <h2>Existing Posts</h2>
-      <div id="postsList">Loading...</div>
+    <div id="productsPanel" class="panel active">
+      <div class="card">
+        <div class="card-header">
+          <h2>Manage Products</h2>
+          <button id="addProductBtn">+ Add New Product</button>
+        </div>
+        <div id="productsList">Loading products...</div>
+      </div>
     </div>
+    <div id="ordersPanel" class="panel">
+      <div class="card">
+        <div class="card-header"><h2>Orders</h2></div>
+        <div id="ordersList">Loading orders...</div>
+      </div>
+    </div>
+    <div id="blogPanel" class="panel">
+      <div class="card">
+        <div class="card-header">
+          <h2>Blog Posts</h2>
+          <button id="addBlogBtn">+ New Post</button>
+        </div>
+        <div id="blogList">Loading posts...</div>
+      </div>
+    </div>
+  </div>
+  <div id="unauthorized" style="display: none; text-align: center; padding: 60px;">
+    <h2>⛔ Unauthorized Access</h2>
+    <p>You do not have permission to view this page.</p>
+    <a href="index.html">Return to Store</a>
   </div>
 </div>
 
+<!-- Modal for Product Form -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle">Add Product</h3>
+      <button class="close-modal" onclick="closeProductModal()">&times;</button>
+    </div>
+    <form id="productForm">
+      <input type="hidden" id="productId">
+      <div class="form-group"><label>Name</label><input type="text" id="prodName" required></div>
+      <div class="form-group"><label>Price (USD)</label><input type="number" step="0.01" id="prodPrice" required></div>
+      <div class="form-group"><label>Stock</label><input type="number" id="prodStock" required></div>
+      <div class="form-group"><label>Category</label><select id="prodCategory"><option value="mist">Body Mist</option><option value="lotion">Body Lotion</option><option value="bundle">Bundle</option></select></div>
+      <div class="form-group"><label>Description (short)</label><textarea id="prodDesc" rows="2"></textarea></div>
+      <div class="form-group"><label>Full Description (HTML)</label><textarea id="prodFullDesc" rows="4"></textarea></div>
+      <div class="form-group"><label>Image URL</label><input type="text" id="prodImage" placeholder="https://..."></div>
+      <div class="form-group"><label>Ingredients (comma separated)</label><input type="text" id="prodIngredients"></div>
+      <button type="submit" class="auth-btn" style="width:100%;">Save Product</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Blog Post Form -->
+<div id="blogModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="blogModalTitle">Add Blog Post</h3>
+      <button class="close-modal" onclick="closeBlogModal()">&times;</button>
+    </div>
+    <form id="blogForm">
+      <input type="hidden" id="blogId">
+      <div class="form-group"><label>Title</label><input type="text" id="blogTitle" required></div>
+      <div class="form-group"><label>Category</label><input type="text" id="blogCategory" placeholder="Beauty, Tips, etc."></div>
+      <div class="form-group"><label>Excerpt (SEO description)</label><textarea id="blogExcerpt" rows="2"></textarea></div>
+      <div class="form-group"><label>Content (HTML)</label><textarea id="blogContent" rows="6"></textarea></div>
+      <div class="form-group"><label>Featured Image URL</label><input type="text" id="blogImage"></div>
+      <div class="form-group"><label>Tags (comma separated)</label><input type="text" id="blogTags"></div>
+      <div class="form-group"><label>Author</label><input type="text" id="blogAuthor" value="DK Team"></div>
+      <button type="submit" class="auth-btn" style="width:100%;">Save Post</button>
+    </form>
+  </div>
+</div>
+
+<footer>DK Secrets Admin Dashboard</footer>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  import { getFirestore, collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, setDoc, orderBy, query } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
   
   const firebaseConfig = {
-    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
-    authDomain: "dkworld-kenya.firebaseapp.com",
-    projectId: "dkworld-kenya",
-    storageBucket: "dkworld-kenya.firebasestorage.app",
-    messagingSenderId: "263537160242",
-    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+    apiKey: "AIzaSyDnMnyROtTSjvAswLAYAmpJrFf0wZEaYIM",
+    authDomain: "dk-secret-mists-and-lotions.firebaseapp.com",
+    projectId: "dk-secret-mists-and-lotions",
+    storageBucket: "dk-secret-mists-and-lotions.firebasestorage.app",
+    messagingSenderId: "153687274132",
+    appId: "1:153687274132:web:e9de13864e001be927ba81"
   };
   
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth(app);
   
+  const ADMIN_EMAIL = "davidochieng99@gmail.com";
   let currentUser = null;
-  const adminEmail = "davidochieng99@gmail.com"; // Your admin email
   
-  function showAuthWarning() {
-    document.getElementById('authWarning').style.display = 'block';
-    document.getElementById('adminContent').style.display = 'none';
+  // UI elements
+  const adminContent = document.getElementById('adminContent');
+  const unauthorizedDiv = document.getElementById('unauthorized');
+  const authArea = document.getElementById('authArea');
+  
+  function showUnauthorized() {
+    adminContent.style.display = 'none';
+    unauthorizedDiv.style.display = 'block';
   }
   
   function showAdmin() {
-    document.getElementById('authWarning').style.display = 'none';
-    document.getElementById('adminContent').style.display = 'block';
-    loadPosts();
+    adminContent.style.display = 'block';
+    unauthorizedDiv.style.display = 'none';
+    loadProducts();
+    loadOrders();
+    loadBlogPosts();
+  }
+  
+  // Auth UI
+  function updateAuthUI(user) {
+    if (user && user.email === ADMIN_EMAIL) {
+      authArea.innerHTML = `<span style="margin-right:12px;">${user.email}</span> <button class="auth-btn" id="logoutBtn">Logout</button>`;
+      document.getElementById('logoutBtn').onclick = () => signOut(auth);
+      showAdmin();
+    } else if (user && user.email !== ADMIN_EMAIL) {
+      authArea.innerHTML = `<span>${user.email} (not admin)</span> <button class="auth-btn" id="logoutBtn">Logout</button>`;
+      document.getElementById('logoutBtn').onclick = () => signOut(auth);
+      showUnauthorized();
+    } else {
+      authArea.innerHTML = `<button class="auth-btn" id="loginBtn">Sign In as Admin</button>`;
+      document.getElementById('loginBtn').onclick = () => {
+        const email = prompt("Admin Email:");
+        const password = prompt("Password:");
+        if (email && password) {
+          signInWithEmailAndPassword(auth, email, password).catch(err => alert("Login failed: " + err.message));
+        }
+      };
+      showUnauthorized();
+    }
   }
   
   onAuthStateChanged(auth, (user) => {
     currentUser = user;
-    if (user && user.email === adminEmail) {
-      showAdmin();
-    } else {
-      showAuthWarning();
-    }
+    updateAuthUI(user);
   });
   
-  document.getElementById('signInBtn')?.addEventListener('click', () => {
-    const email = prompt("Admin email:");
-    const password = prompt("Password:");
-    if (email && password) {
-      signInWithEmailAndPassword(auth, email, password).catch(err => alert("Login failed: " + err.message));
-    }
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(`${btn.dataset.tab}Panel`).classList.add('active');
+    });
   });
   
-  async function loadPosts() {
-    const postsRef = collection(db, "blog_posts");
-    const snapshot = await getDocs(postsRef);
-    const container = document.getElementById('postsList');
+  // ========== PRODUCTS ==========
+  async function loadProducts() {
+    const container = document.getElementById('productsList');
+    container.innerHTML = '<div class="loading">Loading...</div>';
+    const snapshot = await getDocs(collection(db, "products"));
     if (snapshot.empty) {
-      container.innerHTML = '<p>No posts yet.</p>';
+      container.innerHTML = '<p>No products found. Click "Add New Product" to create.</p>';
       return;
     }
-    let html = '';
+    let html = '<table><thead><tr><th>Name</th><th>Price (KSh)</th><th>Stock</th><th>Category</th><th>Actions</th></tr></thead><tbody>';
     snapshot.forEach(docSnap => {
-      const post = docSnap.data();
-      html += `
-        <div class="blog-item">
-          <div>
-            <strong>${post.title}</strong><br>
-            <span class="status">${post.category} | ${new Date(post.publishedAt?.toDate()).toLocaleDateString()}</span>
-          </div>
-          <button class="delete-btn" data-id="${docSnap.id}">Delete</button>
-        </div>
-      `;
+      const p = docSnap.data();
+      const priceKsh = (p.price * 145).toLocaleString();
+      html += `<tr>
+        <td>${p.name}</td>
+        <td>KSh ${priceKsh}</td>
+        <td>${p.stock}</td>
+        <td>${p.category || 'mist'}</td>
+        <td><button class="edit-btn" data-id="${docSnap.id}">Edit</button><button class="delete-btn" data-id="${docSnap.id}">Delete</button></td>
+      </tr>`;
     });
+    html += '</tbody></table>';
     container.innerHTML = html;
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => editProduct(btn.dataset.id));
+    });
     document.querySelectorAll('.delete-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
-        if (confirm("Delete this post?")) {
-          await deleteDoc(doc(db, "blog_posts", btn.dataset.id));
-          loadPosts();
+        if (confirm("Delete this product?")) {
+          await deleteDoc(doc(db, "products", btn.dataset.id));
+          loadProducts();
         }
       });
     });
   }
   
-  document.getElementById('publishBtn')?.addEventListener('click', async () => {
-    const title = document.getElementById('postTitle').value;
-    const category = document.getElementById('postCategory').value;
-    const excerpt = document.getElementById('postExcerpt').value;
-    const content = document.getElementById('postContent').value;
-    const imageUrl = document.getElementById('postImage').value;
-    const tagsRaw = document.getElementById('postTags').value;
-    const author = document.getElementById('postAuthor').value;
-    const readTime = document.getElementById('postReadTime').value;
-    
-    if (!title || !content) {
-      alert("Title and content are required.");
+  async function editProduct(id) {
+    const docRef = doc(db, "products", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const p = docSnap.data();
+      document.getElementById('productId').value = id;
+      document.getElementById('prodName').value = p.name;
+      document.getElementById('prodPrice').value = p.price;
+      document.getElementById('prodStock').value = p.stock;
+      document.getElementById('prodCategory').value = p.category || 'mist';
+      document.getElementById('prodDesc').value = p.description || '';
+      document.getElementById('prodFullDesc').value = p.fullDescription || '';
+      document.getElementById('prodImage').value = p.imageUrl || '';
+      document.getElementById('prodIngredients').value = p.ingredients || '';
+      document.getElementById('modalTitle').innerText = 'Edit Product';
+      document.getElementById('productModal').style.display = 'flex';
+    }
+  }
+  
+  document.getElementById('addProductBtn').onclick = () => {
+    document.getElementById('productForm').reset();
+    document.getElementById('productId').value = '';
+    document.getElementById('modalTitle').innerText = 'Add Product';
+    document.getElementById('productModal').style.display = 'flex';
+  };
+  
+  document.getElementById('productForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('productId').value;
+    const productData = {
+      name: document.getElementById('prodName').value,
+      price: parseFloat(document.getElementById('prodPrice').value),
+      stock: parseInt(document.getElementById('prodStock').value),
+      category: document.getElementById('prodCategory').value,
+      description: document.getElementById('prodDesc').value,
+      fullDescription: document.getElementById('prodFullDesc').value,
+      imageUrl: document.getElementById('prodImage').value,
+      ingredients: document.getElementById('prodIngredients').value
+    };
+    if (id) {
+      await updateDoc(doc(db, "products", id), productData);
+    } else {
+      await addDoc(collection(db, "products"), productData);
+    }
+    closeProductModal();
+    loadProducts();
+  };
+  
+  window.closeProductModal = () => {
+    document.getElementById('productModal').style.display = 'none';
+  };
+  
+  // ========== ORDERS ==========
+  async function loadOrders() {
+    const container = document.getElementById('ordersList');
+    container.innerHTML = '<div class="loading">Loading orders...</div>';
+    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      container.innerHTML = '<p>No orders yet.</p>';
       return;
     }
-    
-    const tags = tagsRaw.split(',').map(t => t.trim());
-    
-    await addDoc(collection(db, "blog_posts"), {
-      title,
-      category: category || "General",
-      excerpt: excerpt || content.substring(0, 150),
-      content: content,
-      featuredImage: imageUrl || "https://placehold.co/800x400/FCE4D4/8C2A3B?text=Blog",
-      tags,
-      author: author || "DK Team",
-      readTime: readTime || "5 min read",
-      publishedAt: serverTimestamp(),
-      commentCount: 0
+    let html = '<tr><thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th><th>Action</th></tr></thead><tbody>';
+    snapshot.forEach(docSnap => {
+      const o = docSnap.data();
+      const totalKsh = (o.total * 145).toLocaleString();
+      html += `<tr>
+        <td>${docSnap.id.slice(-8)}</td>
+        <td>${o.customerName || o.email}</td>
+        <td>KSh ${totalKsh}</td>
+        <td><select class="order-status-select" data-id="${docSnap.id}" style="padding:4px; border-radius:30px;">${['pending','processing','shipped','delivered','cancelled'].map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s.toUpperCase()}</option>`).join('')}</select></td>
+        <td>${new Date(o.createdAt?.toDate()).toLocaleDateString()}</td>
+        <td><button class="view-order-btn" data-id="${docSnap.id}">View</button></td>
+      </tr>`;
     });
-    
-    alert("Post published!");
-    // Clear form
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postCategory').value = '';
-    document.getElementById('postExcerpt').value = '';
-    document.getElementById('postContent').value = '';
-    document.getElementById('postImage').value = '';
-    document.getElementById('postTags').value = '';
-    loadPosts();
-  });
+    html += '</tbody></table>';
+    container.innerHTML = html;
+    document.querySelectorAll('.order-status-select').forEach(select => {
+      select.addEventListener('change', async (e) => {
+        const orderId = select.dataset.id;
+        const newStatus = select.value;
+        await updateDoc(doc(db, "orders", orderId), { status: newStatus });
+        alert("Order status updated");
+      });
+    });
+    document.querySelectorAll('.view-order-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert("Order details: check Firestore console for now.");
+      });
+    });
+  }
+  
+  // ========== BLOG POSTS ==========
+  async function loadBlogPosts() {
+    const container = document.getElementById('blogList');
+    container.innerHTML = '<div class="loading">Loading posts...</div>';
+    const q = query(collection(db, "blog_posts"), orderBy("publishedAt", "desc"));
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      container.innerHTML = '<p>No blog posts. Click "New Post" to create.</p>';
+      return;
+    }
+    let html = '<table><thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Actions</th></tr></thead><tbody>';
+    snapshot.forEach(docSnap => {
+      const p = docSnap.data();
+      html += `<tr>
+        <td>${p.title}</td>
+        <td>${p.category || 'General'}</td>
+        <td>${new Date(p.publishedAt?.toDate()).toLocaleDateString()}</td>
+        <td><button class="edit-blog-btn" data-id="${docSnap.id}">Edit</button><button class="delete-blog-btn" data-id="${docSnap.id}">Delete</button></td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    container.innerHTML = html;
+    document.querySelectorAll('.edit-blog-btn').forEach(btn => {
+      btn.addEventListener('click', () => editBlogPost(btn.dataset.id));
+    });
+    document.querySelectorAll('.delete-blog-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        if (confirm("Delete this post?")) {
+          await deleteDoc(doc(db, "blog_posts", btn.dataset.id));
+          loadBlogPosts();
+        }
+      });
+    });
+  }
+  
+  async function editBlogPost(id) {
+    const docRef = doc(db, "blog_posts", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const p = docSnap.data();
+      document.getElementById('blogId').value = id;
+      document.getElementById('blogTitle').value = p.title;
+      document.getElementById('blogCategory').value = p.category || '';
+      document.getElementById('blogExcerpt').value = p.excerpt || '';
+      document.getElementById('blogContent').value = p.content || '';
+      document.getElementById('blogImage').value = p.featuredImage || '';
+      document.getElementById('blogTags').value = (p.tags || []).join(', ');
+      document.getElementById('blogAuthor').value = p.author || 'DK Team';
+      document.getElementById('blogModalTitle').innerText = 'Edit Blog Post';
+      document.getElementById('blogModal').style.display = 'flex';
+    }
+  }
+  
+  document.getElementById('addBlogBtn').onclick = () => {
+    document.getElementById('blogForm').reset();
+    document.getElementById('blogId').value = '';
+    document.getElementById('blogModalTitle').innerText = 'Add Blog Post';
+    document.getElementById('blogModal').style.display = 'flex';
+  };
+  
+  document.getElementById('blogForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('blogId').value;
+    const blogData = {
+      title: document.getElementById('blogTitle').value,
+      category: document.getElementById('blogCategory').value,
+      excerpt: document.getElementById('blogExcerpt').value,
+      content: document.getElementById('blogContent').value,
+      featuredImage: document.getElementById('blogImage').value,
+      tags: document.getElementById('blogTags').value.split(',').map(t => t.trim()),
+      author: document.getElementById('blogAuthor').value,
+      publishedAt: new Date()
+    };
+    if (id) {
+      await updateDoc(doc(db, "blog_posts", id), blogData);
+    } else {
+      await addDoc(collection(db, "blog_posts"), blogData);
+    }
+    closeBlogModal();
+    loadBlogPosts();
+  };
+  
+  window.closeBlogModal = () => {
+    document.getElementById('blogModal').style.display = 'none';
+  };
+  
+  // Close modals when clicking outside
+  window.onclick = (e) => {
+    if (e.target === document.getElementById('productModal')) closeProductModal();
+    if (e.target === document.getElementById('blogModal')) closeBlogModal();
+  };
 </script>
 </body>
 </html>
+

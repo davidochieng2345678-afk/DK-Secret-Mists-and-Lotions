@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | DK World Kenya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
+    .cart-count {
+      position: absolute; top: -8px; right: -12px; background: #C75C4A;
+      color: white; font-size: 0.7rem; border-radius: 50%;
+      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+    }
+    .auth-btn {
+      background: #8C2A3B; color: white; padding: 8px 20px; border-radius: 40px;
+      border: none; cursor: pointer;
+    }
+    
+    .cart-container {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      margin: 40px 0 80px;
+    }
+    .cart-table { width: 100%; border-collapse: collapse; }
+    .cart-table th { text-align: left; padding: 16px 8px; border-bottom: 2px solid #f0cdc0; color: #6B1E2A; }
+    .cart-table td { padding: 20px 8px; border-bottom: 1px solid #f0cdc0; vertical-align: middle; }
+    .cart-product { display: flex; align-items: center; gap: 16px; }
+    .cart-product-img { width: 80px; height: 80px; border-radius: 16px; object-fit: cover; }
+    .qty-btn {
+      width: 32px; height: 32px; border-radius: 50%; border: 1px solid #f0cdc0;
+      background: white; cursor: pointer;
+    }
+    .remove-btn { background: none; border: none; color: #c75c4a; cursor: pointer; font-size: 1.2rem; }
+    .cart-summary {
+      background: white; border-radius: 28px; padding: 28px; border: 1px solid #f0cdc0;
+      position: sticky; top: 20px;
+    }
+    .summary-row { display: flex; justify-content: space-between; padding: 12px 0; }
+    .summary-total {
+      display: flex; justify-content: space-between; padding: 16px 0;
+      border-top: 2px solid #f0cdc0; font-weight: 800; font-size: 1.3rem;
+    }
+    .checkout-btn {
+      background: #8C2A3B; color: white; width: 100%; padding: 16px;
+      border: none; border-radius: 60px; font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; margin-top: 24px;
+    }
+    .empty-cart { text-align: center; padding: 80px; background: white; border-radius: 28px; }
+    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; }
+    @media (max-width: 968px) { .cart-container { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
+    <div class="nav-links">
+      <a href="index.html">Shop</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+      <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="cartContent"><div class="empty-cart">Loading your cart...</div></div>
+</div>
+
+<footer><div class="container"><div class="copyright"><p>DK World Kenya - Secure Checkout</p></div></div></footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
+    authDomain: "dkworld-kenya.firebaseapp.com",
+    projectId: "dkworld-kenya",
+    storageBucket: "dkworld-kenya.firebasestorage.app",
+    messagingSenderId: "263537160242",
+    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+  let currentUser = null;
+  let cartItems = [];
+  
+  // Fetch cart data
+  async function fetchCart() {
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      const cartDoc = await getDoc(cartRef);
+      cartItems = cartDoc.exists() ? cartDoc.data().items : [];
+    } else {
+      cartItems = JSON.parse(localStorage.getItem('dkCart')) || [];
+    }
+    renderCart();
+    updateCartCount();
+  }
+  
+  async function updateCartCount() {
+    let count = 0;
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      const cartDoc = await getDoc(cartRef);
+      if (cartDoc.exists()) count = cartDoc.data().items.reduce((s,i) => s + i.quantity, 0);
+    } else {
+      const local = JSON.parse(localStorage.getItem('dkCart')) || [];
+      count = local.reduce((s,i) => s + i.quantity, 0);
+    }
+    document.getElementById('cartCount').innerText = count;
+  }
+  
+  async function saveCart() {
+    if (currentUser) {
+      const cartRef = doc(db, "carts", currentUser.uid);
+      await setDoc(cartRef, { items: cartItems, updatedAt: new Date() }, { merge: true });
+    } else {
+      localStorage.setItem('dkCart', JSON.stringify(cartItems));
+    }
+    renderCart();
+    updateCartCount();
+  }
+  
+  async function updateQuantity(productId, newQty) {
+    const index = cartItems.findIndex(i => i.id === productId);
+    if (index !== -1) {
+      if (newQty <= 0) {
+        cartItems.splice(index, 1);
+      } else {
+        cartItems[index].quantity = newQty;
+      }
+      await saveCart();
+    }
+  }
+  
+  async function removeItem(productId) {
+    cartItems = cartItems.filter(i => i.id !== productId);
+    await saveCart();
+  }
+  
+  async function renderCart() {
+    const container = document.getElementById('cartContent');
+    if (!cartItems.length) {
+      container.innerHTML = `<div class="empty-cart"><h2>Your cart is empty</h2><p>Add some Victoria's Secret magic!</p><a href="index.html" style="background:#8C2A3B; color:white; padding:12px 32px; border-radius:60px; text-decoration:none; display:inline-block; margin-top:20px;">Continue Shopping</a></div>`;
+      return;
+    }
+    
+    // Fetch product details for each item to get current stock and price
+    let subtotal = 0;
+    let cartHtml = '';
+    for (let item of cartItems) {
+      const productRef = doc(db, "products", item.id);
+      const productSnap = await getDoc(productRef);
+      if (!productSnap.exists()) continue;
+      const product = productSnap.data();
+      const itemTotal = product.price * item.quantity;
+      subtotal += itemTotal;
+      const priceKsh = (product.price * 145).toLocaleString();
+      const itemTotalKsh = (itemTotal * 145).toLocaleString();
+      cartHtml += `
+        <tr>
+          <td><div class="cart-product"><img class="cart-product-img" src="${product.imageUrl || 'https://placehold.co/200x200/FCE4D4/8C2A3B'}" alt="${product.name}"><strong>${product.name}</strong></div></td>
+          <td>KSh ${priceKsh}</td>
+          <td><div class="quantity-control"><button class="qty-btn" onclick="window.updateQuantity('${item.id}', ${item.quantity - 1})">-</button> <span style="margin:0 12px;">${item.quantity}</span> <button class="qty-btn" onclick="window.updateQuantity('${item.id}', ${item.quantity + 1})">+</button></div></td>
+          <td>KSh ${itemTotalKsh}</td>
+          <td><button class="remove-btn" onclick="window.removeItem('${item.id}')">🗑️</button></td>
+        </tr>
+      `;
+    }
+    
+    const shipping = subtotal >= 34.48 ? 0 : 5.99; // $34.48 = KSh 5,000 approx
+    const tax = subtotal * 0.08;
+    const total = subtotal + shipping + tax;
+    const subtotalKsh = (subtotal * 145).toLocaleString();
+    const shippingKsh = shipping === 0 ? 'FREE' : `KSh ${(shipping * 145).toLocaleString()}`;
+    const taxKsh = (tax * 145).toLocaleString();
+    const totalKsh = (total * 145).toLocaleString();
+    
+    container.innerHTML = `
+      <div class="cart-container">
+        <div>
+          <h2 style="margin-bottom:24px;">Shopping Cart</h2>
+          <table class="cart-table">
+            <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th></th></tr></thead>
+            <tbody>${cartHtml}</tbody>
+          </table>
+        </div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span>KSh ${subtotalKsh}</span></div>
+          <div class="summary-row"><span>Shipping</span><span>${shippingKsh}</span></div>
+          <div class="summary-row"><span>Estimated Tax</span><span>KSh ${taxKsh}</span></div>
+          <div class="summary-total"><span>Total</span><span>KSh ${totalKsh}</span></div>
+          <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout →</button>
+          <a href="index.html" style="display:block; text-align:center; margin-top:16px; color:#a64b3a;">← Continue Shopping</a>
+        </div>
+      </div>
+    `;
+    document.getElementById('checkoutBtn').onclick = () => {
+      if (currentUser) {
+        alert("Checkout page coming soon! Your order will be saved to Firestore.");
+      } else {
+        alert("Please sign in to proceed with checkout.");
+      }
+    };
+  }
+  
+  // Auth UI
+  function updateAuthUI(user) {
+    const authSection = document.getElementById('authSection');
+    if (user) {
+      authSection.innerHTML = `<span style="margin-right:12px;">${user.email}</span> <button class="auth-btn" id="authButton">Logout</button>`;
+      document.getElementById('authButton').onclick = () => signOut(auth);
+    } else {
+      authSection.innerHTML = `<button class="auth-btn" id="authButton">Sign In</button>`;
+      document.getElementById('authButton').onclick = () => {
+        const email = prompt("Email:");
+        const password = prompt("Password:");
+        if (email && password) {
+          signInWithEmailAndPassword(auth, email, password).catch(() => {
+            if (confirm("Create account?")) createUserWithEmailAndPassword(auth, email, password);
+          });
+        }
+      };
+    }
+  }
+  
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    updateAuthUI(user);
+    await fetchCart();
+  });
+  
+  document.getElementById('cartIcon').onclick = () => window.location.href = 'cart.html';
+  
+  // Expose functions globally for inline onclick
+  window.updateQuantity = updateQuantity;
+  window.removeItem = removeItem;
+</script>
+</body>
+</html>

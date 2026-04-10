@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies | DK Secrets – Victoria's Secret Kenya</title>
+  <meta name="description" content="DK Secrets policies – shipping, returns, privacy, and terms of service for Victoria's Secret products in Kenya.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    
+    /* Top Bar & Navbar (same as other pages) */
+    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .logo span { background: none; color: #8C2A3B; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #8C2A3B;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #C75C4A;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .breadcrumb {
+      margin: 24px 0;
+      font-size: 0.85rem;
+      color: #a64b3a;
+    }
+    .breadcrumb a { color: #8C2A3B; text-decoration: none; }
+    
+    /* Policies Content */
+    .policies-container {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      margin: 40px 0;
+      border: 1px solid #f0cdc0;
+    }
+    .policy-section {
+      margin-bottom: 48px;
+    }
+    .policy-section:last-child {
+      margin-bottom: 0;
+    }
+    .policy-section h2 {
+      color: #6B1E2A;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .policy-section h3 {
+      color: #8C2A3B;
+      font-size: 1.3rem;
+      margin: 20px 0 12px;
+    }
+    .policy-section p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+      color: #5a4a3e;
+    }
+    .policy-section ul {
+      margin: 12px 0 16px 32px;
+      list-style: disc;
+    }
+    .policy-section li {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+    .last-updated {
+      font-size: 0.8rem;
+      color: #a64b3a;
+      text-align: right;
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #f0cdc0;
+    }
+    
+    /* Footer & Cart Sidebar (same as other pages) */
+    footer {
+      background: #1f1210;
+      color: #f2cfc4;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col p { margin: 8px 0; }
+    .footer-col a { color: #f2cfc4; text-decoration: none; }
+    .social-links { display: flex; gap: 16px; margin-top: 16px; }
+    .social-links a { font-size: 1.3rem; }
+    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #fff9f7;
+      z-index: 1001;
+      padding: 28px 24px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid #C75C4A;
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #8C2A3B;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 100;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .policies-container { padding: 24px; }
+      .policy-section h2 { font-size: 1.5rem; }
+      .cart-sidebar { width: 85vw; }
+      .whatsapp-float { bottom: 80px; right: 20px; }
+      .whatsapp-float img { width: 45px; height: 45px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
+
+<div class="container">
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> Secrets</span></a>
+    <div class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="policies.html">Policies</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <span>Policies</span>
+  </div>
+  
+  <div class="policies-container">
+    <!-- Shipping Policy -->
+    <div class="policy-section">
+      <h2>📦 Shipping Policy</h2>
+      <p>At DK Secrets, we strive to deliver your authentic Victoria's Secret products as quickly and safely as possible.</p>
+      <h3>Delivery Areas</h3>
+      <p>We deliver to all major cities in Kenya: <strong>Nairobi, Mombasa, Kisumu, Nakuru, Eldoret, Thika, and more</strong>. For remote areas, delivery may take 1–2 extra days.</p>
+      <h3>Delivery Times</h3>
+      <ul>
+        <li><strong>Nairobi:</strong> 1–2 business days</li>
+        <li><strong>Other major cities:</strong> 2–4 business days</li>
+        <li><strong>Remote areas:</strong> 3–6 business days</li>
+      </ul>
+      <h3>Shipping Costs</h3>
+      <ul>
+        <li>Orders over <strong>KSh 5,000</strong> → <strong>FREE delivery</strong></li>
+        <li>Orders below KSh 5,000 → Flat rate <strong>KSh 350</strong></li>
+      </ul>
+      <h3>Order Processing</h3>
+      <p>Orders are processed within 24 hours (excluding weekends and public holidays). You will receive a confirmation email with tracking details once your order ships.</p>
+    </div>
+    
+    <!-- Returns & Refunds -->
+    <div class="policy-section">
+      <h2>🔄 Returns & Refunds</h2>
+      <p>Your satisfaction is our priority. If you are not completely happy with your purchase, we offer a straightforward return policy.</p>
+      <h3>Return Window</h3>
+      <p>You may return <strong>unopened, unused products</strong> within <strong>7 days</strong> of delivery.</p>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Products must be in original packaging, sealed and unused.</li>
+        <li>Fragrance mists and lotions cannot be returned if the seal is broken (for hygiene reasons).</li>
+        <li>Customers are responsible for return shipping costs unless the item was damaged or incorrect.</li>
+      </ul>
+      <h3>Refund Process</h3>
+      <p>Once we receive and inspect your return, we will process your refund within 5–7 business days. Refunds are issued to the original payment method (M-Pesa, card, or bank transfer).</p>
+      <h3>Damaged or Wrong Items</h3>
+      <p>If you receive a damaged or incorrect product, contact us immediately at <strong>hello@dksecrets.co.ke</strong> or WhatsApp <strong>0710346425</strong>. We will arrange a replacement or full refund at no extra cost.</p>
+    </div>
+    
+    <!-- Privacy Policy -->
+    <div class="policy-section">
+      <h2>🔒 Privacy Policy</h2>
+      <p>DK Secrets respects your privacy and is committed to protecting your personal information.</p>
+      <h3>Information We Collect</h3>
+      <ul>
+        <li>Name, email address, phone number, and shipping address (when you place an order).</li>
+        <li>Payment information (processed securely via M-Pesa, Visa, or Mastercard – we do not store full card details).</li>
+        <li>Email address when you subscribe to our newsletter.</li>
+      </ul>
+      <h3>How We Use Your Information</h3>
+      <ul>
+        <li>To process and deliver your orders.</li>
+        <li>To communicate order updates and customer service.</li>
+        <li>To send promotional emails (only if you opted in). You can unsubscribe anytime.</li>
+      </ul>
+      <h3>Data Security</h3>
+      <p>We use industry-standard encryption (SSL) to protect your data. We do not sell or share your personal information with third parties except as necessary to fulfill orders (e.g., courier services).</p>
+      <h3>Your Rights</h3>
+      <p>You may request access to, correction, or deletion of your personal data by contacting us at <strong>hello@dksecrets.co.ke</strong>.</p>
+    </div>
+    
+    <!-- Terms of Service -->
+    <div class="policy-section">
+      <h2>📜 Terms of Service</h2>
+      <p>By using our website and placing an order, you agree to the following terms.</p>
+      <h3>Product Authenticity</h3>
+      <p>All products sold by DK Secrets are <strong>100% authentic Victoria's Secret</strong> sourced from authorized distributors. We do not sell counterfeit or imitation products.</p>
+      <h3>Pricing & Availability</h3>
+      <p>Prices are listed in Kenya Shillings (KSh) and include VAT where applicable. We reserve the right to change prices or discontinue products without notice. In case of pricing error, we will contact you before processing the order.</p>
+      <h3>Order Acceptance</h3>
+      <p>After placing an order, you will receive an email confirmation. We reserve the right to cancel any order due to stock unavailability or suspected fraud.</p>
+      <h3>Governing Law</h3>
+      <p>These terms are governed by the laws of Kenya. Any disputes shall be resolved in Nairobi, Kenya.</p>
+      <h3>Changes to Terms</h3>
+      <p>We may update these terms from time to time. The latest version will always be posted on this page.</p>
+    </div>
+    
+    <div class="last-updated">
+      Last updated: April 10, 2025
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>DK Secrets</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="shop.html">Shop</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="policies.html">Policies</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 710 346 425</p>
+        <p>✉️ hello@dksecrets.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <p>💳 M-Pesa | Visa | Mastercard</p>
+        <p>🔒 100% encrypted</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+</a>
+
+<script>
+  // Cart functions (same as other pages)
+  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('dkCart', JSON.stringify(cart));
+    updateCartUI();
+    updateSidebarCart();
+  }
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').innerText = count;
+  }
+  function updateCartUI() { updateCartCount(); }
+  
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+  document.getElementById('cartIcon').onclick = openCartSidebar;
+  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); if (cart.length > 0) window.location.href = 'checkout.html'; else alert('Cart empty'); });
+  
+  function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
+      return;
+    }
+    let totalKsh = 0;
+    let html = '';
+    for (let item of cart) {
+      totalKsh += (item.price || 0) * 145 * item.quantity;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${item.name || 'Product'}</strong><br>Qty: ${item.quantity} × KSh ${((item.price || 0) * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${totalKsh.toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart = cart.filter(i => i.id !== btn.dataset.id);
+        localStorage.setItem('dkCart', JSON.stringify(cart));
+        updateCartUI();
+        updateSidebarCart();
+      });
+    });
+  }
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backBtn.style.display = 'flex';
+    else backBtn.style.display = 'none';
+  });
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Initialize
+  updateCartUI();
+  updateSidebarCart();
+</script>
+</body>
+</html>

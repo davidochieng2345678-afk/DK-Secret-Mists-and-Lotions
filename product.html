@@ -779,6 +779,80 @@
   document.getElementById('productTabs').style.display = 'block';
   updateCartUI();
   updateSidebarCart();
+
+  // Load reviews from localStorage
+function loadReviews() {
+  const reviews = JSON.parse(localStorage.getItem(`reviews_${product.id}`)) || [];
+  const container = document.getElementById('reviewsList');
+  if (reviews.length === 0) {
+    container.innerHTML = '<p>No reviews yet. Be the first to write one!</p>';
+    return;
+  }
+  container.innerHTML = reviews.map(r => `
+    <div class="review-card">
+      <div class="review-name">${escapeHtml(r.name)}</div>
+      <div class="review-rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+      <div class="review-comment">${escapeHtml(r.comment)}</div>
+      <div style="font-size:0.7rem; color:#a64b3a;">${r.date}</div>
+    </div>
+  `).join('');
+}
+
+// Save a new review
+function saveReview(name, rating, comment) {
+  const reviews = JSON.parse(localStorage.getItem(`reviews_${product.id}`)) || [];
+  reviews.unshift({
+    name: name,
+    rating: rating,
+    comment: comment,
+    date: new Date().toLocaleDateString()
+  });
+  localStorage.setItem(`reviews_${product.id}`, JSON.stringify(reviews));
+  loadReviews();
+}
+
+// Rating star interaction
+let selectedRating = 0;
+function setupRatingStars() {
+  const stars = document.querySelectorAll('#ratingInput span');
+  stars.forEach((star, idx) => {
+    star.addEventListener('click', () => {
+      selectedRating = idx + 1;
+      stars.forEach((s, i) => {
+        s.innerHTML = i < selectedRating ? '★' : '☆';
+        s.classList.toggle('selected', i < selectedRating);
+      });
+    });
+  });
+}
+
+// Submit review
+document.getElementById('submitReviewBtn')?.addEventListener('click', () => {
+  const name = document.getElementById('reviewName').value.trim();
+  const comment = document.getElementById('reviewComment').value.trim();
+  if (!selectedRating) { alert('Please select a rating.'); return; }
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!comment) { alert('Please write a comment.'); return; }
+  saveReview(name, selectedRating, comment);
+  document.getElementById('reviewName').value = '';
+  document.getElementById('reviewComment').value = '';
+  selectedRating = 0;
+  document.querySelectorAll('#ratingInput span').forEach(s => { s.innerHTML = '☆'; s.classList.remove('selected'); });
+});
+
+// Helper to escape HTML
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Call loadReviews() and setupRatingStars() inside your product initialization
+loadReviews();
+setupRatingStars();
 </script>
 </body>
 </html>

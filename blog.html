@@ -3,20 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DK World Kenya Blog | Victoria's Secret Tips & Trends</title>
-  <meta name="description" content="Read the latest beauty tips, Victoria's Secret fragrance guides, and skincare advice. Stay updated with DK World Kenya blog.">
-  <meta name="keywords" content="Victoria's Secret blog, body mist tips, fragrance layering, beauty Kenya, DK World blog">
-  <link rel="canonical" href="https://dkworld-kenya.web.app/blog.html">
-  <meta property="og:title" content="DK World Kenya Blog - Beauty & Fragrance Insights">
-  <meta property="og:description" content="Expert tips on Victoria's Secret mists, lotions, and skincare routines.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>Blog | DK Secrets – Victoria's Secret Kenya</title>
+  <meta name="description" content="Read the latest beauty tips, Victoria's Secret fragrance guides, and skincare advice from DK Secrets Kenya.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
     
+    /* Top Bar & Navbar (same as other pages) */
+    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -36,27 +33,65 @@
       text-decoration: none;
     }
     .logo span { background: none; color: #8C2A3B; }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a { text-decoration: none; font-weight: 600; color: #8C2A3B; }
-    .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
-    .cart-count {
-      position: absolute; top: -8px; right: -12px; background: #C75C4A;
-      color: white; font-size: 0.7rem; border-radius: 50%;
-      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
     }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #8C2A3B;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #C75C4A;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .breadcrumb {
+      margin: 24px 0;
+      font-size: 0.85rem;
+      color: #a64b3a;
+    }
+    .breadcrumb a { color: #8C2A3B; text-decoration: none; }
     
+    /* Blog Header */
     .blog-header {
       text-align: center;
-      margin: 48px 0 32px;
+      margin: 40px 0 30px;
     }
-    .blog-header h1 { font-size: 2.5rem; color: #6B1E2A; margin-bottom: 12px; }
-    .blog-header p { color: #a64b3a; max-width: 600px; margin: 0 auto; }
+    .blog-header h1 {
+      font-size: 2.5rem;
+      color: #6B1E2A;
+      font-family: 'Playfair Display', serif;
+    }
+    .blog-header p {
+      color: #a64b3a;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
     
+    /* Blog Grid */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 40px;
-      margin: 40px 0;
+      margin: 40px 0 60px;
     }
     .blog-card {
       background: white;
@@ -68,9 +103,18 @@
       color: inherit;
       display: block;
     }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .blog-img { width: 100%; height: 220px; object-fit: cover; }
-    .blog-content { padding: 20px; }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .blog-content {
+      padding: 20px;
+    }
     .blog-category {
       display: inline-block;
       background: #f9e0e4;
@@ -81,32 +125,30 @@
       color: #8C2A3B;
       margin-bottom: 12px;
     }
-    .blog-title { font-size: 1.3rem; font-weight: 700; color: #6B1E2A; margin-bottom: 12px; }
-    .blog-excerpt { color: #5a4a3e; line-height: 1.5; margin-bottom: 16px; }
-    .blog-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: #a64b3a; }
-    
-    .pagination {
+    .blog-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #6B1E2A;
+      margin-bottom: 12px;
+    }
+    .blog-excerpt {
+      color: #5a4a3e;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .blog-meta {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 40px 0 60px;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #a64b3a;
     }
-    .page-btn {
-      background: white;
-      border: 1px solid #f0cdc0;
-      padding: 8px 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .page-btn.active { background: #8C2A3B; color: white; border-color: #8C2A3B; }
-    .page-btn:hover { background: #f9e0e4; }
     
+    /* Sidebar (optional) */
     .sidebar {
-      margin-top: 40px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
+      margin: 20px 0 60px;
     }
     .sidebar-widget {
       background: white;
@@ -114,10 +156,21 @@
       padding: 24px;
       border: 1px solid #f0cdc0;
     }
-    .sidebar-widget h3 { color: #6B1E2A; margin-bottom: 16px; }
-    .category-list { list-style: none; }
-    .category-list li { padding: 8px 0; border-bottom: 1px solid #f0cdc0; }
-    .category-list a { text-decoration: none; color: #8C2A3B; }
+    .sidebar-widget h3 {
+      color: #6B1E2A;
+      margin-bottom: 16px;
+    }
+    .category-list {
+      list-style: none;
+    }
+    .category-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .category-list a {
+      text-decoration: none;
+      color: #8C2A3B;
+    }
     .search-input {
       width: 100%;
       padding: 12px;
@@ -126,137 +179,131 @@
       font-size: 0.9rem;
     }
     
-    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; }
-    .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
-    .copyright { text-align: center; margin-top: 32px; font-size: 0.8rem; }
-    @media (max-width: 768px) { .container { padding: 0 20px; } }
-    /* Navbar styles (add if missing) */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  flex-wrap: wrap;
-  gap: 20px;
-  border-bottom: 2px solid #f0cdc0;
-}
-.logo {
-  font-size: 2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #8C2A3B, #C75C4A);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-decoration: none;
-}
-.logo span { background: none; color: #8C2A3B; }
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.nav-links a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #8C2A3B;
-  cursor: pointer;
-}
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.search-input {
-  padding: 8px 16px;
-  border-radius: 40px;
-  border: 1px solid #f0cdc0;
-  font-size: 0.85rem;
-  width: 180px;
-  transition: 0.2s;
-}
-.search-input:focus {
-  outline: none;
-  border-color: #C75C4A;
-  width: 220px;
-}
-.search-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #8C2A3B;
-}
-.cart-icon {
-  position: relative;
-  cursor: pointer;
-  font-size: 1.6rem;
-}
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -12px;
-  background: #C75C4A;
-  color: white;
-  font-size: 0.7rem;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.auth-btn {
-  background: #8C2A3B;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.user-email {
-  font-size: 0.8rem;
-  color: #6B1E2A;
-  margin-right: 12px;
-}
-@media (max-width: 768px) {
-  .search-input { width: 120px; }
-  .search-input:focus { width: 150px; }
-  .nav-links { gap: 12px; }
-}
+    /* Footer & Cart Sidebar (same as other pages) */
+    footer {
+      background: #1f1210;
+      color: #f2cfc4;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col p { margin: 8px 0; }
+    .footer-col a { color: #f2cfc4; text-decoration: none; }
+    .social-links { display: flex; gap: 16px; margin-top: 16px; }
+    .social-links a { font-size: 1.3rem; }
+    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #fff9f7;
+      z-index: 1001;
+      padding: 28px 24px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid #C75C4A;
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #8C2A3B;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 100;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .cart-sidebar { width: 85vw; }
+      .whatsapp-float { bottom: 80px; right: 20px; }
+      .whatsapp-float img { width: 45px; height: 45px; }
+    }
   </style>
 </head>
 <body>
+
+<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
+
 <div class="container">
   <div class="navbar">
     <a href="index.html" class="logo">DK<span> Secrets</span></a>
     <div class="nav-links">
-      <a href="index.html#products">Shop</a>
-      <a href="index.html#products">Mists</a>
-      <a href="index.html#products">Lotions</a>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-        <button id="searchBtn" class="search-btn">🔍</button>
-      </div>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="policies.html">Policies</a>
       <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
-      <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
     </div>
   </div>
 </div>
 
 <div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <span>Blog</span>
+  </div>
   <div class="blog-header">
     <h1>Beauty & Fragrance Blog</h1>
     <p>Tips, trends, and guides for Victoria's Secret lovers in Kenya</p>
   </div>
   
-  <div class="blog-grid" id="blogGrid">
+  <div id="blogGrid" class="blog-grid">
     <div class="loading">Loading articles...</div>
   </div>
-  
-  <div class="pagination" id="pagination"></div>
   
   <div class="sidebar">
     <div class="sidebar-widget">
@@ -277,120 +324,189 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div><h4>DK World Kenya</h4><p>Official Reseller</p></div>
-      <div><p>📍 Nairobi, Kenya</p><p>📞 +254 700 000 000</p></div>
-      <div><p>🔒 Secure Checkout | M-Pesa | Visa</p></div>
+      <div class="footer-col">
+        <h4>DK Secrets</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="shop.html">Shop</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="policies.html">Policies</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 710 346 425</p>
+        <p>✉️ hello@dksecrets.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <p>💳 M-Pesa | Visa | Mastercard</p>
+        <p>🔒 100% encrypted</p>
+      </div>
     </div>
-    <div class="copyright"><p>© 2025 DK World Kenya - Authentic Victoria's Secret</p></div>
+    <div class="copyright">
+      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
+    </div>
   </div>
 </footer>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, query, orderBy, limit, startAfter, where } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
-    authDomain: "dkworld-kenya.firebaseapp.com",
-    projectId: "dkworld-kenya",
-    storageBucket: "dkworld-kenya.firebasestorage.app",
-    messagingSenderId: "263537160242",
-    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  
-  let currentUser = null;
-  let allPosts = [];
-  let filteredPosts = [];
-  let currentPage = 1;
-  const postsPerPage = 6;
-  
-  async function loadBlogPosts() {
-    const q = query(collection(db, "blog_posts"), orderBy("publishedAt", "desc"));
-    const querySnapshot = await getDocs(q);
-    allPosts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    filteredPosts = [...allPosts];
-    renderBlog();
-    renderCategories();
-    renderTags();
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+</a>
+
+<script>
+  // ==================== BLOG POSTS DATABASE ====================
+  // 👇 EDIT YOUR BLOG POSTS HERE – ADD, REMOVE, OR CHANGE
+  const blogPosts = [
+    {
+      id: "post1",
+      title: "How to Layer Victoria's Secret Mists and Lotions",
+      excerpt: "Learn the art of fragrance layering to make your scent last all day. Combine your favorite mist with matching lotion for a signature smell.",
+      content: "<p>Fragrance layering is the secret to a long-lasting, unique scent. Start with a matching body lotion – it hydrates and creates a base. Then spray the mist on pulse points: wrists, neck, behind ears. Reapply mist throughout the day for a fresh boost. For best results, use a single scent family (e.g., Bombshell mist + Bombshell lotion).</p>",
+      category: "Beauty Tips",
+      tags: ["layering", "fragrance", "tips"],
+      imageUrl: "https://placehold.co/600x400/FCE4D4/8C2A3B?text=Layering+Guide",
+      author: "DK Team",
+      date: "2025-03-15"
+    },
+    {
+      id: "post2",
+      title: "Top 5 Victoria's Secret Scents for Kenyan Weather",
+      excerpt: "Discover which fragrances work best in Kenya's warm climate. Light, fresh, and long-lasting options.",
+      content: "<p>In warmer climates, choose lighter, fresher scents. Bombshell (passionfruit, peony) is perfect for day wear. Love Spell (cherry blossom, peach) is ideal for evenings. Pure Seduction (plum, freesia) is a year-round favorite. Avoid heavy, musky scents that can become overpowering in heat.</p>",
+      category: "Fragrance Guide",
+      tags: ["kenya", "weather", "summer"],
+      imageUrl: "https://placehold.co/600x400/FCE4D4/8C2A3B?text=Kenya+Favorites",
+      author: "DK Team",
+      date: "2025-03-10"
+    },
+    {
+      id: "post3",
+      title: "The Benefits of Shea Butter in Victoria's Secret Lotions",
+      excerpt: "Why shea butter is a game-changer for your skin. Deep hydration and nourishment.",
+      content: "<p>Shea butter is rich in vitamins A and E, providing deep moisture without clogging pores. It helps soothe dry skin and improve elasticity. Victoria's Secret Bare Vanilla Lotion uses shea butter to leave skin soft and fragrant for 24 hours.</p>",
+      category: "Skincare",
+      tags: ["shea butter", "hydration", "lotion"],
+      imageUrl: "https://placehold.co/600x400/FCE4D4/8C2A3B?text=Shea+Butter",
+      author: "DK Team",
+      date: "2025-03-05"
+    }
+  ];
+  // ===============================================================
+
+  // Cart (same as other pages)
+  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+
+  // Helper: save, update, sidebar functions (same as before)
+  function saveCart() {
+    localStorage.setItem('dkCart', JSON.stringify(cart));
+    updateCartUI();
+    updateSidebarCart();
   }
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').innerText = count;
+  }
+  function updateCartUI() { updateCartCount(); }
+  
+  // Cart sidebar
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+  document.getElementById('cartIcon').onclick = openCartSidebar;
+  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); if (cart.length > 0) window.location.href = 'checkout.html'; else alert('Cart empty'); });
+  
+  function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
+      return;
+    }
+    let totalKsh = 0;
+    let html = '';
+    for (let item of cart) {
+      totalKsh += (item.price || 0) * 145 * item.quantity;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${item.name || 'Product'}</strong><br>Qty: ${item.quantity} × KSh ${((item.price || 0) * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${totalKsh.toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart = cart.filter(i => i.id !== btn.dataset.id);
+        localStorage.setItem('dkCart', JSON.stringify(cart));
+        updateCartUI();
+        updateSidebarCart();
+      });
+    });
+  }
+
+  // Blog rendering and filtering
+  let allPosts = [...blogPosts];
+  let filteredPosts = [...allPosts];
   
   function renderBlog() {
-    const start = (currentPage - 1) * postsPerPage;
-    const end = start + postsPerPage;
-    const pagePosts = filteredPosts.slice(start, end);
     const grid = document.getElementById('blogGrid');
-    
-    if (pagePosts.length === 0) {
+    if (filteredPosts.length === 0) {
       grid.innerHTML = '<div class="loading">No posts found.</div>';
       return;
     }
-    
-    grid.innerHTML = pagePosts.map(post => `
+    grid.innerHTML = filteredPosts.map(post => `
       <a href="blog-post.html?id=${post.id}" class="blog-card">
-        <img class="blog-img" src="${post.featuredImage || 'https://placehold.co/600x400/FCE4D4/8C2A3B?text=Blog'}" alt="${post.title}">
+        <img class="blog-img" src="${post.imageUrl}" alt="${post.title}">
         <div class="blog-content">
-          <span class="blog-category">${post.category || 'Beauty'}</span>
+          <span class="blog-category">${post.category}</span>
           <h3 class="blog-title">${post.title}</h3>
-          <p class="blog-excerpt">${post.excerpt || post.content.substring(0, 120)}...</p>
+          <p class="blog-excerpt">${post.excerpt}</p>
           <div class="blog-meta">
-            <span>📅 ${new Date(post.publishedAt?.toDate()).toLocaleDateString()}</span>
-            <span>👤 ${post.author || 'DK Team'}</span>
+            <span>📅 ${post.date}</span>
+            <span>👤 ${post.author}</span>
           </div>
         </div>
       </a>
     `).join('');
-    
-    renderPagination();
-  }
-  
-  function renderPagination() {
-    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-    const paginationDiv = document.getElementById('pagination');
-    if (totalPages <= 1) {
-      paginationDiv.innerHTML = '';
-      return;
-    }
-    let html = '';
-    for (let i = 1; i <= totalPages; i++) {
-      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
-    }
-    paginationDiv.innerHTML = html;
-    document.querySelectorAll('.page-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentPage = parseInt(btn.dataset.page);
-        renderBlog();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
   }
   
   function renderCategories() {
-    const categories = [...new Set(allPosts.map(p => p.category).filter(Boolean))];
+    const categories = [...new Set(allPosts.map(p => p.category))];
     const categoryList = document.getElementById('categoryList');
-    categoryList.innerHTML = categories.map(cat => `<li><a href="#" data-category="${cat}">📌 ${cat}</a></li>`).join('');
+    categoryList.innerHTML = '<li><a href="#" data-category="all">📌 All Posts</a></li>' +
+      categories.map(cat => `<li><a href="#" data-category="${cat}">📌 ${cat}</a></li>`).join('');
     document.querySelectorAll('[data-category]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const cat = link.dataset.category;
         filteredPosts = cat === 'all' ? [...allPosts] : allPosts.filter(p => p.category === cat);
-        currentPage = 1;
         renderBlog();
       });
-    });
-    // Add "All" option
-    const allLink = document.createElement('li');
-    allLink.innerHTML = '<a href="#" data-category="all">📌 All Posts</a>';
-    categoryList.prepend(allLink);
-    allLink.querySelector('a').addEventListener('click', (e) => {
-      e.preventDefault();
-      filteredPosts = [...allPosts];
-      currentPage = 1;
-      renderBlog();
     });
   }
   
@@ -406,40 +522,40 @@
         e.preventDefault();
         const tag = link.dataset.tag;
         filteredPosts = allPosts.filter(p => p.tags && p.tags.includes(tag));
-        currentPage = 1;
         renderBlog();
       });
     });
   }
   
-  // Search functionality
-  document.getElementById('searchInput')?.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    filteredPosts = allPosts.filter(p => p.title.toLowerCase().includes(term) || p.content.toLowerCase().includes(term));
-    currentPage = 1;
+  function filterBySearch() {
+    const term = document.getElementById('searchInput').value.toLowerCase();
+    filteredPosts = allPosts.filter(p => p.title.toLowerCase().includes(term) || p.excerpt.toLowerCase().includes(term));
     renderBlog();
-  });
-  
-  // Auth UI (simple)
-  function updateAuthUI(user) {
-    const authSection = document.getElementById('authSection');
-    if (user) {
-      authSection.innerHTML = `<span style="margin-right:12px;">${user.email}</span> <button class="auth-btn" id="authButton" style="background:#8C2A3B; color:white; padding:8px 20px; border-radius:40px; border:none;">Logout</button>`;
-      document.getElementById('authButton').onclick = () => signOut(auth);
-    } else {
-      authSection.innerHTML = `<button class="auth-btn" id="authButton" style="background:#8C2A3B; color:white; padding:8px 20px; border-radius:40px; border:none;">Sign In</button>`;
-      document.getElementById('authButton').onclick = () => alert("Please sign in from homepage.");
-    }
   }
   
-  onAuthStateChanged(auth, (user) => {
-    currentUser = user;
-    updateAuthUI(user);
+  document.getElementById('searchInput').addEventListener('input', filterBySearch);
+  
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backBtn.style.display = 'flex';
+    else backBtn.style.display = 'none';
   });
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   
-  document.getElementById('cartIcon').onclick = () => window.location.href = 'cart.html';
-  
-  loadBlogPosts();
+  // Initialize
+  renderBlog();
+  renderCategories();
+  renderTags();
+  updateCartUI();
+  updateSidebarCart();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+

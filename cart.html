@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart | DK Secrets</title>
+  <title>Shopping Cart | DK Secrets – Victoria's Secret Kenya</title>
+  <meta name="description" content="Review your DK Secrets shopping cart. Update quantities, remove items, and proceed to secure checkout.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fffaf7; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    
+    /* Top Bar & Navbar */
+    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -28,340 +33,601 @@
       text-decoration: none;
     }
     .logo span { background: none; color: #8C2A3B; }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
-    .cart-icon { position: relative; cursor: pointer; font-size: 1.6rem; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #8C2A3B;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
     .cart-count {
-      position: absolute; top: -8px; right: -12px; background: #C75C4A;
-      color: white; font-size: 0.7rem; border-radius: 50%;
-      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #C75C4A;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .auth-btn {
-      background: #8C2A3B; color: white; padding: 8px 20px; border-radius: 40px;
-      border: none; cursor: pointer;
+    .breadcrumb {
+      margin: 24px 0;
+      font-size: 0.85rem;
+      color: #a64b3a;
     }
+    .breadcrumb a {
+      color: #8C2A3B;
+      text-decoration: none;
+    }
+    
+    /* Cart Layout */
     .cart-container {
       display: grid;
       grid-template-columns: 1fr 380px;
       gap: 48px;
       margin: 40px 0 80px;
     }
-    .cart-table { width: 100%; border-collapse: collapse; }
-    .cart-table th { text-align: left; padding: 16px 8px; border-bottom: 2px solid #f0cdc0; color: #6B1E2A; }
-    .cart-table td { padding: 20px 8px; border-bottom: 1px solid #f0cdc0; vertical-align: middle; }
-    .cart-product { display: flex; align-items: center; gap: 16px; }
-    .cart-product-img { width: 80px; height: 80px; border-radius: 16px; object-fit: cover; }
+    .cart-items-section h1 {
+      font-size: 2rem;
+      color: #6B1E2A;
+      margin-bottom: 24px;
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cart-table th {
+      text-align: left;
+      padding: 16px 8px;
+      border-bottom: 2px solid #f0cdc0;
+      color: #6B1E2A;
+      font-weight: 600;
+    }
+    .cart-table td {
+      padding: 20px 8px;
+      border-bottom: 1px solid #f0cdc0;
+      vertical-align: middle;
+    }
+    .cart-product {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cart-product-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+    .cart-product-name {
+      font-weight: 700;
+      color: #6B1E2A;
+      text-decoration: none;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .qty-btn {
-      width: 32px; height: 32px; border-radius: 50%; border: 1px solid #f0cdc0;
-      background: white; cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #f0cdc0;
+      background: white;
+      cursor: pointer;
+      color: #8C2A3B;
+      font-weight: bold;
     }
-    .remove-btn { background: none; border: none; color: #c75c4a; cursor: pointer; font-size: 1.2rem; }
+    .cart-qty {
+      width: 50px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #c75c4a;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .cart-price, .cart-subtotal {
+      font-weight: 700;
+      color: #C75C4A;
+    }
+    
+    /* Cart Summary */
     .cart-summary {
-      background: white; border-radius: 28px; padding: 28px; border: 1px solid #f0cdc0;
-      position: sticky; top: 20px;
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid #f0cdc0;
+      position: sticky;
+      top: 20px;
     }
-    .summary-row { display: flex; justify-content: space-between; padding: 12px 0; }
+    .cart-summary h3 {
+      font-size: 1.5rem;
+      color: #6B1E2A;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
     .summary-total {
-      display: flex; justify-content: space-between; padding: 16px 0;
-      border-top: 2px solid #f0cdc0; font-weight: 800; font-size: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 2px solid #f0cdc0;
+      margin-top: 16px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #6B1E2A;
     }
     .checkout-btn {
-      background: #8C2A3B; color: white; width: 100%; padding: 16px;
-      border: none; border-radius: 60px; font-size: 1.1rem; font-weight: 700;
-      cursor: pointer; margin-top: 24px;
+      background: #8C2A3B;
+      color: white;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: 0.2s;
     }
-    .coupon-section { margin: 16px 0; }
-    .coupon-input-group { display: flex; gap: 12px; }
-    .coupon-input { flex: 1; padding: 12px; border-radius: 60px; border: 1px solid #f0cdc0; }
-    .coupon-btn { background: #f0cdc0; color: #6B1E2A; border: none; padding: 12px 24px; border-radius: 60px; cursor: pointer; }
-    .shipping-progress { margin: 20px 0; }
-    .progress-bar-bg { background: #f0cdc0; border-radius: 20px; height: 8px; overflow: hidden; }
-    .progress-bar-fill { background: #C75C4A; height: 100%; width: 0%; transition: width 0.3s; }
-    .empty-cart { text-align: center; padding: 80px; background: white; border-radius: 28px; }
-    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; text-align: center; }
-    @media (max-width: 968px) { .cart-container { grid-template-columns: 1fr; } }
-    /* Navbar styles (add if missing) */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  flex-wrap: wrap;
-  gap: 20px;
-  border-bottom: 2px solid #f0cdc0;
-}
-.logo {
-  font-size: 2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #8C2A3B, #C75C4A);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-decoration: none;
-}
-.logo span { background: none; color: #8C2A3B; }
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.nav-links a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #8C2A3B;
-  cursor: pointer;
-}
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.search-input {
-  padding: 8px 16px;
-  border-radius: 40px;
-  border: 1px solid #f0cdc0;
-  font-size: 0.85rem;
-  width: 180px;
-  transition: 0.2s;
-}
-.search-input:focus {
-  outline: none;
-  border-color: #C75C4A;
-  width: 220px;
-}
-.search-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #8C2A3B;
-}
-.cart-icon {
-  position: relative;
-  cursor: pointer;
-  font-size: 1.6rem;
-}
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -12px;
-  background: #C75C4A;
-  color: white;
-  font-size: 0.7rem;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.auth-btn {
-  background: #8C2A3B;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.user-email {
-  font-size: 0.8rem;
-  color: #6B1E2A;
-  margin-right: 12px;
-}
-@media (max-width: 768px) {
-  .search-input { width: 120px; }
-  .search-input:focus { width: 150px; }
-  .nav-links { gap: 12px; }
-}
+    .checkout-btn:hover { background: #C75C4A; transform: scale(1.02); }
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: #a64b3a;
+      text-decoration: none;
+    }
+    .empty-cart {
+      text-align: center;
+      padding: 80px 20px;
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #f0cdc0;
+    }
+    .empty-cart h2 { color: #6B1E2A; margin-bottom: 16px; }
+    .empty-cart p { color: #a64b3a; margin-bottom: 24px; }
+    
+    /* Footer & Cart Sidebar (same as other pages) */
+    footer {
+      background: #1f1210;
+      color: #f2cfc4;
+      padding: 48px 0 24px;
+      margin-top: 64px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col p { margin: 8px 0; }
+    .footer-col a { color: #f2cfc4; text-decoration: none; }
+    .footer-col a:hover { text-decoration: underline; }
+    .social-links { display: flex; gap: 16px; margin-top: 16px; }
+    .social-links a { font-size: 1.3rem; }
+    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #fff9f7;
+      z-index: 1001;
+      padding: 28px 24px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid #C75C4A;
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #8C2A3B;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 100;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 968px) {
+      .cart-container { grid-template-columns: 1fr; }
+      .cart-table th:nth-child(3), .cart-table td:nth-child(3) { display: none; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .cart-product { flex-direction: column; text-align: center; }
+      .cart-sidebar { width: 85vw; }
+      .whatsapp-float { bottom: 80px; right: 20px; }
+      .whatsapp-float img { width: 45px; height: 45px; }
+    }
   </style>
 </head>
 <body>
-    <div class="container">
+
+<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
+
+<div class="container">
   <div class="navbar">
     <a href="index.html" class="logo">DK<span> Secrets</span></a>
     <div class="nav-links">
-      <a href="index.html#products">Shop</a>
-      <a href="index.html#products">Mists</a>
-      <a href="index.html#products">Lotions</a>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-        <button id="searchBtn" class="search-btn">🔍</button>
-      </div>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="policies.html">Policies</a>
       <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
-      <div id="authSection"><button class="auth-btn" id="authButton">Sign In</button></div>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div id="cartContent"><div class="empty-cart">Loading your cart...</div></div>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <span>Shopping Cart</span>
+  </div>
+  <div id="cartContent">
+    <div class="empty-cart">Loading your cart...</div>
+  </div>
 </div>
 
-<footer><div class="container"><p>© 2025 DK Secrets - Authentic Victoria's Secret</p></div></footer>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>DK Secrets</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="shop.html">Shop</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="policies.html">Policies</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 710 346 425</p>
+        <p>✉️ hello@dksecrets.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <p>💳 M-Pesa | Visa | Mastercard</p>
+        <p>🔒 100% encrypted</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
+    </div>
+  </div>
+</footer>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyDnMnyROtTSjvAswLAYAmpJrFf0wZEaYIM",
-    authDomain: "dk-secret-mists-and-lotions.firebaseapp.com",
-    projectId: "dk-secret-mists-and-lotions",
-    storageBucket: "dk-secret-mists-and-lotions.firebasestorage.app",
-    messagingSenderId: "153687274132",
-    appId: "1:153687274132:web:e9de13864e001be927ba81"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  
-  let currentUser = null;
-  let cartItems = [];
-  let appliedCoupon = null;
-  let discountAmount = 0;
-  
-  async function fetchCart() {
-    if (currentUser) {
-      const cartRef = doc(db, "carts", currentUser.uid);
-      const cartDoc = await getDoc(cartRef);
-      cartItems = cartDoc.exists() ? cartDoc.data().items : [];
-    } else {
-      cartItems = JSON.parse(localStorage.getItem('dkCart')) || [];
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+</a>
+
+<script>
+  // ==================== PRODUCTS DATABASE (same as shop.html and product.html) ====================
+  const products = [
+    {
+      id: "prod1",
+      name: "Bombshell Mist",
+      price: 29.99,
+      stock: 25,
+      category: "mist",
+      imageUrl: "https://placehold.co/600x600/FCE4D4/8C2A3B?text=Bombshell+Mist",
+      description: "Energizing blend of passionfruit, peony & vanilla"
+    },
+    {
+      id: "prod2",
+      name: "Bare Vanilla Lotion",
+      price: 32.99,
+      stock: 18,
+      category: "lotion",
+      imageUrl: "https://placehold.co/600x600/FCE4D4/8C2A3B?text=Bare+Vanilla+Lotion",
+      description: "Whipped shea butter & warm vanilla bean"
+    },
+    {
+      id: "prod3",
+      name: "Love Spell Duo",
+      price: 54.99,
+      stock: 12,
+      category: "bundle",
+      imageUrl: "https://placehold.co/600x600/FCE4D4/8C2A3B?text=Love+Spell+Duo",
+      description: "Cherry blossom & peach. Mist + lotion set"
+    },
+    {
+      id: "prod4",
+      name: "Pure Seduction Mist",
+      price: 28.99,
+      stock: 30,
+      category: "mist",
+      imageUrl: "https://placehold.co/600x600/FCE4D4/8C2A3B?text=Pure+Seduction+Mist",
+      description: "Plum & freesia — sweet & flirtatious"
     }
-    renderCart();
-    updateCartCount();
+  ];
+  // ===========================================================================================
+
+  // Cart (localStorage)
+  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('dkCart', JSON.stringify(cart));
+    updateCartUI();
+    updateSidebarCart();
+    renderCartPage();
   }
-  
-  async function updateCartCount() {
-    let count = cartItems.reduce((s,i) => s + i.quantity, 0);
+
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     document.getElementById('cartCount').innerText = count;
   }
-  
-  async function saveCart() {
-    if (currentUser) {
-      await setDoc(doc(db, "carts", currentUser.uid), { items: cartItems, updatedAt: new Date() }, { merge: true });
-    } else {
-      localStorage.setItem('dkCart', JSON.stringify(cartItems));
-    }
-    renderCart();
-    updateCartCount();
+
+  function updateCartUI() { updateCartCount(); }
+
+  // Helper: get product by id
+  function getProductById(id) {
+    return products.find(p => p.id === id);
   }
-  
-  async function updateQuantity(productId, newQty) {
-    const index = cartItems.findIndex(i => i.id === productId);
+
+  // Update quantity
+  function updateQuantity(productId, newQty) {
+    const index = cart.findIndex(item => item.id === productId);
     if (index !== -1) {
-      if (newQty <= 0) cartItems.splice(index, 1);
-      else cartItems[index].quantity = newQty;
-      await saveCart();
+      const product = getProductById(productId);
+      if (newQty <= 0) {
+        cart.splice(index, 1);
+      } else {
+        if (newQty > product.stock) {
+          alert(`Only ${product.stock} left in stock.`);
+          newQty = product.stock;
+        }
+        cart[index].quantity = newQty;
+      }
+      saveCart();
     }
   }
-  
-  async function removeItem(productId) {
-    cartItems = cartItems.filter(i => i.id !== productId);
-    await saveCart();
+
+  function removeItem(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
   }
-  
-  async function applyCoupon(code) {
-    const couponRef = doc(db, "coupons", code.toUpperCase());
-    const couponSnap = await getDoc(couponRef);
-    if (!couponSnap.exists()) { document.getElementById('couponMessage').innerHTML = '❌ Invalid coupon'; return false; }
-    const coupon = couponSnap.data();
-    if (coupon.expiresAt && coupon.expiresAt.toDate() < new Date()) { document.getElementById('couponMessage').innerHTML = '❌ Expired'; return false; }
-    if (coupon.usageLimit && coupon.usedCount >= coupon.usageLimit) { document.getElementById('couponMessage').innerHTML = '❌ Usage limit reached'; return false; }
-    discountAmount = coupon.type === 'percentage' ? subtotal * (coupon.value / 100) : coupon.value;
-    appliedCoupon = coupon;
-    document.getElementById('couponMessage').innerHTML = `✅ Applied! Saved KSh ${(discountAmount * 145).toLocaleString()}`;
-    return true;
-  }
-  
-  async function renderCart() {
+
+  // Render cart page
+  async function renderCartPage() {
     const container = document.getElementById('cartContent');
-    if (!cartItems.length) {
-      container.innerHTML = `<div class="empty-cart"><h2>Your cart is empty</h2><p>Add some Victoria's Secret magic!</p><a href="index.html" style="background:#8C2A3B; color:white; padding:12px 32px; border-radius:60px; text-decoration:none; display:inline-block; margin-top:20px;">Continue Shopping</a></div>`;
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="empty-cart">
+          <h2>Your cart is empty</h2>
+          <p>Add some Victoria's Secret magic to your bag!</p>
+          <a href="shop.html" class="btn-primary" style="background:#8C2A3B; color:white; padding:12px 32px; border-radius:60px; text-decoration:none;">Continue Shopping →</a>
+        </div>
+      `;
       return;
     }
-    let subtotal = 0;
-    let cartHtml = '';
-    for (let item of cartItems) {
-      const productRef = doc(db, "products", item.id);
-      const prodSnap = await getDoc(productRef);
-      if (!prodSnap.exists()) continue;
-      const prod = prodSnap.data();
-      const itemTotal = prod.price * item.quantity;
-      subtotal += itemTotal;
-      const priceKsh = (prod.price * 145).toLocaleString();
-      const itemTotalKsh = (itemTotal * 145).toLocaleString();
-      cartHtml += `<tr><td><div class="cart-product"><img class="cart-product-img" src="${prod.imageUrl || 'https://placehold.co/200x200/FCE4D4/8C2A3B'}" alt="${prod.name}"><strong>${prod.name}</strong></div></td><td>KSh ${priceKsh}</td><td><div class="quantity-control"><button class="qty-btn" onclick="window.updateQuantity('${item.id}', ${item.quantity - 1})">-</button> <span style="margin:0 12px;">${item.quantity}</span> <button class="qty-btn" onclick="window.updateQuantity('${item.id}', ${item.quantity + 1})">+</button></div></td><td>KSh ${itemTotalKsh}</td><td><button class="remove-btn" onclick="window.removeItem('${item.id}')">🗑️</button></td></tr>`;
+
+    let subtotalUSD = 0;
+    let cartRowsHtml = '';
+    for (let item of cart) {
+      const product = getProductById(item.id);
+      if (!product) continue;
+      const itemTotalUSD = product.price * item.quantity;
+      subtotalUSD += itemTotalUSD;
+      const priceKsh = (product.price * 145).toLocaleString();
+      const itemTotalKsh = (itemTotalUSD * 145).toLocaleString();
+      cartRowsHtml += `
+        <tr>
+          <td>
+            <div class="cart-product">
+              <img class="cart-product-img" src="${product.imageUrl}" alt="${product.name}">
+              <a href="product.html?id=${product.id}" class="cart-product-name">${product.name}</a>
+            </div>
+          </td>
+          <td class="cart-price">KSh ${priceKsh}</td>
+          <td>
+            <div class="quantity-control">
+              <button class="qty-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+              <span class="cart-qty">${item.quantity}</span>
+              <button class="qty-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+            </div>
+          </td>
+          <td class="cart-subtotal">KSh ${itemTotalKsh}</td>
+          <td><button class="remove-btn" onclick="removeItem('${item.id}')">🗑️</button></td>
+        </tr>
+      `;
     }
-    let discountedSubtotal = subtotal - discountAmount;
-    if (discountedSubtotal < 0) discountedSubtotal = 0;
-    const freeShippingThreshold = 34.48; // $34.48 = KSh 5,000
-    const shipping = discountedSubtotal >= freeShippingThreshold ? 0 : 5.99;
-    const tax = discountedSubtotal * 0.08;
-    const total = discountedSubtotal + shipping + tax;
-    const subtotalKsh = (subtotal * 145).toLocaleString();
-    const shippingKsh = shipping === 0 ? 'FREE' : `KSh ${(shipping * 145).toLocaleString()}`;
-    const taxKsh = (tax * 145).toLocaleString();
-    const totalKsh = (total * 145).toLocaleString();
-    const remainingForFree = Math.max(0, freeShippingThreshold - discountedSubtotal);
-    const percent = Math.min(100, (discountedSubtotal / freeShippingThreshold) * 100);
-    
+
+    const freeShippingThresholdUSD = 34.48; // approx KSh 5,000
+    const shippingUSD = subtotalUSD >= freeShippingThresholdUSD ? 0 : 5.99;
+    const taxUSD = subtotalUSD * 0.08;
+    const totalUSD = subtotalUSD + shippingUSD + taxUSD;
+
+    const subtotalKsh = (subtotalUSD * 145).toLocaleString();
+    const shippingKsh = shippingUSD === 0 ? 'FREE' : `KSh ${(shippingUSD * 145).toLocaleString()}`;
+    const taxKsh = (taxUSD * 145).toLocaleString();
+    const totalKsh = (totalUSD * 145).toLocaleString();
+
     container.innerHTML = `
       <div class="cart-container">
-        <div><h2 style="margin-bottom:24px;">Shopping Cart</h2>
-          <table class="cart-table"><thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th></th></tr></thead><tbody>${cartHtml}</tbody></table>
+        <div class="cart-items-section">
+          <h1>Shopping Cart</h1>
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cartRowsHtml}
+            </tbody>
+          </table>
         </div>
         <div class="cart-summary">
           <h3>Order Summary</h3>
-          <div class="coupon-section"><div class="coupon-input-group"><input type="text" id="couponCode" placeholder="Promo code" class="coupon-input"><button id="applyCouponBtn" class="coupon-btn">Apply</button></div><div id="couponMessage" class="coupon-message"></div></div>
-          <div class="shipping-progress"><div class="progress-text">${remainingForFree > 0 ? `Add KSh ${(remainingForFree * 145).toLocaleString()} for FREE shipping` : '🎉 You qualify for FREE shipping!'}</div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${percent}%"></div></div></div>
           <div class="summary-row"><span>Subtotal</span><span>KSh ${subtotalKsh}</span></div>
-          ${discountAmount > 0 ? `<div class="summary-row"><span>Discount</span><span>- KSh ${(discountAmount * 145).toLocaleString()}</span></div>` : ''}
           <div class="summary-row"><span>Shipping</span><span>${shippingKsh}</span></div>
-          <div class="summary-row"><span>Tax (8%)</span><span>KSh ${taxKsh}</span></div>
+          <div class="summary-row"><span>Estimated Tax (8%)</span><span>KSh ${taxKsh}</span></div>
           <div class="summary-total"><span>Total</span><span>KSh ${totalKsh}</span></div>
-          <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout →</button>
-          <a href="index.html" style="display:block; text-align:center; margin-top:16px; color:#a64b3a;">← Continue Shopping</a>
+          <button class="checkout-btn" id="proceedCheckoutBtn">Proceed to Checkout →</button>
+          <a href="shop.html" class="continue-shopping">← Continue Shopping</a>
         </div>
       </div>
     `;
-    document.getElementById('applyCouponBtn')?.addEventListener('click', async () => {
-      const code = document.getElementById('couponCode').value.trim();
-      if (code) await applyCoupon(code);
-      renderCart();
-    });
-    document.getElementById('checkoutBtn').onclick = () => { if (currentUser) window.location.href = 'checkout.html'; else alert("Please sign in to checkout."); };
+    document.getElementById('proceedCheckoutBtn').onclick = () => {
+      if (cart.length > 0) {
+        window.location.href = 'checkout.html';
+      } else {
+        alert('Your cart is empty.');
+      }
+    };
   }
-  
-  function updateAuthUI(user) {
-    const authSection = document.getElementById('authSection');
-    if (user) {
-      authSection.innerHTML = `<span style="margin-right:12px;">${user.email}</span> <button class="auth-btn" id="authButton">Logout</button>`;
-      document.getElementById('authButton').onclick = () => signOut(auth);
-    } else {
-      authSection.innerHTML = `<button class="auth-btn" id="authButton">Sign In</button>`;
-      document.getElementById('authButton').onclick = () => {
-        const email = prompt("Email:"); const password = prompt("Password:");
-        if (email && password) signInWithEmailAndPassword(auth, email, password).catch(() => {
-          if (confirm("Create account?")) createUserWithEmailAndPassword(auth, email, password);
-        });
-      };
+
+  // Cart sidebar (shared across pages)
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+  document.getElementById('cartIcon').onclick = openCartSidebar;
+  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); if (cart.length > 0) window.location.href = 'checkout.html'; else alert('Cart empty'); });
+
+  function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
+      return;
     }
+    let totalUSD = 0;
+    let html = '';
+    for (let item of cart) {
+      const prod = getProductById(item.id);
+      if (!prod) continue;
+      const itemTotalUSD = prod.price * item.quantity;
+      totalUSD += itemTotalUSD;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${prod.name}</strong><br>Qty: ${item.quantity} × KSh ${(prod.price * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${(totalUSD * 145).toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        cart = cart.filter(i => i.id !== id);
+        saveCart();
+        updateSidebarCart();
+      });
+    });
   }
-  
-  onAuthStateChanged(auth, async (user) => {
-    currentUser = user;
-    updateAuthUI(user);
-    await fetchCart();
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backBtn.style.display = 'flex';
+    else backBtn.style.display = 'none';
   });
-  document.getElementById('cartIcon').onclick = () => window.location.href = 'cart.html';
-  
-  window.updateQuantity = updateQuantity;
-  window.removeItem = removeItem;
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Initial load
+  updateCartUI();
+  renderCartPage();
+  updateSidebarCart();
 </script>
 </body>
 </html>

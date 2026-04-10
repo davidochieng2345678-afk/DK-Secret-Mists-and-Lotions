@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">Blog Post | DK World Kenya</title>
-  <meta name="description" id="metaDescription" content="Read the latest beauty tips and Victoria's Secret fragrance guides.">
-  <link rel="canonical" id="canonicalUrl" href="https://dkworld-kenya.web.app/blog-post.html">
-  <meta property="og:title" id="ogTitle">
-  <meta property="og:description" id="ogDescription">
-  <meta property="og:image" id="ogImage">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>Blog Post | DK Secrets – Victoria's Secret Kenya</title>
+  <meta name="description" content="Read full article from DK Secrets blog.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
     
+    /* Top Bar & Navbar (same as other pages) */
+    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
       border-bottom: 2px solid #f0cdc0;
-      margin-bottom: 40px;
     }
     .logo {
       font-size: 2rem;
@@ -33,10 +32,48 @@
       color: transparent;
       text-decoration: none;
     }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a { text-decoration: none; font-weight: 600; color: #8C2A3B; }
+    .logo span { background: none; color: #8C2A3B; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #8C2A3B;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #C75C4A;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .breadcrumb {
+      margin: 24px 0;
+      font-size: 0.85rem;
+      color: #a64b3a;
+    }
+    .breadcrumb a { color: #8C2A3B; text-decoration: none; }
     
-    .post-header { margin-bottom: 32px; }
+    /* Post Content */
+    .post-header {
+      margin-bottom: 32px;
+    }
     .post-category {
       display: inline-block;
       background: #f9e0e4;
@@ -46,7 +83,11 @@
       color: #8C2A3B;
       margin-bottom: 16px;
     }
-    .post-title { font-size: 2.5rem; color: #6B1E2A; margin-bottom: 16px; }
+    .post-title {
+      font-size: 2.5rem;
+      color: #6B1E2A;
+      margin-bottom: 16px;
+    }
     .post-meta {
       display: flex;
       gap: 24px;
@@ -73,8 +114,14 @@
       flex-wrap: wrap;
       margin: 40px 0;
     }
-    .tag { background: #f0cdc0; padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; }
+    .tag {
+      background: #f0cdc0;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+    }
     
+    /* Related Posts */
     .related-posts {
       margin: 60px 0;
       border-top: 1px solid #f0cdc0;
@@ -97,224 +144,343 @@
     .related-img { width: 100%; height: 150px; object-fit: cover; }
     .related-card h4 { padding: 12px; color: #6B1E2A; }
     
-    .comments-section {
-      margin: 40px 0;
-      padding: 32px;
-      background: white;
-      border-radius: 28px;
-      border: 1px solid #f0cdc0;
+    /* Footer & Cart Sidebar (same as other pages) */
+    footer {
+      background: #1f1210;
+      color: #f2cfc4;
+      padding: 48px 0 24px;
+      margin-top: 64px;
     }
-    .comment-form textarea {
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col p { margin: 8px 0; }
+    .footer-col a { color: #f2cfc4; text-decoration: none; }
+    .social-links { display: flex; gap: 16px; margin-top: 16px; }
+    .social-links a { font-size: 1.3rem; }
+    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid #f0cdc0;
-      margin: 12px 0;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
     }
-    .comment-btn {
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #fff9f7;
+      z-index: 1001;
+      padding: 28px 24px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid #C75C4A;
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
       background: #8C2A3B;
       color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       border: none;
-      padding: 10px 24px;
-      border-radius: 60px;
       cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
     }
-    .comment {
-      border-bottom: 1px solid #f0cdc0;
-      padding: 16px 0;
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 100;
+      animation: pulse 1.5s infinite;
     }
-    footer { background: #1f1210; color: #f2cfc4; padding: 48px 0 24px; margin-top: 64px; text-align: center; }
-    @media (max-width: 768px) { .container { padding: 0 20px; } }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .post-title { font-size: 1.8rem; }
+      .cart-sidebar { width: 85vw; }
+      .whatsapp-float { bottom: 80px; right: 20px; }
+      .whatsapp-float img { width: 45px; height: 45px; }
+    }
   </style>
 </head>
 <body>
 
+<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
+
 <div class="container">
   <div class="navbar">
-    <a href="index.html" class="logo">DK<span> World Kenya</span></a>
+    <a href="index.html" class="logo">DK<span> Secrets</span></a>
     <div class="nav-links">
-      <a href="index.html">Shop</a>
+      <a href="shop.html">Shop</a>
       <a href="blog.html">Blog</a>
+      <a href="policies.html">Policies</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
     </div>
   </div>
-  
+</div>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="blog.html">Blog</a> / <span id="postTitleBreadcrumb">Post</span>
+  </div>
   <div id="postContent">
     <div class="loading">Loading article...</div>
+  </div>
+  <div class="related-posts" id="relatedSection" style="display: none;">
+    <h3>📖 You May Also Like</h3>
+    <div class="related-grid" id="relatedGrid"></div>
   </div>
 </div>
 
 <footer>
   <div class="container">
-    <p>© 2025 DK World Kenya - Authentic Victoria's Secret</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>DK Secrets</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="shop.html">Shop</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="policies.html">Policies</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 710 346 425</p>
+        <p>✉️ hello@dksecrets.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <p>💳 M-Pesa | Visa | Mastercard</p>
+        <p>🔒 100% encrypted</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
+    </div>
   </div>
 </footer>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyABCVM1b9FEdXlJWf1SoL7dwQL1EXPXwgA",
-    authDomain: "dkworld-kenya.firebaseapp.com",
-    projectId: "dkworld-kenya",
-    storageBucket: "dkworld-kenya.firebasestorage.app",
-    messagingSenderId: "263537160242",
-    appId: "1:263537160242:web:85f756e7a0ea9fcf584c2b"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-  
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+</a>
+
+<script>
+  // ==================== BLOG POSTS DATABASE (same as blog.html) ====================
+  const blogPosts = [
+    {
+      id: "post1",
+      title: "How to Layer Victoria's Secret Mists and Lotions",
+      excerpt: "Learn the art of fragrance layering to make your scent last all day.",
+      content: "<p>Fragrance layering is the secret to a long-lasting, unique scent. Start with a matching body lotion – it hydrates and creates a base. Then spray the mist on pulse points: wrists, neck, behind ears. Reapply mist throughout the day for a fresh boost. For best results, use a single scent family (e.g., Bombshell mist + Bombshell lotion).</p>",
+      category: "Beauty Tips",
+      tags: ["layering", "fragrance", "tips"],
+      imageUrl: "https://placehold.co/800x400/FCE4D4/8C2A3B?text=Layering+Guide",
+      author: "DK Team",
+      date: "2025-03-15"
+    },
+    {
+      id: "post2",
+      title: "Top 5 Victoria's Secret Scents for Kenyan Weather",
+      excerpt: "Discover which fragrances work best in Kenya's warm climate.",
+      content: "<p>In warmer climates, choose lighter, fresher scents. Bombshell (passionfruit, peony) is perfect for day wear. Love Spell (cherry blossom, peach) is ideal for evenings. Pure Seduction (plum, freesia) is a year-round favorite. Avoid heavy, musky scents that can become overpowering in heat.</p>",
+      category: "Fragrance Guide",
+      tags: ["kenya", "weather", "summer"],
+      imageUrl: "https://placehold.co/800x400/FCE4D4/8C2A3B?text=Kenya+Favorites",
+      author: "DK Team",
+      date: "2025-03-10"
+    },
+    {
+      id: "post3",
+      title: "The Benefits of Shea Butter in Victoria's Secret Lotions",
+      excerpt: "Why shea butter is a game-changer for your skin.",
+      content: "<p>Shea butter is rich in vitamins A and E, providing deep moisture without clogging pores. It helps soothe dry skin and improve elasticity. Victoria's Secret Bare Vanilla Lotion uses shea butter to leave skin soft and fragrant for 24 hours.</p>",
+      category: "Skincare",
+      tags: ["shea butter", "hydration", "lotion"],
+      imageUrl: "https://placehold.co/800x400/FCE4D4/8C2A3B?text=Shea+Butter",
+      author: "DK Team",
+      date: "2025-03-05"
+    }
+  ];
+  // ===============================================================================
+
+  // Get post ID from URL
   const urlParams = new URLSearchParams(window.location.search);
   const postId = urlParams.get('id');
-  let currentUser = null;
-  
-  async function loadPost() {
-    if (!postId) {
-      document.getElementById('postContent').innerHTML = '<div class="loading">Post not found.</div>';
-      return;
-    }
-    const postRef = doc(db, "blog_posts", postId);
-    const postSnap = await getDoc(postRef);
-    if (!postSnap.exists()) {
-      document.getElementById('postContent').innerHTML = '<div class="loading">Post not found.</div>';
-      return;
-    }
-    const post = postSnap.data();
-    renderPost(post);
-    loadComments();
-    loadRelatedPosts(post.category, postId);
-    updateMetaTags(post);
+  let post = blogPosts.find(p => p.id === postId);
+  if (!post) post = blogPosts[0]; // fallback
+
+  // Cart functions (same as other pages)
+  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('dkCart', JSON.stringify(cart));
+    updateCartUI();
+    updateSidebarCart();
   }
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').innerText = count;
+  }
+  function updateCartUI() { updateCartCount(); }
   
-  function renderPost(post) {
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
+  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+  document.getElementById('cartIcon').onclick = openCartSidebar;
+  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); if (cart.length > 0) window.location.href = 'checkout.html'; else alert('Cart empty'); });
+  
+  function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
+      return;
+    }
+    let totalKsh = 0;
+    let html = '';
+    for (let item of cart) {
+      totalKsh += (item.price || 0) * 145 * item.quantity;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${item.name || 'Product'}</strong><br>Qty: ${item.quantity} × KSh ${((item.price || 0) * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${totalKsh.toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart = cart.filter(i => i.id !== btn.dataset.id);
+        localStorage.setItem('dkCart', JSON.stringify(cart));
+        updateCartUI();
+        updateSidebarCart();
+      });
+    });
+  }
+
+  // Render post
+  function renderPost() {
     const container = document.getElementById('postContent');
     container.innerHTML = `
       <div class="post-header">
-        <span class="post-category">${post.category || 'Beauty'}</span>
+        <span class="post-category">${post.category}</span>
         <h1 class="post-title">${post.title}</h1>
         <div class="post-meta">
-          <span>📅 ${new Date(post.publishedAt?.toDate()).toLocaleDateString()}</span>
-          <span>✍️ ${post.author || 'DK Team'}</span>
-          <span>⏱️ ${post.readTime || '5 min read'}</span>
+          <span>📅 ${post.date}</span>
+          <span>✍️ ${post.author}</span>
         </div>
       </div>
-      <img class="featured-image" src="${post.featuredImage || 'https://placehold.co/800x400/FCE4D4/8C2A3B?text=Blog'}" alt="${post.title}">
+      <img class="featured-image" src="${post.imageUrl}" alt="${post.title}">
       <div class="post-content">${post.content}</div>
       <div class="tags">
         ${(post.tags || []).map(tag => `<span class="tag">#${tag}</span>`).join('')}
       </div>
-      <div class="comments-section">
-        <h3>💬 Comments (${post.commentCount || 0})</h3>
-        <div id="commentsList"></div>
-        <div id="commentFormArea"></div>
-      </div>
-      <div class="related-posts">
-        <h3>📖 You May Also Like</h3>
-        <div class="related-grid" id="relatedGrid"></div>
-      </div>
     `;
-    
-    // Comment form if logged in
-    if (currentUser) {
-      document.getElementById('commentFormArea').innerHTML = `
-        <form id="commentForm">
-          <textarea id="commentText" rows="3" placeholder="Share your thoughts..." required></textarea>
-          <button type="submit" class="comment-btn">Post Comment</button>
-        </form>
-      `;
-      document.getElementById('commentForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const text = document.getElementById('commentText').value;
-        if (!text) return;
-        await addDoc(collection(db, "blog_comments"), {
-          postId: postId,
-          userId: currentUser.uid,
-          userName: currentUser.email,
-          comment: text,
-          createdAt: serverTimestamp()
-        });
-        document.getElementById('commentText').value = '';
-        loadComments();
-        // Increment comment count in post
-        const newCount = (post.commentCount || 0) + 1;
-        await setDoc(postRef, { commentCount: newCount }, { merge: true });
-      });
-    } else {
-      document.getElementById('commentFormArea').innerHTML = `<p><a href="index.html">Sign in</a> to leave a comment.</p>`;
-    }
+    document.getElementById('postTitleBreadcrumb').innerText = post.title;
   }
-  
-  async function loadComments() {
-    const q = query(collection(db, "blog_comments"), where("postId", "==", postId), orderBy("createdAt", "desc"));
-    const querySnapshot = await getDocs(q);
-    const commentsDiv = document.getElementById('commentsList');
-    if (querySnapshot.empty) {
-      commentsDiv.innerHTML = '<p>No comments yet. Be the first!</p>';
-      return;
-    }
-    commentsDiv.innerHTML = querySnapshot.docs.map(doc => `
-      <div class="comment">
-        <strong>${doc.data().userName}</strong> <span style="font-size:0.7rem; color:#a64b3a;">${new Date(doc.data().createdAt?.toDate()).toLocaleString()}</span>
-        <p>${doc.data().comment}</p>
-      </div>
-    `).join('');
-  }
-  
-  async function loadRelatedPosts(category, currentId) {
-    const q = query(collection(db, "blog_posts"), where("category", "==", category), where("__name__", "!=", currentId), orderBy("publishedAt", "desc"), limit(3));
-    const querySnapshot = await getDocs(q);
+
+  // Related posts (exclude current)
+  function renderRelated() {
+    const related = blogPosts.filter(p => p.id !== post.id).slice(0, 3);
+    const section = document.getElementById('relatedSection');
     const grid = document.getElementById('relatedGrid');
-    if (querySnapshot.empty) {
-      grid.innerHTML = '<p>No related posts found.</p>';
+    if (related.length === 0) {
+      section.style.display = 'none';
       return;
     }
-    grid.innerHTML = querySnapshot.docs.map(doc => `
-      <a href="blog-post.html?id=${doc.id}" class="related-card">
-        <img class="related-img" src="${doc.data().featuredImage || 'https://placehold.co/400x200'}" alt="${doc.data().title}">
-        <h4>${doc.data().title}</h4>
+    section.style.display = 'block';
+    grid.innerHTML = related.map(p => `
+      <a href="blog-post.html?id=${p.id}" class="related-card">
+        <img class="related-img" src="${p.imageUrl}" alt="${p.title}">
+        <h4>${p.title}</h4>
       </a>
     `).join('');
   }
-  
-  function updateMetaTags(post) {
-    document.title = `${post.title} | DK World Kenya Blog`;
-    document.getElementById('pageTitle').innerText = document.title;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', post.excerpt || post.content.substring(0, 150));
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', post.title);
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', post.excerpt || '');
-    const ogImage = document.querySelector('meta[property="og:image"]');
-    if (ogImage) ogImage.setAttribute('content', post.featuredImage || '');
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', `https://dkworld-kenya.web.app/blog-post.html?id=${postId}`);
-    
-    // Add JSON-LD schema for Article
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": post.title,
-      "image": post.featuredImage,
-      "datePublished": post.publishedAt?.toDate().toISOString(),
-      "author": { "@type": "Person", "name": post.author || "DK Team" },
-      "publisher": { "@type": "Organization", "name": "DK World Kenya", "logo": "https://dkworld-kenya.web.app/logo.png" }
-    });
-    document.head.appendChild(script);
-  }
-  
-  onAuthStateChanged(auth, (user) => {
-    currentUser = user;
-    if (postId) loadPost();
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backBtn.style.display = 'flex';
+    else backBtn.style.display = 'none';
   });
-  
-  // Fallback if no auth needed for reading post
-  if (!postId) loadPost();
+  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Initialize
+  renderPost();
+  renderRelated();
+  updateCartUI();
+  updateSidebarCart();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+

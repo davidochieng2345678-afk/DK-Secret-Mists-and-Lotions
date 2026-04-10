@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation | DK Secrets – Victoria's Secret Kenya</title>
+  <meta name="description" content="Thank you for your order. View your order confirmation and details from DK Secrets Kenya.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Top Bar & Navbar */
+    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid #f0cdc0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .logo span { background: none; color: #8C2A3B; }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #8C2A3B;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #C75C4A;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Confirmation Card */
+    .confirmation-card {
+      background: white;
+      border-radius: 32px;
+      padding: 48px;
+      text-align: center;
+      border: 1px solid #f0cdc0;
+      margin: 40px 0;
+    }
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #6B1E2A;
+      margin-bottom: 16px;
+    }
+    .order-number {
+      background: #f9e0e4;
+      padding: 8px 24px;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 20px 0;
+      font-weight: 600;
+    }
+    .order-details {
+      text-align: left;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid #f0cdc0;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+    .items-list {
+      margin: 16px 0;
+      padding-left: 20px;
+    }
+    .items-list li {
+      margin: 8px 0;
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .btn-primary {
+      background: #8C2A3B;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-primary:hover {
+      background: #C75C4A;
+      transform: scale(1.02);
+    }
+    .btn-secondary {
+      background: white;
+      color: #8C2A3B;
+      border: 1px solid #8C2A3B;
+      padding: 12px 32px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .btn-secondary:hover {
+      background: #f9e0e4;
+    }
+    .loading {
+      text-align: center;
+      padding: 60px;
+      font-size: 1.2rem;
+      color: #a64b3a;
+    }
+    .error {
+      text-align: center;
+      padding: 60px;
+      color: #c75c4a;
+    }
+    
+    /* Footer & Cart Sidebar (simplified, same style) */
+    footer {
+      background: #1f1210;
+      color: #f2cfc4;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col p { margin: 8px 0; }
+    .footer-col a { color: #f2cfc4; text-decoration: none; }
+    .social-links { display: flex; gap: 16px; margin-top: 16px; }
+    .social-links a { font-size: 1.3rem; }
+    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: #fff9f7;
+      z-index: 1001;
+      padding: 28px 24px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid #C75C4A;
+    }
+    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
+    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
+    .cart-item-sidebar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0cdc0;
+    }
+    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
+    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
+    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #8C2A3B;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 100;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      .confirmation-card { padding: 24px; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .cart-sidebar { width: 85vw; }
+      .whatsapp-float { bottom: 80px; right: 20px; }
+      .whatsapp-float img { width: 45px; height: 45px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
+
+<div class="container">
+  <div class="navbar">
+    <a href="index.html" class="logo">DK<span> Secrets</span></a>
+    <div class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="policies.html">Policies</a>
+      <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="confirmationContent">
+    <div class="loading">Loading order details...</div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>DK Secrets</h4>
+        <p>Official Reseller of Victoria's Secret</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><strong>Quick Links</strong></p>
+        <p><a href="shop.html">Shop</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="policies.html">Policies</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Customer Care</strong></p>
+        <p>📍 Nairobi, Kenya</p>
+        <p>📞 +254 710 346 425</p>
+        <p>✉️ hello@dksecrets.co.ke</p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Payment Methods</strong></p>
+        <p>💳 M-Pesa | Visa | Mastercard</p>
+        <p>🔒 100% encrypted</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Sidebar (same as other pages) -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <button class="close-cart" id="closeCartBtn">&times;</button>
+  <h3>Your Shopping Bag</h3>
+  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
+  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
+  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+</a>
+
+<script>
+  // Get order ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get('id');
+
+  // Retrieve orders from localStorage
+  let orders = JSON.parse(localStorage.getItem('dkOrders')) || [];
+  let order = orders.find(o => o.orderId === orderId);
+
+  // Cart state (for sidebar consistency)
+  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
+
+  // Render confirmation page
+  function renderConfirmation() {
+    const container = document.getElementById('confirmationContent');
+    if (!order) {
+      container.innerHTML = `
+        <div class="error">
+          <h2>Order not found</h2>
+          <p>We couldn't locate your order. Please contact us if you have any questions.</p>
+          <div class="btn-group" style="margin-top: 20px;">
+            <a href="index.html" class="btn-primary">Return to Home</a>
+            <a href="shop.html" class="btn-secondary">Continue Shopping</a>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    const orderDate = new Date(order.date).toLocaleString();
+    const totalKsh = (order.totalUSD * 145).toLocaleString();
+    const subtotalKsh = (order.subtotalUSD * 145).toLocaleString();
+    const shippingKsh = order.shippingUSD === 0 ? 'FREE' : `KSh ${(order.shippingUSD * 145).toLocaleString()}`;
+    const taxKsh = (order.taxUSD * 145).toLocaleString();
+
+    // Build items list HTML
+    let itemsHtml = '<ul class="items-list">';
+    for (let item of order.items) {
+      itemsHtml += `<li>${item.name} x ${item.quantity} – KSh ${item.priceKsh.toLocaleString()}</li>`;
+    }
+    itemsHtml += '</ul>';
+
+    // Build shipping address
+    const addr = order.shippingAddress;
+    const addressHtml = `${addr.address}, ${addr.city}, ${addr.county}${addr.postalCode ? ', ' + addr.postalCode : ''}`;
+
+    container.innerHTML = `
+      <div class="confirmation-card">
+        <div class="success-icon">🎉</div>
+        <h1>Thank You for Your Order!</h1>
+        <p>Your order has been received and is being processed.</p>
+        <div class="order-number">Order #${order.orderId}</div>
+        <div class="order-details">
+          <div class="detail-row"><strong>Order Date</strong><span>${orderDate}</span></div>
+          <div class="detail-row"><strong>Payment Method</strong><span>${order.paymentMethod.toUpperCase()}</span></div>
+          <div class="detail-row"><strong>Order Status</strong><span>${order.status.toUpperCase()}</span></div>
+          <div class="detail-row"><strong>Shipping Address</strong><span>${addressHtml}</span></div>
+          <div class="detail-row"><strong>Items</strong><span>${itemsHtml}</span></div>
+          <div class="detail-row"><strong>Subtotal</strong><span>KSh ${subtotalKsh}</span></div>
+          <div class="detail-row"><strong>Shipping</strong><span>${shippingKsh}</span></div>
+          <div class="detail-row"><strong>Tax (8%)</strong><span>KSh ${taxKsh}</span></div>
+          <div class="detail-row"><strong>Total</strong><span>KSh ${totalKsh}</span></div>
+        </div>
+        <div class="btn-group">
+          <a href="shop.html" class="btn-primary">Continue Shopping</a>
+          <a href="index.html" class="btn-secondary">Return to Home</a>
+        </div>
+        <p style="margin-top: 32px; font-size: 0.85rem; color: #a64b3a;">A confirmation email has been sent to ${order.customer.email}</p>
+      </div>
+    `;
+  }
+
+  // Cart sidebar functions (same as other pages)
+  let cartSidebar, cartOverlay, closeCartBtn;
+  function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountSpan = document.getElementById('cartCount');
+    if (cartCountSpan) cartCountSpan.innerText = count;
+  }
+  function updateCartUI() { updateCartCount(); }
+  function openCartSidebar() { if (cartSidebar) cartSidebar.style.right = '0px'; if (cartOverlay) cartOverlay.style.visibility = 'visible'; if (cartOverlay) cartOverlay.style.opacity = '1'; }
+  function closeCartSidebar() { if (cartSidebar) cartSidebar.style.right = '-420px'; if (cartOverlay) cartOverlay.style.visibility = 'hidden'; if (cartOverlay) cartOverlay.style.opacity = '0'; }
+  function updateSidebarCart() {
+    const container = document.getElementById('cartItemsList');
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
+      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
+      return;
+    }
+    // Simplified: we don't have the full products array here, but we stored name & price in cart items.
+    let totalKsh = 0;
+    let html = '';
+    for (let item of cart) {
+      const itemTotalKsh = (item.price || 0) * 145 * item.quantity;
+      totalKsh += itemTotalKsh;
+      html += `<div class="cart-item-sidebar">
+        <div><strong>${item.name || 'Product'}</strong><br>Qty: ${item.quantity} × KSh ${((item.price || 0) * 145).toLocaleString()}</div>
+        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
+      </div>`;
+    }
+    container.innerHTML = html;
+    document.getElementById('cartTotalPrice').innerText = `KSh ${totalKsh.toLocaleString()}`;
+    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        cart = cart.filter(i => i.id !== id);
+        localStorage.setItem('dkCart', JSON.stringify(cart));
+        updateCartUI();
+        updateSidebarCart();
+      });
+    });
+  }
+
+  function initSidebar() {
+    cartSidebar = document.getElementById('cartSidebar');
+    cartOverlay = document.getElementById('cartOverlay');
+    closeCartBtn = document.getElementById('closeCartBtn');
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+    document.getElementById('cartIcon').onclick = openCartSidebar;
+    document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); if (cart.length > 0) window.location.href = 'checkout.html'; else alert('Cart empty'); });
+  }
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  if (backBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backBtn.style.display = 'flex';
+      else backBtn.style.display = 'none';
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // Initialize
+  initSidebar();
+  updateCartUI();
+  updateSidebarCart();
+  renderConfirmation();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

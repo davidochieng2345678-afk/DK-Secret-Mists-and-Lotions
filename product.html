@@ -8,6 +8,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    /* Breadcrumb Styling */
+.breadcrumb-nav {
+  padding: 16px 0;
+  font-size: 0.9rem;
+  background-color: #fef5f0; /* A soft background to match your theme */
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px; /* Adjust padding to match your container */
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: "›"; /* You can use ">" or "/" as a separator */
+  margin: 0 8px;
+  color: #a64b3a;
+}
+
+.breadcrumb-item a {
+  color: #8C2A3B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: #C75C4A;
+  text-decoration: underline;
+}
+
+.breadcrumb-item[aria-current="page"] {
+  color: #6B1E2A;
+  font-weight: 500;
+}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }

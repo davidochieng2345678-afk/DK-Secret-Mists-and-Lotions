@@ -17,7 +17,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Victoria's Secret Velvet Petals Shimmer – Buy in Kenya">
   <meta property="og:description" content="Sweet almond & coconut body mist with radiant shimmer. 100% authentic. Free delivery Nairobi.">
-  <meta property="og:image" content="https://dksecretmists.shop/images/products/velvet-petals-shimmer-bottle.jpg">
+  <meta property="og:image" content="https://dksecretmists.shop/images/velvet-petals-shimmer.jpg">
   <meta property="og:url" content="https://dksecretmists.shop/velvet-petals-shimmer.html">
   <meta property="og:type" content="product">
   <meta property="og:locale" content="en_KE">
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Velvet Petals Shimmer – Victoria's Secret Kenya">
   <meta name="twitter:description" content="Sweet almond & coconut shimmer mist. Free delivery.">
-  <meta name="twitter:image" content="https://dksecretmists.shop/images/products/velvet-petals-shimmer-bottle.jpg">
+  <meta name="twitter:image" content="https://dksecretmists.shop/images/velvet-petals-shimmer.jpg">
   
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,29 +34,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Product Schema (single, clean version) -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Victoria's Secret Velvet Petals Shimmer Body Mist",
-  "description": "A sweet, shimmering body mist with notes of almond glaze and coconut milk. Leaves a radiant glow on skin.",
-  "brand": "Victoria's Secret",
-  "image": "https://dksecretmists.shop/images/velvet-petals-shimmer.jpg",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://dksecretmists.shop/velvet-petals-shimmer.html",
-    "priceCurrency": "KES",
-    "price": "4800",
-    "availability": "https://schema.org/InStock"
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Victoria's Secret Velvet Petals Shimmer Body Mist",
+    "description": "Sweet almond and coconut milk fragrance with subtle shimmer. 100% authentic Victoria's Secret body mist.",
+    "brand": "Victoria's Secret",
+    "sku": "VS-VPS-01",
+    "image": "https://dksecretmists.shop/images/velvet-petals-shimmer.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "4800",
+      "priceCurrency": "KES",
+      "availability": "https://schema.org/InStock",
+      "url": "https://dksecretmists.shop/velvet-petals-shimmer.html"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "187"
+    }
   }
-}
-</script>
+  </script>
+  
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DK Secrets",
+    "url": "https://dksecretmists.shop/",
+    "telephone": "+254710346425",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    },
+    "priceRange": "KES 1500 - KES 6000"
+  }
+  </script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; scroll-behavior: smooth; }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
     
-    /* Top Bar & Navbar (same as your existing) */
     .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
     .navbar {
       display: flex;
@@ -105,7 +129,6 @@
     .search-input { padding: 8px 16px; border-radius: 40px; border: 1px solid #f0cdc0; width: 180px; }
     .search-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #8C2A3B; }
     
-    /* Breadcrumb */
     .breadcrumb-nav {
       padding: 16px 0;
       font-size: 0.9rem;
@@ -132,7 +155,6 @@
     .breadcrumb-item a:hover { text-decoration: underline; }
     .breadcrumb-item[aria-current="page"] { color: #6B1E2A; font-weight: 500; }
     
-    /* Product Detail Grid */
     .product-detail {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -243,7 +265,6 @@
       color: #8C2A3B;
     }
     
-    /* Tabs & Long Content */
     .product-tabs {
       margin: 60px 0;
       border-top: 1px solid #f0cdc0;
@@ -273,7 +294,6 @@
     .tab-content { display: none; line-height: 1.8; color: #5a4a3e; }
     .tab-content.active { display: block; }
     
-    /* Semantic Images */
     .semantic-figure {
       margin: 30px 0;
       text-align: center;
@@ -289,12 +309,6 @@
       margin-top: 8px;
     }
     
-    /* Long‑tail keywords section (hidden from users but readable by crawlers) */
-    .longtail-keywords {
-      display: none;
-    }
-    
-    /* Footer & Cart Sidebar (simplified) */
     footer {
       background: #1f1210;
       color: #f2cfc4;
@@ -350,94 +364,6 @@
       .whatsapp-float img { width: 45px; height: 45px; }
     }
   </style>
-  
-  <!-- Product & Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Victoria's Secret Velvet Petals Shimmer Body Mist",
-    "description": "Sweet almond and coconut milk fragrance with subtle shimmer. 100% authentic Victoria's Secret body mist.",
-    "brand": "Victoria's Secret",
-    "sku": "VS-VPS-01",
-    "image": "https://dksecretmists.shop/images/products/velvet-petals-shimmer-bottle.jpg",
-    "offers": {
-      "@type": "Offer",
-      "price": "32.99",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://dksecretmists.shop/velvet-petals-shimmer.html",
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "KES"
-        },
-        "shippingDestination": {
-          "@type": "Country",
-          "name": "Kenya"
-        }
-      }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "187"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "DK Secrets",
-    "url": "https://dksecretmists.shop/",
-    "telephone": "+254710346425",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Nairobi",
-      "addressCountry": "KE"
-    },
-    "priceRange": "KES 1500 - KES 6000"
-  }
-  </script>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Victoria's Secret Velvet Petals Shimmer Body Mist",
-  "description": "A sweet, shimmering body mist with notes of almond glaze and coconut milk. Leaves a radiant glow on skin.",
-  "brand": "Victoria's Secret",
-  "image": "https://dksecretmists.shop/images/velvet-petals-shimmer.jpg",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://dksecretmists.shop/velvet-petals-shimmer.html",
-    "priceCurrency": "KES",
-    "price": "4800",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Victoria's Secret Velvet Petals Shimmer Body Mist",
-  "description": "A sweet, shimmering body mist with notes of almond glaze and lush blooms. Leaves a radiant glow on skin.",
-  "brand": "Victoria's Secret",
-  "sku": "VS-VPS-001",
-  "image": "https://dksecretmists.shop/images/velvet-petals-shimmer.jpg",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://dksecretmists.shop/velvet-petals-shimmer.html",
-    "priceCurrency": "KES",
-    "price": "4500",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
 </head>
 <body>
 
@@ -471,16 +397,17 @@
 
 <div class="container">
   <div class="product-detail">
-    <!-- GALLERY WITH SEMANTIC IMAGES -->
+    <!-- GALLERY – Replace the placeholder image URLs with your own real images -->
+    <!-- Instructions: Upload your photos to /images/ (e.g., /images/velvet-petals-front.jpg) and update the src below -->
     <div class="product-gallery">
       <div class="main-image-container">
-        <img class="main-image" id="mainImage" src="https://placehold.co/800x1000/8C2A3B/white?text=Velvet+Petals+Shimmer+Bottle" alt="Victoria's Secret Velvet Petals Shimmer body mist bottle – front view with shimmer particles" loading="lazy">
+        <img class="main-image" id="mainImage" src="https://picsum.photos/id/103/800/1000" alt="Victoria's Secret Velvet Petals Shimmer body mist bottle – replace with your own photo" loading="lazy">
       </div>
       <div class="thumbnail-grid">
-        <img class="thumbnail active" src="https://placehold.co/200x200/8C2A3B/white?text=Bottle+Front" alt="Velvet Petals Shimmer bottle front" onclick="changeImage(this)">
-        <img class="thumbnail" src="https://placehold.co/200x200/C75C4A/white?text=Spray+Nozzle" alt="Spray nozzle close up showing shimmer" onclick="changeImage(this)">
-        <img class="thumbnail" src="https://placehold.co/200x200/6B1E2A/white?text=Box+Packaging" alt="Velvet Petals Shimmer gift box" onclick="changeImage(this)">
-        <img class="thumbnail" src="https://placehold.co/200x200/9E4A3B/white?text=Shimmer+on+Skin" alt="Shimmer particles on skin after spraying" onclick="changeImage(this)">
+        <img class="thumbnail active" src="https://picsum.photos/id/103/200/200" alt="Front view" onclick="changeImage(this)">
+        <img class="thumbnail" src="https://picsum.photos/id/104/200/200" alt="Spray nozzle" onclick="changeImage(this)">
+        <img class="thumbnail" src="https://picsum.photos/id/106/200/200" alt="Gift box" onclick="changeImage(this)">
+        <img class="thumbnail" src="https://picsum.photos/id/102/200/200" alt="Shimmer on skin" onclick="changeImage(this)">
       </div>
     </div>
     
@@ -499,7 +426,7 @@
     </div>
   </div>
   
-  <!-- TABS WITH EXTENSIVE CONTENT (4000+ words) -->
+  <!-- TABS (content unchanged, excellent) -->
   <div class="product-tabs">
     <div class="tab-buttons">
       <button class="tab-btn active" data-tab="description">Full Description</button>
@@ -508,13 +435,12 @@
       <button class="tab-btn" data-tab="longtail">SEO Keywords</button>
     </div>
     
-    <!-- TAB 1: DESCRIPTION (≈2000 words) -->
     <div id="tab-description" class="tab-content active">
       <h2>Why Velvet Petals Shimmer is Kenya's Most Sought‑After Body Mist</h2>
       <p>Imagine a fragrance that not only smells like sweet almonds and creamy coconut but also leaves a whisper of shimmer on your collarbone, shoulders, and wrists. That is the magic of <strong>Victoria's Secret Velvet Petals Shimmer</strong>. Unlike ordinary body sprays, this limited‑edition mist combines a gourmand scent with a subtle, radiant sparkle – making it the ultimate choice for Kenyan women who love to shine, whether at a dinner in Nairobi, a beach wedding in Mombasa, or a casual brunch in Kisumu.</p>
       
       <figure class="semantic-figure">
-        <img src="https://placehold.co/800x500/8C2A3B/white?text=Applying+Velvet+Petals+Shimmer" alt="Woman applying Velvet Petals Shimmer mist on her wrist, shimmer particles visible" loading="lazy">
+        <img src="https://picsum.photos/id/20/800/500" alt="Woman applying Velvet Petals Shimmer mist on her wrist – replace with your own photo" loading="lazy">
         <figcaption>The delicate shimmer of Velvet Petals catches the light beautifully.</figcaption>
       </figure>
       
@@ -551,13 +477,12 @@
       <p><strong>Pro tip:</strong> Spray a little on your hairbrush and run it through your hair – the shimmer will catch the light as you move, and the fragrance will linger for hours.</p>
     </div>
     
-    <!-- TAB 2: SCENT & SHIMMER (≈1000 words) -->
     <div id="tab-scent" class="tab-content">
       <h2>The Scent Profile – A Gourmand Dream</h2>
       <p>Velvet Petals Shimmer opens with a burst of <strong>sparkling starfruit</strong> and <strong>sweet almond glaze</strong>. The almond is candied, reminiscent of marzipan or amaretto, without being cloying. Within minutes, the heart emerges: <strong>coconut milk</strong> and <strong>sugared apricot blossom</strong> add a creamy, slightly fruity softness. The base is <strong>cozy musks</strong> and <strong>creamy sandalwood</strong>, giving it a warm, skin‑like finish that feels intimate and comforting.</p>
       
       <figure class="semantic-figure">
-        <img src="https://placehold.co/800x500/C75C4A/white?text=Scent+Notes+Chart" alt="Infographic of Velvet Petals Shimmer scent notes: almond, coconut milk, musk" loading="lazy">
+        <img src="https://picsum.photos/id/30/800/500" alt="Infographic of Velvet Petals Shimmer scent notes: almond, coconut milk, musk" loading="lazy">
         <figcaption>The gourmand heart of Velvet Petals Shimmer.</figcaption>
       </figure>
       
@@ -574,7 +499,6 @@
       </ul>
     </div>
     
-    <!-- TAB 3: REVIEWS (user generated style) -->
     <div id="tab-reviews" class="tab-content">
       <h2>What Our Customers Say</h2>
       <div class="review-card" style="border-bottom:1px solid #f0cdc0; padding:16px 0;">
@@ -595,7 +519,6 @@
       <p><a href="contact.html">Write your own review →</a></p>
     </div>
     
-    <!-- TAB 4: LONG‑TAIL KEYWORDS (visible for SEO but also readable) -->
     <div id="tab-longtail" class="tab-content">
       <h2>100+ Long‑Tail Keywords (Natural Phrases)</h2>
       <p>These are real search queries that people use to find Velvet Petals Shimmer in Kenya. We've optimized this page to answer each of them.</p>
@@ -752,12 +675,13 @@
 </a>
 
 <script>
-  // Simple thumbnail switcher
+  // Thumbnail switcher
   function changeImage(thumb) {
     document.getElementById('mainImage').src = thumb.src;
     document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
     thumb.classList.add('active');
   }
+  
   // Tabs
   const tabs = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
@@ -770,14 +694,31 @@
       document.getElementById(`tab-${tabId}`).classList.add('active');
     });
   });
-  // Basic cart quantity (mimic)
+  
+  // Cart quantity
   let quantity = 1;
   const qtyInput = document.getElementById('qtyInput');
-  document.getElementById('qtyMinus')?.addEventListener('click', () => { if (quantity > 1) { quantity--; qtyInput.value = quantity; } });
-  document.getElementById('qtyPlus')?.addEventListener('click', () => { if (quantity < 24) { quantity++; qtyInput.value = quantity; } });
-  qtyInput.addEventListener('change', (e) => { quantity = Math.min(Math.max(parseInt(e.target.value)||1, 1), 24); qtyInput.value = quantity; });
-  document.getElementById('addToCartBtn')?.addEventListener('click', () => alert(`Added ${quantity} × Velvet Petals Shimmer to cart!`));
-  document.getElementById('wishlistBtn')?.addEventListener('click', () => alert('Added to wishlist (saved in your browser)'));
+  const qtyMinus = document.getElementById('qtyMinus');
+  const qtyPlus = document.getElementById('qtyPlus');
+  if (qtyMinus) qtyMinus.addEventListener('click', () => { if (quantity > 1) { quantity--; qtyInput.value = quantity; } });
+  if (qtyPlus) qtyPlus.addEventListener('click', () => { if (quantity < 24) { quantity++; qtyInput.value = quantity; } });
+  if (qtyInput) qtyInput.addEventListener('change', (e) => { quantity = Math.min(Math.max(parseInt(e.target.value)||1, 1), 24); qtyInput.value = quantity; });
+  
+  const addBtn = document.getElementById('addToCartBtn');
+  if (addBtn) addBtn.addEventListener('click', () => alert(`Added ${quantity} × Velvet Petals Shimmer to cart!`));
+  
+  const wishlistBtn = document.getElementById('wishlistBtn');
+  if (wishlistBtn) wishlistBtn.addEventListener('click', () => alert('Added to wishlist (saved in your browser)'));
+  
+  // Back to top button (optional)
+  const backBtn = document.getElementById('backToTop');
+  if (backBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) backBtn.style.display = 'flex';
+      else backBtn.style.display = 'none';
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 </script>
 </body>
 </html>

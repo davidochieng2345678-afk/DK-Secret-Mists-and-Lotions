@@ -1,1414 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  
- <!-- Primary SEO -->
-  <title>DK Secrets | Authentic Victoria's Secret Mists & Lotions – Kenya</title>
-  <meta name="description" content="DK Secrets – Official reseller of authentic Victoria's Secret body mists, lotions, and fragrances in Kenya. Free delivery Nairobi, Mombasa, Kisumu. Shop now.">
-  <meta name="keywords" content="Victoria's Secret Kenya, body mist Kenya, authentic fragrances, VS lotions, Nairobi perfumes, buy Victoria's Secret online Kenya">
-  <meta name="author" content="DK Secrets">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Canonical URL (prevents duplicate content) -->
-  <link rel="canonical" href="https://dksecretmists.shop/">
-  
-  <!-- Open Graph (Facebook, WhatsApp, Instagram) -->
-  <meta property="og:title" content="DK Secrets – Victoria's Secret Mists & Lotions Kenya">
-  <meta property="og:description" content="Shop authentic Victoria's Secret body mists, lotions, and fragrances. Free delivery in Nairobi, Mombasa, Kisumu.">
-  <meta property="og:image" content="https://dksecretmists.shop/images/og-image.jpg">
-  <meta property="og:url" content="https://dksecretmists.shop/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_KE">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DK Secrets – Victoria's Secret Kenya">
-  <meta name="twitter:description" content="Authentic body mists & lotions. Free delivery Nairobi.">
-  <meta name="twitter:image" content="https://dksecretmists.shop/images/og-image.jpg">
-  
-  <!-- Preconnect for faster external resource loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  
-  <!-- Google Fonts (optimised – only the weights you need) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome (minimal version – consider using only used icons to reduce load) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Critical inline CSS (reset + base styling) – the rest of your styles will follow -->
-  <style>
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fffaf7; color: #2d2a27; scroll-behavior: smooth; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
-    
-    /* Top Bar */
-    .top-bar { background: #8C2A3B; color: white; text-align: center; padding: 10px; font-size: 0.85rem; }
-    
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      flex-wrap: wrap;
-      gap: 20px;
-      border-bottom: 2px solid #f0cdc0;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-decoration: none;
-    }
-    .logo span { background: none; color: #8C2A3B; }
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #8C2A3B;
-    }
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .search-input {
-      padding: 8px 16px;
-      border-radius: 40px;
-      border: 1px solid #f0cdc0;
-      font-size: 0.85rem;
-      width: 180px;
-    }
-    .search-btn {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #8C2A3B;
-    }
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-      font-size: 1.6rem;
-    }
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -12px;
-      background: #C75C4A;
-      color: white;
-      font-size: 0.7rem;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    /* Hero Section (solid color + overlay) – no external image dependency */
-    .hero {
-      margin: 32px 0 48px;
-      border-radius: 32px;
-      background: linear-gradient(135deg, #8C2A3B, #C75C4A);
-      min-height: 450px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://placehold.co/1600x600/FCE4D4/8C2A3B?text=Victoria%27s+Secret+Kenya');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      margin-bottom: 16px;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 28px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .btn-primary {
-      background: white;
-      color: #8C2A3B;
-      padding: 12px 36px;
-      border-radius: 60px;
-      font-weight: 700;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .btn-primary:hover { background: #f9e0e4; transform: scale(1.02); }
-    
-    /* Section Titles */
-    .section-title {
-      font-size: 2rem;
-      color: #6B1E2A;
-      text-align: center;
-      margin: 60px 0 30px;
-      font-family: 'Playfair Display', serif;
-    }
-    
-    /* Categories */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .category-card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .category-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
-    .category-img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      background: #f9ede5;
-    }
-    .category-info { padding: 24px; }
-    .category-info h3 { font-size: 1.5rem; color: #6B1E2A; margin-bottom: 8px; }
-    .category-info p { color: #a64b3a; }
-    
-    /* Features / Why Choose Us */
-    .features-section {
-      background: white;
-      border-radius: 48px;
-      padding: 50px 30px;
-      margin: 60px 0;
-      text-align: center;
-      border: 1px solid #f0cdc0;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-    .feature-item i { font-size: 2.5rem; color: #C75C4A; margin-bottom: 16px; }
-    .feature-item h4 { color: #6B1E2A; margin-bottom: 8px; }
-    .feature-item p { color: #a64b3a; font-size: 0.9rem; }
-    
-    /* Trust Badges */
-    .trust-badges {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin: 40px 0;
-      padding: 20px;
-      background: #f9ede5;
-      border-radius: 60px;
-    }
-    .badge { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 600; color: #6B1E2A; }
-    
-    /* Testimonials */
-    .testimonials-section {
-      background: #fef5f0;
-      border-radius: 48px;
-      padding: 60px 30px;
-      margin: 60px 0;
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .testimonial-card {
-      background: white;
-      border-radius: 28px;
-      padding: 28px;
-      text-align: center;
-      border: 1px solid #f0cdc0;
-    }
-    .testimonial-stars { color: #e6b422; font-size: 1.2rem; margin-bottom: 16px; }
-    .testimonial-text { font-style: italic; margin-bottom: 16px; color: #5a4a3e; line-height: 1.5; }
-    .testimonial-name { font-weight: 700; color: #6B1E2A; }
-    
-    /* Newsletter */
-    .newsletter-section {
-      background: linear-gradient(105deg, #8C2A3B, #C75C4A);
-      border-radius: 48px;
-      padding: 60px 30px;
-      text-align: center;
-      color: white;
-      margin: 60px 0;
-    }
-    .newsletter-container { max-width: 600px; margin: 0 auto; }
-    .newsletter-section h3 { font-size: 2rem; margin-bottom: 16px; }
-    .newsletter-form {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 24px 0 12px;
-    }
-    .newsletter-form input {
-      flex: 1;
-      min-width: 250px;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 60px;
-      font-size: 1rem;
-    }
-    .newsletter-form button {
-      background: white;
-      color: #8C2A3B;
-      border: none;
-      padding: 14px 32px;
-      border-radius: 60px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .newsletter-form button:hover { background: #f9e0e4; }
-    .newsletter-note { font-size: 0.75rem; opacity: 0.8; }
-    
-    /* Footer */
-    footer {
-      background: #1f1210;
-      color: #f2cfc4;
-      padding: 48px 0 24px;
-      margin-top: 40px;
-    }
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-col p { margin: 8px 0; }
-    .footer-col a { color: #f2cfc4; text-decoration: none; }
-    .footer-col a:hover { text-decoration: underline; }
-    .social-links { display: flex; gap: 16px; margin-top: 16px; }
-    .social-links a { font-size: 1.3rem; }
-    .copyright { text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(242, 207, 196, 0.2); padding-top: 24px; }
-    
-    /* Cart Sidebar */
-    .cart-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s;
-    }
-    .cart-sidebar {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 400px;
-      max-width: 90vw;
-      height: 100%;
-      background: #fff9f7;
-      z-index: 1001;
-      padding: 28px 24px;
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      border-left: 3px solid #C75C4A;
-    }
-    .cart-sidebar h3 { color: #6B1E2A; margin-bottom: 20px; }
-    .cart-items-list { flex: 1; overflow-y: auto; margin-bottom: 16px; }
-    .cart-item-sidebar {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #f0cdc0;
-    }
-    .cart-total { font-size: 1.4rem; font-weight: 800; text-align: right; margin: 16px 0; color: #C75C4A; }
-    .checkout-btn-sidebar { background: #8C2A3B; width: 100%; padding: 14px; color: white; border: none; border-radius: 60px; cursor: pointer; font-weight: 700; }
-    .close-cart { background: none; border: none; font-size: 2rem; position: absolute; top: 16px; right: 22px; cursor: pointer; color: #6B1E2A; }
-    
-    /* Back to Top & WhatsApp */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #8C2A3B;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-    }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      z-index: 100;
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .search-input { width: 120px; }
-      .cart-sidebar { width: 85vw; }
-      .whatsapp-float { bottom: 80px; right: 20px; }
-      .whatsapp-float img { width: 45px; height: 45px; }
-    }
-/* Modern Hero Section */
-.hero-modern {
-  position: relative;
-  min-height: 650px;
-  margin: 32px 0 48px;
-  border-radius: 48px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a0a0e 0%, #2d1419 25%, #6B1E2A 50%, #C75C4A 100%);
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SEO Mastery: From Nairobi to the World | David Kiruo</title>
+<meta name="description" content="The ultimate SEO book by David Kiruo — Kenya's #1 SEO Expert. Learn to rank on Google and grow your business from Africa. KES 1,500."/>
+<meta name="keywords" content="SEO book Kenya, David Kiruo, learn SEO Africa, SEO guide Nairobi, rank on Google Kenya, digital marketing Kenya"/>
+<meta name="author" content="David Kiruo"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://YOUR-DOMAIN.com/"/>
+<meta property="og:title" content="SEO Mastery: From Nairobi to the World — David Kiruo"/>
+<meta property="og:description" content="Kenya's most complete SEO book. 20 chapters, 300+ pages. KES 1,500."/>
+<meta property="og:type" content="book"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"SEO Mastery: From Nairobi to the World","author":{"@type":"Person","name":"David Kiruo","url":"https://YOUR-DOMAIN.com"},"numberOfPages":"319","offers":{"@type":"Offer","price":"1500","priceCurrency":"KES"}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#FAFAF8;color:#0D1117;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:64px;background:rgba(250,250,248,.96);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700}
+.logo span{color:#C9973A}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:#3A3F4B;transition:color .2s}
+.nav-links a:hover{color:#C9973A}
+.nav-btn{background:#0D1117;color:#fff;padding:9px 20px;border-radius:50px;font-weight:600;font-size:.85rem;border:none;cursor:pointer;transition:background .2s}
+.nav-btn:hover{background:#C9973A}
+.hero{min-height:100vh;padding-top:64px;background:#0D1117;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 80% at 90% 40%,rgba(201,151,58,.13) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 5% 90%,rgba(0,107,63,.10) 0%,transparent 60%)}
+.hero-text{padding:80px 40px 80px 72px;position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,58,.14);border:1px solid rgba(201,151,58,.35);color:#F0D898;font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:28px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:900;line-height:1.07;color:#fff;margin-bottom:12px}
+.hero h1 .g{color:#C9973A}
+.hero h1 em{color:rgba(255,255,255,.55);font-style:italic}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.48);margin-bottom:24px}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,.7);max-width:460px;margin-bottom:40px;line-height:1.82}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:#C9973A;color:#0D1117;font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,151,58,.4);transition:transform .2s;font-family:'DM Sans',sans-serif}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.82);font-weight:500;font-size:.92rem;padding:13px 26px;border-radius:50px;background:transparent;cursor:pointer;transition:border-color .2s,color .2s;font-family:'DM Sans',sans-serif}
+.btn-ghost:hover{border-color:#C9973A;color:#C9973A}
+.stats{display:flex;gap:32px}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:#C9973A;line-height:1;margin-bottom:4px}
+.stat-l{font-size:.7rem;color:rgba(255,255,255,.38);letter-spacing:.05em;text-transform:uppercase}
+.hero-visual{display:flex;align-items:center;justify-content:center;padding:60px;position:relative;z-index:2}
+.book{width:220px;min-height:340px;background:linear-gradient(145deg,#1a2e18,#0c180b);border-radius:4px 14px 14px 4px;box-shadow:-8px 0 0 rgba(0,0,0,.4),0 24px 64px rgba(0,0,0,.6);padding:28px 22px;position:relative;transform:perspective(800px) rotateY(-8deg);transition:transform .4s;display:flex;flex-direction:column;justify-content:space-between}
+.book:hover{transform:perspective(800px) rotateY(-2deg) translateY(-8px)}
+.bflag{display:flex;gap:3px;margin-bottom:12px}
+.bflag span{height:4px;border-radius:2px;flex:1}
+.f1{background:#006B3F}.f2{background:#fff}.f3{background:#BB0000}
+.bey{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#C9973A;margin-bottom:8px;font-weight:600}
+.btit{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:8px}
+.btit span{color:#C9973A}
+.bline{width:32px;height:2px;background:#C9973A;margin:10px 0}
+.bsmall{font-size:.64rem;color:rgba(255,255,255,.45);line-height:1.5;margin-bottom:14px}
+.bprice{background:#C9973A;color:#0D1117;font-weight:700;font-size:.78rem;padding:5px 11px;border-radius:50px;display:inline-block;margin-bottom:10px}
+.bby{font-size:.64rem;color:rgba(255,255,255,.5)}
+.bby strong{color:rgba(255,255,255,.8)}
+.trust{background:#F4EFE4;border-bottom:1px solid rgba(0,0,0,.07);padding:16px 32px}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:7px;font-size:.8rem;color:#3A3F4B;font-weight:500}
+.sec{padding:88px 32px}
+.wrap{max-width:1100px;margin:0 auto}
+.slabel{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#C9973A;margin-bottom:10px}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:900;line-height:1.12;margin-bottom:18px}
+.about{background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.acard{background:#0D1117;border-radius:20px;padding:40px 34px;color:#fff;position:relative;overflow:hidden}
+.ainit{width:72px;height:72px;background:#C9973A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#0D1117;margin-bottom:16px}
+.aname{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;margin-bottom:4px}
+.arole{font-size:.76rem;color:#C9973A;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+.abio{font-size:.88rem;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:22px}
+.clinks{display:flex;flex-direction:column;gap:10px}
+.clink{display:flex;align-items:center;gap:10px;font-size:.84rem;color:rgba(255,255,255,.65);transition:color .2s}
+.clink:hover{color:#C9973A}
+.about-body p{font-size:1rem;color:#3A3F4B;line-height:1.82;margin-bottom:16px}
+.about-body strong{color:#0D1117}
+.pull{border-left:4px solid #C9973A;padding:18px 22px;background:#FBF4E3;border-radius:0 12px 12px 0;margin:24px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#0D1117;line-height:1.6}
+.toc-sec{background:#0D1117;padding:88px 32px}
+.toc-sec .stitle{color:#fff}
+.toc-sec .sdesc{color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:44px;line-height:1.75;max-width:540px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 24px;transition:background .2s,border-color .2s,transform .2s}
+.tcard:hover{background:rgba(201,151,58,.08);border-color:rgba(201,151,58,.3);transform:translateY(-2px)}
+.chnum{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+.chtit{font-family:'Playfair Display',serif;font-size:.96rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3}
+.chbody{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6}
+.chbody li{margin-bottom:4px;padding-left:12px;position:relative}
+.chbody li::before{content:"→";position:absolute;left:0;color:#C9973A;font-size:.7rem}
+.excerpt-sec{background:#FAFAF8;padding:88px 32px}
+.ebox{max-width:700px;margin:0 auto;background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:48px 52px;box-shadow:0 8px 40px rgba(0,0,0,.07)}
+.ebox .ctag{font-size:.7rem;color:#C9973A;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.ebox h2{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;margin-bottom:20px}
+.ebox p{font-size:.98rem;color:#3A3F4B;line-height:1.85;margin-bottom:16px}
+.ebox .sig{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#C9973A;margin-top:24px}
+.reviews{background:#F4EFE4;padding:88px 32px}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.rcard{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.rstars{color:#C9973A;font-size:.95rem;margin-bottom:12px;letter-spacing:2px}
+.rtext{font-size:.9rem;color:#3A3F4B;line-height:1.75;margin-bottom:18px;font-style:italic}
+.rauth{display:flex;align-items:center;gap:10px}
+.ravatar{width:38px;height:38px;background:#C9973A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#0D1117;font-size:.85rem}
+.rname{font-weight:600;font-size:.86rem;color:#0D1117}
+.rrole{font-size:.74rem;color:#6B7280}
+.buy-sec{background:#0D1117;padding:88px 32px;text-align:center}
+.buy-sec .stitle{color:#fff;margin-bottom:14px}
+.buy-sec .sdesc{color:rgba(255,255,255,.5);margin:0 auto 44px;text-align:center;max-width:500px}
+.pbox{display:inline-block;background:rgba(255,255,255,.05);border:1px solid rgba(201,151,58,.3);border-radius:22px;padding:44px 52px;margin-bottom:36px}
+.pcur{font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:6px}
+.pval{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#C9973A;line-height:1}
+.pdesc{font-size:.84rem;color:rgba(255,255,255,.38);margin-top:8px}
+.buy-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:1rem;padding:15px 30px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s;font-family:'DM Sans',sans-serif}
+.btn-wa:hover{transform:translateY(-2px)}
+.includes{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.inc{display:flex;align-items:center;gap:7px;font-size:.83rem;color:rgba(255,255,255,.5)}
+.inc span{color:#C9973A}
+footer{background:#060A0E;padding:40px 32px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.flogo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff}
+.flogo span{color:#C9973A}
+.flinks{display:flex;gap:20px;list-style:none}
+.flinks a{font-size:.8rem;color:rgba(255,255,255,.4);transition:color .2s}
+.flinks a:hover{color:#C9973A}
+.fcopy{font-size:.76rem;color:rgba(255,255,255,.28)}
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-bubble{background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,.14);font-size:.82rem;color:#0D1117;max-width:210px;line-height:1.5}
+.wa-bubble strong{color:#006B3F;display:block;margin-bottom:2px}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.45);cursor:pointer;border:none;font-size:1.5rem;position:relative;transition:transform .2s}
+.wa-btn:hover{transform:scale(1.1)}
+.wa-dot{position:absolute;top:-3px;right:-3px;width:16px;height:16px;background:#BB0000;border-radius:50%;font-size:.58rem;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .8s ease both}
+.fu2{animation:fadeUp .8s .15s ease both}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .hero-text{padding:60px 24px 48px}
+  .two{grid-template-columns:1fr;gap:36px}
+  .toc-grid{grid-template-columns:1fr}
+  .rgrid{grid-template-columns:1fr}
+  .sec,.about,.toc-sec,.excerpt-sec,.reviews,.buy-sec{padding:64px 20px}
+  .ebox{padding:28px 24px}
+  .pbox{padding:32px 36px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .flinks{justify-content:center}
 }
-
-.hero-bg-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 20% 50%, rgba(212,175,55,0.15) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(199,92,74,0.2) 0%, transparent 50%);
-  animation: bgShift 20s ease infinite;
-}
-
-@keyframes bgShift {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-}
-
-.floating-element {
-  position: absolute;
-  font-size: 2.5rem;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.floating-1 { top: 15%; left: 5%; animation: float1 8s ease-in-out infinite; }
-.floating-2 { top: 70%; left: 85%; animation: float2 10s ease-in-out infinite; }
-.floating-3 { top: 30%; right: 8%; animation: float3 7s ease-in-out infinite; }
-.floating-4 { bottom: 15%; left: 12%; animation: float4 9s ease-in-out infinite; }
-.floating-5 { top: 50%; left: 50%; animation: float5 12s ease-in-out infinite; font-size: 3rem; opacity: 0.3; }
-
-@keyframes float1 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(10deg); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-40px) rotate(-8deg); }
-}
-@keyframes float3 {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  50% { transform: translateX(-30px) rotate(12deg); }
-}
-@keyframes float4 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-25px) scale(1.1); }
-}
-@keyframes float5 {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-  50% { transform: translate(-50%, -50%) rotate(15deg); }
-}
-
-.hero-content-modern {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 40px 24px;
-  max-width: 900px;
-}
-
-.trust-badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
-  padding: 10px 24px;
-  border-radius: 60px;
-  margin-bottom: 32px;
-  font-size: 0.9rem;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  animation: slideDown 0.6s ease-out;
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: #4ade80;
-  border-radius: 50%;
-  display: inline-block;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-title {
-  font-size: clamp(2.8rem, 8vw, 5rem);
-  margin-bottom: 24px;
-  animation: fadeInUp 0.6s ease-out 0.1s both;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #FFD700, #FFB347, #FF6B6B);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-family: 'Playfair Display', serif;
-  font-weight: 800;
-}
-
-.hero-subtitle-line {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: white;
-  font-weight: 500;
-  display: block;
-  margin-top: 8px;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-  padding: 20px 30px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-  border-radius: 80px;
-  display: inline-flex;
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-.stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #FFD700;
-  display: block;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.8);
-}
-
-.stat-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.3);
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 40px 0 30px;
-  animation: fadeInUp 0.6s ease-out 0.3s both;
-}
-
-.btn-primary-glow {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #1a0a0e;
-  padding: 14px 36px;
-  border-radius: 60px;
-  font-weight: 800;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255,215,0,0.4);
-}
-
-.btn-primary-glow:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 35px rgba(255,215,0,0.6);
-  gap: 16px;
-}
-
-.btn-outline-glow {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  color: white;
-  padding: 14px 36px;
-  border-radius: 60px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(255,255,255,0.3);
-  transition: all 0.3s ease;
-}
-
-.btn-outline-glow:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: #FFD700;
-  transform: translateY(-3px);
-}
-
-.hero-payment-icons {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 40px;
-  font-size: 1.8rem;
-  color: rgba(255,255,255,0.7);
-  animation: fadeInUp 0.6s ease-out 0.4s both;
-}
-
-.mpesa-icon {
-  font-size: 1rem;
-  background: rgba(255,255,255,0.15);
-  padding: 8px 16px;
-  border-radius: 40px;
-  display: inline-flex;
-  align-items: center;
-  font-weight: 600;
-}
-
-/* Media Showcase */
-.media-showcase {
-  margin: 60px 0;
-  border-radius: 48px;
-  overflow: hidden;
-}
-
-.showcase-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: center;
-  background: linear-gradient(135deg, #1a0a0e, #2d1419);
-  border-radius: 48px;
-  padding: 48px;
-}
-
-@media (max-width: 768px) {
-  .showcase-container {
-    grid-template-columns: 1fr;
-    padding: 32px;
-  }
-  .hero-stats { gap: 20px; padding: 15px 20px; }
-  .stat-number { font-size: 1.5rem; }
-  .floating-element { font-size: 1.5rem; }
-}
-
-.media-container {
-  position: relative;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  animation: mediaFloat 3s ease-in-out infinite;
-}
-
-@keyframes mediaFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.demo-video {
-  width: 100%;
-  border-radius: 32px;
-  display: block;
-  cursor: pointer;
-}
-
-.play-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-}
-
-.media-container:hover .play-overlay {
-  opacity: 1;
-}
-
-.play-overlay i {
-  font-size: 2rem;
-  color: #8C2A3B;
-  margin-left: 5px;
-}
-
-.product-badge {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  padding: 8px 16px;
-  border-radius: 40px;
-  color: white;
-  font-size: 0.8rem;
-  z-index: 3;
-}
-
-.media-content {
-  color: white;
-  padding: 20px;
-}
-
-.media-badge {
-  display: inline-block;
-  background: rgba(255,215,0,0.2);
-  padding: 6px 16px;
-  border-radius: 60px;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255,215,0,0.3);
-}
-
-.media-content h2 {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  font-family: 'Playfair Display', serif;
-}
-
-.media-content h2 span {
-  color: #FFD700;
-}
-
-.scent-notes {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.scent-note {
-  background: rgba(255,255,255,0.1);
-  padding: 8px 16px;
-  border-radius: 40px;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.scent-note i {
-  color: #FFD700;
-}
-
-.mist-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.mist-particle {
-  position: absolute;
-  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: mistFloat 2s ease-out forwards;
-}
-
-@keyframes mistFloat {
-  0% { opacity: 0.8; transform: scale(0) translate(0, 0); }
-  50% { opacity: 0.5; transform: scale(1) translate(20px, -30px); }
-  100% { opacity: 0; transform: scale(1.5) translate(40px, -60px); }
-}
-
-/* Gallery */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  margin: 40px 0 60px;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 28px;
-  overflow: hidden;
-  cursor: pointer;
-  aspect-ratio: 4/5;
-}
-
-.gallery-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover .gallery-img {
-  transform: scale(1.08);
-}
-
-.gallery-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-  padding: 20px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-  transform: translateY(0);
-}
-    
-  </style>
-  <meta name="google-site-verification" content="0V_EJjJH9efqSSrL2_9V9EHZbeTKLZiPPY1XjbipaJc" />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "DK Secrets",
-  "url": "https://dksecretmists.shop/",
-  "logo": "https://dksecretmists.shop/images/logo.png",
-  "sameAs": [
-    "https://www.instagram.com/dksecrets_ke/",
-    "https://www.facebook.com/dksecretske",
-    "https://wa.me/254710346425"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+254710346425",
-    "contactType": "customer service",
-    "availableLanguage": "English"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "DK Secrets",
-  "description": "Official reseller of authentic Victoria's Secret body mists, lotions, and fragrances in Kenya.",
-  "url": "https://dksecretmists.shop/",
-  "telephone": "+254710346425",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Nairobi",
-    "addressCountry": "KE"
-  },
-  "priceRange": "KES 1500 - KES 5000",
-  "openingHours": "Mo-Su 09:00-21:00",
-  "areaServed": "Kenya"
-}
-</script>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Victoria's Secret Bombshell Body Mist",
-  "description": "Original Bombshell fragrance. Long-lasting, floral, and seductive.",
-  "brand": "Victoria's Secret",
-  "offers": {
-    "@type": "Offer",
-    "price": "2500",
-    "priceCurrency": "KES",
-    "availability": "https://schema.org/InStock",
-    "url": "https://dksecretmists.shop/shop.html?product=bombshell"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "2847"
-  }
-}
-</script>
+</style>
 </head>
 <body>
 
-  <div class="navbar">
-  <a href="index.html" class="logo">DK<span> Secrets</span></a>
-  <div class="nav-links">
-    <a href="shop.html">Shop</a>
-    <a href="blog.html">Blog</a>
-    <a href="policies.html">Policies</a>
-    <a href="contact.html">Contact</a>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-      <button id="searchBtn" class="search-btn">🔍</button>
+<!-- NAV -->
+<nav>
+  <div class="logo">David <span>Kiruo</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#chapters">Chapters</a></li>
+    <li><a href="#excerpt">Free Sample</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#buy"><button class="nav-btn">Buy — KES 1,500</button></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-text fu">
+    <div class="badge">🇰🇪 Kenya's #1 SEO Book</div>
+    <h1>SEO <span class="g">Mastery</span><br/><em>From Nairobi</em><br/>to the World</h1>
+    <p class="hero-sub">How I went from zero traffic to Google Page 1 — and how you can too.</p>
+    <p class="hero-desc">I spent years figuring out what actually works in the Kenyan market. This book is everything I know — 20 chapters, 300+ pages, zero fluff. Written for Africa, not Silicon Valley.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">📖 Get the Book — KES 1,500</button>
+      <button class="btn-ghost" onclick="document.getElementById('excerpt').scrollIntoView({behavior:'smooth'})">Read Free Sample →</button>
     </div>
-    <div class="cart-icon" id="cartIcon">🛒 <span class="cart-count" id="cartCount">0</span></div>
+    <div class="stats">
+      <div><div class="stat-n">20</div><div class="stat-l">Chapters</div></div>
+      <div><div class="stat-n">300+</div><div class="stat-l">Pages</div></div>
+      <div><div class="stat-n">100%</div><div class="stat-l">Africa Focused</div></div>
+    </div>
   </div>
-</div>
-
-<div class="top-bar">🚚 Free delivery on orders over KSh 5,000 | 🇰🇪 Same-day dispatch in Nairobi</div>
-
-<div class="container">
-
-<div class="hero-modern">
-  <div class="hero-bg-animation"></div>
-  <div class="floating-element floating-1">✨</div>
-  <div class="floating-element floating-2">💫</div>
-  <div class="floating-element floating-3">🌸</div>
-  <div class="floating-element floating-4">💖</div>
-  <div class="floating-element floating-5">🦋</div>
-  
-  <div class="hero-content-modern">
-    <div class="trust-badge-pill">
-      <span class="pulse-dot"></span>
-      ✈️ 50,000+ Happy Customers Worldwide
-    </div>
-    
-    <h1 class="hero-title">
-      <span class="gradient-text">Victoria's Secret</span>
-      <br>
-      <span class="hero-subtitle-line">Authentic & Delivered</span>
-    </h1>
-    
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-number" data-target="2847">0</span>
-        <span class="stat-label">5-Star Reviews</span>
+  <div class="hero-visual fu2">
+    <div class="book">
+      <div style="position:absolute;top:0;left:0;bottom:0;width:6px;background:linear-gradient(to right,rgba(0,0,0,.4),rgba(255,255,255,.05));border-radius:4px 0 0 4px"></div>
+      <div>
+        <div class="bflag"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+        <div class="bey">David Kiruo</div>
+        <div class="btit">SEO <span>Mastery</span><br/>From Nairobi<br/>to the World</div>
+        <div class="bline"></div>
+        <div class="bsmall">Kenya's most complete guide to ranking on Google — for entrepreneurs and businesses across Africa.</div>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-number" data-target="24">0</span>
-        <span class="stat-label">Countries Served</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-number" data-target="100">0</span>
-        <span class="stat-label">% Authentic</span>
+      <div>
+        <div class="bprice">KES 1,500</div>
+        <div class="bby">By <strong>David Kiruo</strong></div>
       </div>
     </div>
-    
-    <div class="hero-buttons">
-      <a href="shop.html" class="btn-primary-glow">
-        <span>Shop Collection →</span>
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="#trust-section" class="btn-outline-glow">
-        <i class="fas fa-shield-alt"></i>
-        <span>Trust Guarantee</span>
-      </a>
-    </div>
-    
-    <div class="hero-payment-icons">
-      <i class="fab fa-cc-visa"></i>
-      <i class="fab fa-cc-mastercard"></i>
-      <i class="fab fa-cc-paypal"></i>
-      <i class="fab fa-cc-apple-pay"></i>
-      <span class="mpesa-icon">M-Pesa</span>
-    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="ti">✅ 20 Chapters</div>
+    <div class="ti">📱 Mobile Friendly</div>
+    <div class="ti">🇰🇪 Written for Kenya & Africa</div>
+    <div class="ti">⚡ Instant PDF Delivery</div>
+    <div class="ti">💬 WhatsApp Support Included</div>
   </div>
 </div>
 
-
-<!-- Categories (images will show) -->
-<div class="container">
-  <h2 class="section-title">Shop by Category</h2>
-  <div class="categories-grid">
-    <a href="shop.html?category=mist" class="category-card">
-      <img class="category-img" src="https://placehold.co/600x600/FCE4D4/8C2A3B?text=Body+Mists" alt="Body Mists">
-      <div class="category-info"><h3>🌸 Body Mists</h3><p>Long‑lasting fragrances</p></div>
-    </a>
-    <a href="shop.html?category=lotion" class="category-card">
-      <img class="category-img" src="https://placehold.co/600x600/FCE4D4/8C2A3B?text=Body+Lotions" alt="Body Lotions">
-      <div class="category-info"><h3>🧴 Body Lotions</h3><p>24hr hydration</p></div>
-    </a>
-    <a href="shop.html?category=bundle" class="category-card">
-      <img class="category-img" src="https://placehold.co/600x600/FCE4D4/8C2A3B?text=Gift+Bundles" alt="Gift Bundles">
-      <div class="category-info"><h3>🎁 Gift Bundles</h3><p>Save with duos</p></div>
-    </a>
-  </div>
-</div>
-
-<!-- Why Choose Us -->
-<div class="container">
-  <div class="features-section">
-    <h2 class="section-title">Why Shop With Us</h2>
-    <div class="features-grid">
-      <div class="feature-item"><i class="fas fa-truck"></i><h4>Free Delivery</h4><p>On orders over KSh 5,000</p></div>
-      <div class="feature-item"><i class="fas fa-lock"></i><h4>Secure Checkout</h4><p>100% encrypted payments</p></div>
-      <div class="feature-item"><i class="fas fa-check-circle"></i><h4>100% Authentic</h4><p>Genuine Victoria's Secret</p></div>
-      <div class="feature-item"><i class="fas fa-headset"></i><h4>24/7 Support</h4><p>Customer care in Kenya</p></div>
-    </div>
-  </div>
-</div>
-
-  <div class="container" id="trust-section">
-  <div class="trust-badges" style="flex-wrap: wrap; justify-content: center; gap: 32px; background: linear-gradient(135deg, #fff5f0, #fff); border-radius: 60px; padding: 32px 40px; margin: 40px 0; box-shadow: 0 8px 30px rgba(140,42,59,0.08);">
-    
-    <div class="badge" style="flex-direction: column; text-align: center; min-width: 130px;">
-      <i class="fas fa-shield-alt" style="font-size: 2rem; color: #8C2A3B;"></i>
-      <strong>100% Authentic</strong>
-      <small style="color: #666;">Guaranteed original VS</small>
-    </div>
-    
-    <div class="badge" style="flex-direction: column; text-align: center; min-width: 130px;">
-      <i class="fas fa-truck-fast" style="font-size: 2rem; color: #8C2A3B;"></i>
-      <strong>Global Shipping</strong>
-      <small style="color: #666;">USA • UK • EU • UAE • Africa</small>
-    </div>
-    
-    <div class="badge" style="flex-direction: column; text-align: center; min-width: 130px;">
-      <i class="fas fa-lock" style="font-size: 2rem; color: #8C2A3B;"></i>
-      <strong>Secure Checkout</strong>
-      <small style="color: #666;">256-bit SSL encryption</small>
-    </div>
-    
-    <div class="badge" style="flex-direction: column; text-align: center; min-width: 130px;">
-      <i class="fas fa-undo-alt" style="font-size: 2rem; color: #8C2A3B;"></i>
-      <strong>30-Day Returns</strong>
-      <small style="color: #666;">Hassle-free worldwide</small>
-    </div>
-    
-    <div class="badge" style="flex-direction: column; text-align: center; min-width: 130px;">
-      <i class="fab fa-cc-visa" style="font-size: 2rem; color: #8C2A3B;"></i>
-      <strong>All Payments</strong>
-      <small style="color: #666;">Visa • MC • PayPal • M-Pesa</small>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="media-showcase">
-    <div class="showcase-container">
-      
-      <div class="media-container" id="videoContainer">
-        <video class="demo-video" id="sprayVideo" poster="https://placehold.co/800x1000/2d1419/FFD700?text=Victoria%27s+Secret+Mist" loop muted playsinline>
-          <source src="https://cdn.pixabay.com/video/2023/06/15/168583-836353855_large.mp4" type="video/mp4">
-          <img src="https://placehold.co/800x1000/8C2A3B/white?text=🌸+Spraying+Victoria%27s+Secret+Mist+🌸" alt="Lady spraying Victoria's Secret body mist">
-        </video>
-        <div class="play-overlay" id="playVideoBtn">
-          <i class="fas fa-play"></i>
-        </div>
-        <div class="product-badge">
-          <i class="fas fa-tag"></i> Bestseller: Bombshell Mist
-        </div>
-        <div class="mist-effect" id="mistEffect"></div>
-      </div>
-      
-      <div class="media-content">
-        <div class="media-badge">
-          <i class="fas fa-video"></i> See It In Action
-        </div>
-        <h2>Feel <span>Irresistible</span> All Day</h2>
-        <p>Watch how our Victoria's Secret body mists transform your daily routine. Long-lasting fragrance that turns heads and boosts confidence.</p>
-        
-        <div class="scent-notes">
-          <div class="scent-note"><i class="fas fa-leaf"></i> Top: Floral Bloom</div>
-          <div class="scent-note"><i class="fas fa-heart"></i> Heart: Vanilla Orchid</div>
-          <div class="scent-note"><i class="fas fa-moon"></i> Base: Warm Musk</div>
-        </div>
-        
-        <div style="margin-top: 32px;">
-          <a href="shop.html" class="btn-primary-glow" style="display: inline-flex;">
-            <span>Shop Bombshell Collection →</span>
-          </a>
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="two">
+      <div class="acard fu">
+        <div class="ainit">DK</div>
+        <div class="aname">David Kiruo</div>
+        <div class="arole">Kenya's Leading SEO Expert</div>
+        <p class="abio">Based in Nairobi, Kenya. I have spent years mastering SEO, ranking businesses across East Africa and winning international clients — all through organic search. No paid ads. Just strategy.</p>
+        <div class="clinks">
+          <a class="clink" href="https://wa.me/254710346425" target="_blank">💬 WhatsApp: +254 710 346 425</a>
+          <a class="clink" href="mailto:david@YOUR-DOMAIN.com">✉️ david@YOUR-DOMAIN.com</a>
+          <a class="clink" href="https://YOUR-DOMAIN.com" target="_blank">🌐 YOUR-DOMAIN.com</a>
+          <a class="clink" href="https://twitter.com/YOURHANDLE" target="_blank">🐦 @YOURHANDLE on Twitter/X</a>
+          <a class="clink" href="https://linkedin.com/in/YOURPROFILE" target="_blank">💼 LinkedIn: David Kiruo</a>
         </div>
       </div>
-      
+      <div class="about-body fu2">
+        <div class="slabel">About the Author</div>
+        <div class="stitle">I Almost Gave Up at 2AM in Nairobi</div>
+        <p>It was 2 AM, the city finally quiet outside my window, and I was staring at a Google Analytics screen showing <strong>zero visitors</strong> for the third month in a row. I had built a website. Written content. Done everything YouTube told me. And yet — nothing.</p>
+        <div class="pull">"Maybe SEO only works in America. Maybe it doesn't work here in Kenya. Maybe I'm just not smart enough for this."</div>
+        <p>That night is exactly why I wrote this book. Nobody gave me a guide that spoke to my reality — someone in Nairobi, limited budget, targeting both local and international markets. <strong>I had to figure it out alone.</strong></p>
+        <p>Then things shifted. A Westlands client found me on Google. Then a UK client. Then a Kenyan e-commerce brand whose traffic I tripled in 90 days. SEO changed my life — and I learned to make it work from Africa.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-  <div class="container">
-  <h2 class="section-title">As Seen On <span style="color: #FFD700;">Instagram</span></h2>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://placehold.co/400x500/8C2A3B/white?text=🌸+Lady+Spraying+Mist+1" alt="Lady spraying Victoria's Secret mist" class="gallery-img">
-      <div class="gallery-overlay">
-        <i class="fas fa-play"></i>
-        <span>Watch Reel</span>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://placehold.co/400x500/C75C4A/white?text=💫+Vanilla+Lotion+Application" alt="Applying Victoria's Secret lotion" class="gallery-img">
-      <div class="gallery-overlay">
-        <i class="fas fa-camera"></i>
-        <span>View Post</span>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://placehold.co/400x500/2d1419/FFD700?text=✨+Bombshell+In+Action" alt="Bombshell mist spray" class="gallery-img">
-      <div class="gallery-overlay">
-        <i class="fas fa-play"></i>
-        <span>Watch Reel</span>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://placehold.co/400x500/6B1E2A/white?text=💖+Customer+Favorite" alt="Customer using Victoria's Secret" class="gallery-img">
-      <div class="gallery-overlay">
-        <i class="fas fa-heart"></i>
-        <span>8.2K Likes</span>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- TABLE OF CONTENTS -->
+<section class="toc-sec" id="chapters">
+  <div class="wrap">
+    <div class="slabel">Table of Contents</div>
+    <div class="stitle">20 Chapters. Everything You Need.</div>
+    <p class="sdesc">From the basics to running a profitable SEO business — every strategy tested right here in Kenya.</p>
+    <div class="toc-grid">
 
-<!-- Testimonials -->
-<div class="container">
-  <div class="testimonials-section">
-    <h2 class="section-title">What Our Customers Say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Absolutely love my Bombshell mist! Delivery was super fast in Nairobi."</p><div class="testimonial-name">— Sarah M.</div></div>
-      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Authentic Victoria's Secret products. The Bare Vanilla lotion is heavenly."</p><div class="testimonial-name">— James K.</div></div>
-      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Best prices in Kenya! Will definitely order again."</p><div class="testimonial-name">— Amina W.</div></div>
-    </div>
-  </div>
-</div>
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 1 · FOUNDATIONS</div>
+        <div class="chtit">What Is SEO and Why It Changed My Life</div>
+        <ul class="chbody">
+          <li>The simple definition nobody gives you</li>
+          <li>How search engines crawl, index and rank</li>
+          <li>The Google algorithm — what I learned the hard way</li>
+          <li>Black Hat vs White Hat SEO — my early mistakes</li>
+          <li>Why SEO is the greatest long-term investment</li>
+        </ul>
+      </div>
 
-<!-- Newsletter -->
-<div class="container">
-  <div class="newsletter-section">
-    <div class="newsletter-container">
-      <h3>Get 10% Off Your First Order</h3>
-      <p>Subscribe for exclusive offers, new arrivals, and Kenya‑only deals.</p>
-      <form id="newsletterForm" class="newsletter-form">
-        <input type="email" id="newsletterEmail" placeholder="Your email address" required>
-        <button type="submit">Subscribe →</button>
-      </form>
-      <p class="newsletter-note">No spam, unsubscribe anytime.</p>
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 2 · FOUNDATIONS</div>
+        <div class="chtit">The SEO Mindset</div>
+        <ul class="chbody">
+          <li>Thinking like Google and like your customer</li>
+          <li>Patience, consistency and the long game</li>
+          <li>Why most Kenyans quit before they see results</li>
+          <li>How I stayed motivated when nothing worked</li>
+          <li>The habits that separate SEO winners from losers</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 3 · FOUNDATIONS</div>
+        <div class="chtit">Setting Up for SEO Success</div>
+        <ul class="chbody">
+          <li>Choosing the right domain name for Kenya</li>
+          <li>Hosting that supports SEO speed</li>
+          <li>WordPress vs other platforms — my recommendation</li>
+          <li>Installing Yoast and RankMath correctly</li>
+          <li>Google Search Console & Analytics 4 setup</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#C9973A">Chapter 4 · KEYWORDS</div>
+        <div class="chtit">Keyword Research Mastery</div>
+        <ul class="chbody">
+          <li>Short-tail vs long-tail keywords explained</li>
+          <li>Search intent — the concept that transformed my results</li>
+          <li>Free keyword tools I use daily</li>
+          <li>Ahrefs, SEMrush, Ubersuggest — worth every shilling?</li>
+          <li>Competitor keyword stealing — my favourite technique</li>
+          <li>Seasonal & trending keywords in East Africa</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#BB0000">Chapter 5 · LOCAL SEO</div>
+        <div class="chtit">Local SEO & the Kenyan Market</div>
+        <ul class="chbody">
+          <li>Why local SEO is a goldmine in Kenya right now</li>
+          <li>Geo-targeting Nairobi, Mombasa, Kisumu & beyond</li>
+          <li>Swahili keywords — an untapped opportunity</li>
+          <li>Google My Business optimisation step by step</li>
+          <li>Building local citations and reviews strategy</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#1A5FAB">Chapter 6 · ON-PAGE SEO</div>
+        <div class="chtit">On-Page SEO Fundamentals</div>
+        <ul class="chbody">
+          <li>Title tags — the most important 60 characters</li>
+          <li>Meta descriptions that get clicks</li>
+          <li>Header tags H1 to H6 done right</li>
+          <li>URL structure best practices</li>
+          <li>Internal linking strategy and image optimisation</li>
+          <li>Schema markup — my secret weapon for rich snippets</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#1A5FAB">Chapter 7 · ON-PAGE SEO</div>
+        <div class="chtit">Content That Ranks</div>
+        <ul class="chbody">
+          <li>Why content is king but context is queen</li>
+          <li>The Skyscraper Technique — how I beat bigger sites</li>
+          <li>E-E-A-T: Experience, Expertise, Authority, Trust</li>
+          <li>Pillar pages and content clusters explained</li>
+          <li>How I plan 3 months of content in one afternoon</li>
+          <li>AI tools in content creation — opportunities and risks</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#6B3FA0">Chapter 8 · TECHNICAL SEO</div>
+        <div class="chtit">Technical On-Page SEO</div>
+        <ul class="chbody">
+          <li>Core Web Vitals — what they are and why Google cares</li>
+          <li>Page speed optimisation — my full checklist</li>
+          <li>Mobile-first indexing for Kenyan audiences</li>
+          <li>Canonical tags — avoiding duplicate content</li>
+          <li>Robots.txt and XML sitemaps explained</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#6B3FA0">Chapter 9 · TECHNICAL SEO</div>
+        <div class="chtit">Technical SEO Deep Dive</div>
+        <ul class="chbody">
+          <li>Website architecture that Google loves</li>
+          <li>Crawl budget — what it is and why it matters</li>
+          <li>301 vs 302 redirects — when to use each</li>
+          <li>HTTPS and SSL — non-negotiable security</li>
+          <li>JavaScript SEO common pitfalls</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#6B3FA0">Chapter 10 · TECHNICAL SEO</div>
+        <div class="chtit">Site Audits — Finding & Fixing What's Broken</div>
+        <ul class="chbody">
+          <li>How to conduct a full SEO audit from scratch</li>
+          <li>Tools I use: Screaming Frog, Sitebulb, Ahrefs</li>
+          <li>Prioritising fixes for maximum ranking impact</li>
+          <li>My personal 50-point audit checklist</li>
+          <li>Reporting audit results to clients professionally</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#C9973A">Chapter 11 · OFF-PAGE SEO</div>
+        <div class="chtit">Link Building — The Art & Science</div>
+        <ul class="chbody">
+          <li>Why backlinks are still Google's #1 ranking factor</li>
+          <li>Good links vs toxic links — how to tell the difference</li>
+          <li>Guest posting — how I got published on 50+ sites</li>
+          <li>HARO strategy — getting editorial links for free</li>
+          <li>Broken link building and resource page links</li>
+          <li>Link building specifically for African websites</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#C9973A">Chapter 12 · OFF-PAGE SEO</div>
+        <div class="chtit">Brand Authority & E-E-A-T</div>
+        <ul class="chbody">
+          <li>Building your personal brand as an SEO expert</li>
+          <li>Do social signals impact rankings? My findings</li>
+          <li>Unlinked brand mentions and how to claim them</li>
+          <li>Speaking, podcasts and PR as SEO strategies</li>
+          <li>How I built my reputation in the Kenyan market</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 13 · ADVANCED SEO</div>
+        <div class="chtit">SEO for Specific Industries</div>
+        <ul class="chbody">
+          <li>SEO for e-commerce — WooCommerce and Shopify</li>
+          <li>SEO for service businesses in Kenya</li>
+          <li>SEO for blogs and content sites monetised with ads</li>
+          <li>SEO for NGOs, SaaS and tech startups</li>
+          <li>Real estate SEO in Nairobi — a massive opportunity</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 14 · ADVANCED SEO</div>
+        <div class="chtit">Video & YouTube SEO</div>
+        <ul class="chbody">
+          <li>Why YouTube is the second largest search engine</li>
+          <li>Optimising video titles, tags and descriptions</li>
+          <li>Thumbnails that drive clicks in the Kenyan market</li>
+          <li>Embedding YouTube videos for SEO page boost</li>
+          <li>My full YouTube strategy for East Africa</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 15 · ADVANCED SEO</div>
+        <div class="chtit">Voice Search & Future SEO</div>
+        <ul class="chbody">
+          <li>The rise of voice search across Africa</li>
+          <li>Optimising for featured snippets and Position Zero</li>
+          <li>AI and Google SGE — Search Generative Experience</li>
+          <li>SEO in the age of ChatGPT — threat or opportunity?</li>
+          <li>What SEO will look like in 2030</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#006B3F">Chapter 16 · ADVANCED SEO</div>
+        <div class="chtit">SEO Analytics & Reporting</div>
+        <ul class="chbody">
+          <li>The key SEO metrics that actually matter</li>
+          <li>Google Search Console — advanced use and insights</li>
+          <li>Google Analytics 4 — building your SEO dashboard</li>
+          <li>Rank tracking tools and how I use them daily</li>
+          <li>Creating client reports that impress and retain</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#BB0000">Chapter 17 · SEO BUSINESS</div>
+        <div class="chtit">Freelance SEO — How I Built My Business in Kenya</div>
+        <ul class="chbody">
+          <li>Starting out with zero clients and zero budget</li>
+          <li>Pricing your SEO services in the Kenyan market</li>
+          <li>Finding clients locally and internationally via Google</li>
+          <li>Proposals that win projects every time</li>
+          <li>Scaling from solo freelancer to a full agency</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#BB0000">Chapter 18 · SEO BUSINESS</div>
+        <div class="chtit">SEO Case Studies — My Real Results</div>
+        <ul class="chbody">
+          <li>Case Study 1: Ranking a Nairobi business #1 in 90 days</li>
+          <li>Case Study 2: E-commerce SEO that tripled sales</li>
+          <li>Case Study 3: Blogging income built entirely through SEO</li>
+          <li>Case Study 4: International client won through Google</li>
+          <li>Lessons from my biggest SEO failures</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#1A5FAB">Chapter 19 · RESOURCES</div>
+        <div class="chtit">The Ultimate SEO Toolkit</div>
+        <ul class="chbody">
+          <li>Free tools every SEO in Kenya needs right now</li>
+          <li>Premium tools worth every shilling you invest</li>
+          <li>Chrome extensions that speed up SEO work</li>
+          <li>AI tools that supercharge content and research</li>
+          <li>Communities, blogs and podcasts I follow daily</li>
+        </ul>
+      </div>
+
+      <div class="tcard">
+        <div class="chnum" style="color:#C9973A">Chapter 20 · ACTION PLAN</div>
+        <div class="chtit">Your 90-Day SEO Roadmap</div>
+        <ul class="chbody">
+          <li>Days 1–30: Foundation, research and setup</li>
+          <li>Days 31–60: Content creation and on-page optimisation</li>
+          <li>Days 61–90: Link building and technical fixes</li>
+          <li>Tracking progress and adjusting your strategy</li>
+          <li>Beyond 90 days — sustaining and scaling your SEO</li>
+        </ul>
+      </div>
+
     </div>
   </div>
-</div>
-<div class="container">
-  <div style="background: linear-gradient(135deg, #1a472a, #2E7D32); border-radius: 40px; padding: 40px; text-align: center; color: white; margin: 60px 0;">
-    <i class="fas fa-money-bill-wave" style="font-size: 3rem; margin-bottom: 16px; color: #FFD700;"></i>
-    <h3 style="font-size: 1.8rem; margin-bottom: 12px;">100% Money-Back Guarantee</h3>
-    <p style="max-width: 600px; margin: 0 auto; opacity: 0.95;">Not satisfied? Return within 30 days for a full refund – no questions asked. Your purchase is risk-free.</p>
-    <div style="margin-top: 24px;">
-      <span style="background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 60px; font-size: 0.85rem;">✓ 30-day returns</span>
-      <span style="background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 60px; font-size: 0.85rem; margin-left: 12px;">✓ Free return shipping on defects</span>
+</section>
+
+<!-- EXCERPT -->
+<section class="excerpt-sec" id="excerpt">
+  <div class="wrap">
+    <div class="slabel" style="text-align:center">Free Sample</div>
+    <div class="stitle" style="text-align:center;margin-bottom:36px">Read Chapter One</div>
+    <div class="ebox fu">
+      <div class="ctag">Chapter 1 — Introduction</div>
+      <h2>Why I Wrote This Book</h2>
+      <p>I almost gave up. It was 2 AM in Nairobi, the city finally quiet outside my window, and I was staring at a Google Analytics screen showing <strong>zero visitors</strong> for the third month in a row. I had built a website. I had written content. I had done everything the YouTube tutorials told me to do. And yet — nothing.</p>
+      <p>I remember thinking: maybe SEO is only for people in America. Maybe it doesn't work here in Kenya. Maybe I'm just not smart enough for this. That moment of self-doubt is exactly why I wrote this book.</p>
+      <p>Nobody gave me a clear, honest guide that spoke to my reality — someone building a presence from Nairobi, with a limited budget, targeting both local Kenyan clients and international markets, in a continent most SEO content completely ignores.</p>
+      <p><strong>I had to figure it out the hard way.</strong> Years of reading, testing, failing, adjusting — until it finally worked. A client from Westlands. Then the UK. Then tripling an e-commerce brand's traffic in 90 days. SEO changed my life.</p>
+      <p>This book is everything I wish someone had handed me at that desk at 2 AM. Written for you — the entrepreneur in Nairobi, the freelancer in Mombasa, the student in Kisumu who knows the internet is the greatest opportunity of our generation.</p>
+      <p class="sig">— David Kiruo, Nairobi 🇰🇪</p>
+    </div>
+    <div style="text-align:center;margin-top:28px">
+      <button class="btn-gold" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Get the Full Book — KES 1,500 →</button>
     </div>
   </div>
-</div>
-  
-<!-- Footer -->
+</section>
+
+<!-- REVIEWS -->
+<section class="sec reviews" id="reviews">
+  <div class="wrap">
+    <div class="slabel" style="text-align:center">Reviews</div>
+    <div class="stitle" style="text-align:center">Real Results from Real Kenyans</div>
+    <div class="rgrid">
+      <div class="rcard"><div class="rstars">★★★★★</div><p class="rtext">"David's strategies tripled my organic traffic in 3 months. I stopped paying for Google Ads completely."</p><div class="rauth"><div class="ravatar">JM</div><div><div class="rname">James Mwangi</div><div class="rrole">E-Commerce Owner, Nairobi</div></div></div></div>
+      <div class="rcard"><div class="rstars">★★★★★</div><p class="rtext">"I landed my first international client through SEO after following David's methods. Absolute game changer."</p><div class="rauth"><div class="ravatar">AH</div><div><div class="rname">Amina Hassan</div><div class="rrole">Freelance Consultant, Mombasa</div></div></div></div>
+      <div class="rcard"><div class="rstars">★★★★★</div><p class="rtext">"Clear, practical, Kenyan. No fluff. This is the book I wish I had 3 years ago when I started blogging."</p><div class="rauth"><div class="ravatar">BO</div><div><div class="rname">Brian Otieno</div><div class="rrole">Blogger & Content Creator, Kisumu</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section class="buy-sec" id="buy">
+  <div class="wrap">
+    <div class="slabel">Get Your Copy</div>
+    <div class="stitle">Start Ranking on Google Tomorrow</div>
+    <p class="sdesc">One book. Everything you need to build organic traffic and grow your business from Kenya to the world.</p>
+    <div class="pbox">
+      <div class="pcur">Kenyan Shillings</div>
+      <div class="pval">KES 1,500</div>
+      <div class="pdesc">One-time payment · Instant PDF delivery via WhatsApp</div>
+    </div>
+    <div class="buy-btns">
+      <button class="btn-wa" onclick="window.open('https://wa.me/254710346425?text=Hi%20David!%20I%20want%20to%20buy%20your%20SEO%20Mastery%20book%20for%20KES%201%2C500.%20How%20do%20I%20pay%3F','_blank')">💬 Order via WhatsApp</button>
+      <button class="btn-gold" onclick="window.open('mailto:david@YOUR-DOMAIN.com?subject=SEO%20Book%20Order&body=Hi%20David%2C%20I%20want%20to%20buy%20the%20SEO%20Mastery%20book.','_blank')">✉️ Order via Email</button>
+    </div>
+    <div class="includes">
+      <div class="inc"><span>📖</span> Full 300+ Page PDF</div>
+      <div class="inc"><span>🔄</span> Free Lifetime Updates</div>
+      <div class="inc"><span>💬</span> WhatsApp Support</div>
+      <div class="inc"><span>✅</span> 50-Point Audit Checklist</div>
+      <div class="inc"><span>🗺️</span> 90-Day Action Plan</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>DK Secrets</h4>
-        <p>Official Reseller of Victoria's Secret</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="https://wa.me/254710346425" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <p><strong>Quick Links</strong></p>
-        <p><a href="shop.html">Shop</a></p>
-        <p><a href="blog.html">Blog</a></p>
-        <p><a href="policies.html">Policies</a></p>
-        <p><a href="#">Contact</a></p>
-      </div>
-      <div class="footer-col">
-        <p><strong>Customer Care</strong></p>
-        <p>📍 Nairobi, Kenya</p>
-        <p>📞 +254 710 346 425</p>
-        <p>✉️ hello@dksecrets.co.ke</p>
-      </div>
-      <div class="footer-col">
-        <p><strong>Payment Methods</strong></p>
-        <p>💳 M-Pesa | Visa | Mastercard</p>
-        <p>🔒 100% encrypted</p>
-      </div>
-    </div>
-    <div class="copyright">
-      <p>© 2025 DK Secrets. All products are 100% authentic Victoria's Secret. Free delivery over KSh 5,000.</p>
-    </div>
+  <div class="footer-inner">
+    <div class="flogo">David <span>Kiruo</span> · SEO Mastery</div>
+    <ul class="flinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#chapters">Chapters</a></li>
+      <li><a href="#excerpt">Sample</a></li>
+      <li><a href="#buy">Buy</a></li>
+      <li><a href="https://wa.me/254710346425" target="_blank">WhatsApp</a></li>
+    </ul>
+    <div class="fcopy">© 2024 David Kiruo. Nairobi, Kenya 🇰🇪</div>
   </div>
 </footer>
 
-<!-- Cart Sidebar -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-sidebar" id="cartSidebar">
-  <button class="close-cart" id="closeCartBtn">&times;</button>
-  <h3>Your Shopping Bag</h3>
-  <div class="cart-items-list" id="cartItemsList">Your cart is empty.</div>
-  <div class="cart-total" id="cartTotalPrice">KSh 0</div>
-  <button class="checkout-btn-sidebar" id="checkoutSidebarBtn">Proceed to Checkout →</button>
+<!-- WHATSAPP FLOAT WIDGET -->
+<div class="wa-float">
+  <div class="wa-bubble" id="waBubble">
+    <strong>👋 Hi! I'm David Kiruo</strong>
+    Questions about the book? Chat with me on WhatsApp!
+  </div>
+  <button class="wa-btn" onclick="window.open('https://wa.me/254710346425?text=Hi%20David!%20I%20have%20a%20question%20about%20your%20SEO%20Mastery%20book.','_blank')">
+    💬<div class="wa-dot">1</div>
+  </button>
 </div>
 
-<button id="backToTop" class="back-to-top">↑</button>
-<a href="https://wa.me/254710346425?text=Hello%20DK%20Secrets%2C%20I%20need%20help%20with%20my%20order" target="_blank" class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
-</a>
-
 <script>
-
-  // Animated counter for hero stats
-function animateStats() {
-  const statNumbers = document.querySelectorAll('.stat-number');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const element = entry.target;
-        const target = parseInt(element.dataset.target);
-        if (isNaN(target)) return;
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            element.innerText = target.toLocaleString();
-            clearInterval(timer);
-          } else {
-            element.innerText = Math.floor(current).toLocaleString();
-          }
-        }, 30);
-        observer.unobserve(element);
-      }
-    });
-  }, { threshold: 0.3 });
-  statNumbers.forEach(stat => observer.observe(stat));
-}
-
-// Video controls & mist effect
-const video = document.getElementById('sprayVideo');
-const playBtn = document.getElementById('playVideoBtn');
-const videoContainer = document.getElementById('videoContainer');
-
-function createMistEffect() {
-  const mistContainer = document.getElementById('mistEffect');
-  if (!mistContainer) return;
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'mist-particle';
-    const offsetX = (Math.random() - 0.5) * 200;
-    const offsetY = (Math.random() - 0.5) * 150;
-    particle.style.left = `calc(50% + ${offsetX}px)`;
-    particle.style.top = `calc(50% + ${offsetY}px)`;
-    particle.style.width = `${Math.random() * 30 + 10}px`;
-    particle.style.height = particle.style.width;
-    mistContainer.appendChild(particle);
-    setTimeout(() => particle.remove(), 2000);
-  }
-}
-
-if (video && playBtn) {
-  playBtn.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      createMistEffect();
-    } else {
-      video.pause();
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    }
-  });
-  video.addEventListener('ended', () => {
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-  });
-  if (videoContainer) {
-    videoContainer.addEventListener('click', (e) => {
-      if (e.target !== playBtn && !playBtn.contains(e.target)) createMistEffect();
-    });
-  }
-}
-
-// Auto-play video when visible
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && video && video.paused) {
-      video.play();
-      if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      createMistEffect();
-    } else if (!entry.isIntersecting && video && !video.paused) {
-      video.pause();
-      if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    }
-  });
-}, { threshold: 0.5 });
-if (videoContainer) videoObserver.observe(videoContainer);
-
-// Gallery click handler
-document.querySelectorAll('.gallery-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const overlayText = item.querySelector('.gallery-overlay span')?.innerText || '';
-    alert(`✨ Opening: ${overlayText || 'Victoria\'s Secret in action'}\n\nFollow us @dksecrets_ke for more!`);
-  });
-});
-
-// Run on load
-document.addEventListener('DOMContentLoaded', animateStats);
-  // Cart management (same as before)
-  let cart = JSON.parse(localStorage.getItem('dkCart')) || [];
-
-  function saveCart() {
-    localStorage.setItem('dkCart', JSON.stringify(cart));
-    updateCartUI();
-    updateSidebarCart();
-  }
-
-  function updateCartCount() {
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cartCount').innerText = count;
-  }
-
-  function updateCartUI() { updateCartCount(); }
-
-  const cartSidebar = document.getElementById('cartSidebar');
-  const cartOverlay = document.getElementById('cartOverlay');
-  const closeCartBtn = document.getElementById('closeCartBtn');
-  function openCartSidebar() { cartSidebar.style.right = '0px'; cartOverlay.style.visibility = 'visible'; cartOverlay.style.opacity = '1'; }
-  function closeCartSidebar() { cartSidebar.style.right = '-420px'; cartOverlay.style.visibility = 'hidden'; cartOverlay.style.opacity = '0'; }
-  if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
-  if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
-  document.getElementById('cartIcon').onclick = openCartSidebar;
-  document.getElementById('checkoutSidebarBtn')?.addEventListener('click', () => { closeCartSidebar(); window.location.href = 'cart.html'; });
-
-  function updateSidebarCart() {
-    const container = document.getElementById('cartItemsList');
-    if (!container) return;
-    if (cart.length === 0) {
-      container.innerHTML = '<div style="text-align:center; color:#a64b3a;">Your cart is empty</div>';
-      document.getElementById('cartTotalPrice').innerText = 'KSh 0';
-      return;
-    }
-    let total = 0;
-    let html = '';
-    for (let item of cart) {
-      total += (item.price || 0) * item.quantity;
-      html += `<div class="cart-item-sidebar">
-        <div><strong>${item.name || 'Product'}</strong><br>Qty: ${item.quantity} × KSh ${((item.price || 0) * 145).toLocaleString()}</div>
-        <button class="remove-sidebar-item" data-id="${item.id}" style="background:#f4cfc4; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">Remove</button>
-      </div>`;
-    }
-    container.innerHTML = html;
-    document.getElementById('cartTotalPrice').innerText = `KSh ${(total * 145).toLocaleString()}`;
-    document.querySelectorAll('.remove-sidebar-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        cart = cart.filter(i => i.id !== btn.dataset.id);
-        saveCart();
-        updateSidebarCart();
-      });
-    });
-  }
-
-  // Newsletter
-  document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('newsletterEmail').value;
-    if (email) {
-      alert("Thanks for subscribing! Check your email for 10% off code.");
-      document.getElementById('newsletterEmail').value = '';
-    } else {
-      alert("Please enter a valid email.");
-    }
-  });
-
-  // Back to top
-  const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) backBtn.style.display = 'flex';
-    else backBtn.style.display = 'none';
-  });
-  backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  // Search redirect
-  document.getElementById('searchBtn')?.addEventListener('click', () => {
-    const query = document.getElementById('searchInput').value.trim();
-    if (query) window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
-  });
-  document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const query = e.target.value.trim();
-      if (query) window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
-    }
-  });
-
-  updateCartUI();
-  updateSidebarCart();
+setTimeout(()=>{
+  const b=document.getElementById('waBubble');
+  if(b){b.style.transition='opacity .5s';b.style.opacity='0';setTimeout(()=>b.remove(),500)}
+},6000);
 </script>
 </body>
 </html>
-

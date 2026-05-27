@@ -3,6 +3,508 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Fragrance Hub Kenya | Best Body Sprays & Lotions</title>
+  <meta name="description" content="Shop the best fragrances in Kenya: Victoria's Secret Bare Vanilla Lotion and Marine Splash Fresh Aquatic Body Spray. Free delivery. M-Pesa accepted.">
+  <meta name="keywords" content="Bare Vanilla Kenya, Marine Splash Kenya, Victoria's Secret lotion, fresh aquatic body spray, buy fragrance online Kenya">
+  <meta name="robots" content="index, follow">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #fefaf5;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+    .header {
+      background: #1a1a1a;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .header p {
+      font-size: 0.9rem;
+      color: #d4a373;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .product-section {
+      background: white;
+      border-radius: 32px;
+      margin-bottom: 3rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    }
+    .product-section h2 {
+      font-size: 1.8rem;
+      padding: 1.5rem 2rem 0 2rem;
+      color: #2c2b28;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .image-section {
+      position: relative;
+      background: #f5f0ea;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .product-img {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 24px;
+    }
+    .badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: #c7a17a;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .brand {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: #b47c48;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .product-subtitle {
+      color: #6b6b6b;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #b47c48;
+      margin: 1rem 0;
+    }
+    .quantity-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 60px;
+      border: 1px solid #ddd;
+      background: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .qty-input {
+      width: 60px;
+      text-align: center;
+      padding: 0.4rem;
+      border: 1px solid #e2dcd5;
+      border-radius: 12px;
+    }
+    .btn-add, .btn-buy {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      margin-top: 0.5rem;
+      font-family: inherit;
+    }
+    .btn-add {
+      background: #1a1a1a;
+      color: white;
+    }
+    .btn-buy {
+      background: white;
+      border: 2px solid #1a1a1a;
+      color: #1a1a1a;
+    }
+    .description {
+      padding: 0 2rem 2rem 2rem;
+      border-top: 1px solid #eee;
+    }
+    .description h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .description p, .description li {
+      color: #4a4a4a;
+      font-size: 0.9rem;
+    }
+    .description ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .trust-banner {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f7ede8;
+      border-radius: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cart-icon-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1a1a1a;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+      z-index: 200;
+      transition: right 0.3s ease;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .cart-sidebar.open {
+      right: 0;
+    }
+    .toast {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: #1a1a1a;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      display: none;
+      z-index: 300;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      .product-section h2 {
+        font-size: 1.4rem;
+        padding: 1rem 1rem 0 1rem;
+      }
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🇰🇪 FRAGRANCE HUB KENYA</h1>
+  <p>Authentic Body Sprays & Lotions • Free Delivery Nairobi • M-Pesa Accepted</p>
+</div>
+
+<div class="container">
+  
+  <!-- ==================== PRODUCT 1: BARE VANILLA ==================== -->
+  <div class="product-section" id="product1">
+    <h2>🌸 Victoria's Secret Bare Vanilla Fragrance Lotion</h2>
+    <div class="product-grid">
+      <div class="image-section">
+        <img class="product-img" src="https://i.ibb.co/Cpp1572P/IMG-20260527-033749-325.jpg" alt="Bare Vanilla Lotion">
+        <div class="badge">✨ Best Seller</div>
+      </div>
+      <div class="product-info">
+        <div class="brand">VICTORIA'S SECRET</div>
+        <div class="product-subtitle">Fragrance Lotion · 236ml / 8 fl oz</div>
+        <div class="price" id="price1">KES 2,900</div>
+        <div class="quantity-box">
+          <span>Qty:</span>
+          <button class="qty-btn" data-id="1" data-delta="-1">−</button>
+          <input type="number" id="qty1" class="qty-input" value="1" min="1" max="10" data-id="1">
+          <button class="qty-btn" data-id="1" data-delta="1">+</button>
+        </div>
+        <button class="btn-add" data-id="1" data-name="Bare Vanilla Lotion" data-price="2900" data-img="https://i.ibb.co/Cpp1572P/IMG-20260527-033749-325.jpg">🛒 Add to Cart</button>
+        <button class="btn-buy" data-id="1" data-name="Bare Vanilla Lotion" data-price="2900">💳 Buy Now (M-Pesa)</button>
+      </div>
+    </div>
+    <div class="description">
+      <h3>📖 About Bare Vanilla</h3>
+      <p><strong>Victoria's Secret Bare Vanilla Fragrance Lotion</strong> is a creamy body lotion that leaves your skin soft and smelling warmly of vanilla. It's a fragrance lotion — it hydrates while layering a long-lasting vanilla scent onto your skin.</p>
+      <h3>🌸 Scent Notes</h3>
+      <ul>
+        <li><strong>Top:</strong> Wild fruits, juicy pear</li>
+        <li><strong>Heart:</strong> Soft vanilla orchid, jasmine petals</li>
+        <li><strong>Base:</strong> Warm vanilla, cashmere musk, white amber</li>
+      </ul>
+      <p>Soft, warm, comforting vanilla that smells like fresh vanilla cookies with clean cashmere. Perfect for everyday wear in Kenya's climate.</p>
+      <h3>✅ Why Choose the Lotion?</h3>
+      <ul>
+        <li>Hydration + Scent in one step</li>
+        <li>Longer-lasting than mist (6+ hours)</li>
+        <li>Non-greasy, absorbs quickly</li>
+        <li>Paraben-free, dermatologist-tested</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- ==================== PRODUCT 2: MARINE SPLASH ==================== -->
+  <div class="product-section" id="product2">
+    <h2>🌊 Marine Splash Fresh Aquatic Body Spray</h2>
+    <div class="product-grid">
+      <div class="image-section">
+        <img class="product-img" src="https://i.ibb.co/Tqb15X5c/IMG-20260527-083917-676.jpg" alt="Marine Splash Body Spray">
+        <div class="badge">🌊 Fresh Scent</div>
+      </div>
+      <div class="product-info">
+        <div class="brand">MARINE SPLASH</div>
+        <div class="product-subtitle">Fresh Aquatic Body Spray · 200ml</div>
+        <div class="price" id="price2">KES 1,500</div>
+        <div class="quantity-box">
+          <span>Qty:</span>
+          <button class="qty-btn" data-id="2" data-delta="-1">−</button>
+          <input type="number" id="qty2" class="qty-input" value="1" min="1" max="10" data-id="2">
+          <button class="qty-btn" data-id="2" data-delta="1">+</button>
+        </div>
+        <button class="btn-add" data-id="2" data-name="Marine Splash Body Spray" data-price="1500" data-img="https://i.ibb.co/Tqb15X5c/IMG-20260527-083917-676.jpg">🛒 Add to Cart</button>
+        <button class="btn-buy" data-id="2" data-name="Marine Splash Body Spray" data-price="1500">💳 Buy Now (M-Pesa)</button>
+      </div>
+    </div>
+    <div class="description">
+      <h3>🌊 About Marine Splash</h3>
+      <p><strong>Marine Splash</strong> is a light, refreshing body spray that captures the essence of a cool ocean breeze on a hot summer day. Non-alcoholic formula, gentle on skin, long-lasting fresh scent.</p>
+      <h3>💙 Scent Notes</h3>
+      <ul>
+        <li><strong>Top:</strong> Sea salt, ocean air, fresh bergamot</li>
+        <li><strong>Heart:</strong> Marine algae, white flowers, green tea</li>
+        <li><strong>Base:</strong> White musk, driftwood, light amber</li>
+      </ul>
+      <p>Clean, fresh, invigorating — like stepping out of a cool shower on a hot day. Perfect for Kenya's warm climate.</p>
+      <h3>✅ Why Choose Marine Splash?</h3>
+      <ul>
+        <li>Perfect for hot weather — light & refreshing</li>
+        <li>Non-alcoholic — no skin drying</li>
+        <li>Unisex — works for men & women</li>
+        <li>School & office friendly — not overpowering</li>
+        <li>Great value at KES 1,500</li>
+      </ul>
+      <h3>📏 Specifications</h3>
+      <ul>
+        <li>Size: 200ml</li>
+        <li>Made in: USA</li>
+        <li>Longevity: 4-6 hours</li>
+        <li>Alcohol-free formula</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="trust-banner">
+    <span>✅ 100% Authentic Products</span>
+    <span>🚚 Free Delivery (3-5 days)</span>
+    <span>💳 M-Pesa / Card / Cash on Delivery</span>
+    <span>🔄 7-Day Returns</span>
+  </div>
+</div>
+
+<div class="cart-icon-fixed" id="cartIcon">
+  🛒 Cart (<span id="cartCount">0</span>)
+</div>
+
+<div class="cart-sidebar" id="cartSidebar">
+  <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+    <h3>Your Cart</h3>
+    <button id="closeCart" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
+  </div>
+  <div id="cartItems" style="flex: 1; margin: 1rem 0;"></div>
+  <div id="cartTotal" style="font-weight: bold; font-size: 1.2rem; border-top: 2px solid #eee; padding-top: 1rem;">Total: KES 0</div>
+  <button id="checkoutBtn" style="background: #1a1a1a; color: white; border: none; padding: 1rem; border-radius: 60px; font-weight: bold; margin-top: 1rem; cursor: pointer;">Proceed to Checkout (M-Pesa)</button>
+</div>
+
+<div id="toastMsg" class="toast">✓ Added to cart</div>
+
+<script>
+  // Cart array
+  let cart = [];
+  
+  // Quantity controls for each product
+  document.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const delta = parseInt(btn.dataset.delta);
+      const qtyInput = document.getElementById(`qty${id}`);
+      let newVal = parseInt(qtyInput.value) + delta;
+      if (newVal < 1) newVal = 1;
+      if (newVal > 10) newVal = 10;
+      qtyInput.value = newVal;
+    });
+  });
+  
+  // Add to cart
+  document.querySelectorAll('.btn-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const name = btn.dataset.name;
+      const price = parseInt(btn.dataset.price);
+      const img = btn.dataset.img;
+      const qtyInput = document.getElementById(`qty${id}`);
+      const quantity = parseInt(qtyInput.value);
+      
+      // Check if product already in cart
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += quantity;
+      } else {
+        cart.push({ id, name, price, qty: quantity, img });
+      }
+      
+      updateCartUI();
+      saveCart();
+      showToast(`✓ ${name} x${quantity} added`);
+    });
+  });
+  
+  // Buy now (direct checkout)
+  document.querySelectorAll('.btn-buy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const name = btn.dataset.name;
+      const price = parseInt(btn.dataset.price);
+      const qtyInput = document.getElementById(`qty${id}`);
+      const quantity = parseInt(qtyInput.value);
+      const total = price * quantity;
+      alert(`💳 M-Pesa Checkout\n\nProduct: ${name}\nQuantity: ${quantity}\nTotal: KES ${total.toLocaleString()}\n\nClick OK to proceed to payment.`);
+    });
+  });
+  
+  function updateCartUI() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartCountSpan = document.getElementById('cartCount');
+    const cartTotalSpan = document.getElementById('cartTotal');
+    
+    if (cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p style="color:#888;">Your cart is empty.</p>';
+      cartCountSpan.innerText = '0';
+      cartTotalSpan.innerText = 'Total: KES 0';
+      return;
+    }
+    
+    let total = 0;
+    let itemCount = 0;
+    cartItemsDiv.innerHTML = '';
+    cart.forEach((item, idx) => {
+      total += item.price * item.qty;
+      itemCount += item.qty;
+      cartItemsDiv.innerHTML += `
+        <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f0ede8;">
+          <img src="${item.img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px;">
+          <div style="flex:1">
+            <strong>${item.name}</strong><br>
+            ${item.qty} x KES ${item.price.toLocaleString()}<br>
+            <button onclick="removeFromCart(${idx})" style="background:none; border:none; color:#b47c48; cursor:pointer; font-size:0.8rem;">Remove</button>
+          </div>
+          <div>KES ${(item.price * item.qty).toLocaleString()}</div>
+        </div>
+      `;
+    });
+    
+    cartCountSpan.innerText = itemCount;
+    cartTotalSpan.innerText = `Total: KES ${total.toLocaleString()}`;
+  }
+  
+  window.removeFromCart = function(idx) {
+    cart.splice(idx, 1);
+    updateCartUI();
+    saveCart();
+    showToast('Item removed');
+  };
+  
+  function saveCart() {
+    localStorage.setItem('fragrance_cart', JSON.stringify(cart));
+  }
+  
+  function loadCart() {
+    const saved = localStorage.getItem('fragrance_cart');
+    if (saved) {
+      cart = JSON.parse(saved);
+      updateCartUI();
+    }
+  }
+  
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2000);
+  }
+  
+  // Cart sidebar toggle
+  const cartIcon = document.getElementById('cartIcon');
+  const cartSidebar = document.getElementById('cartSidebar');
+  const closeCart = document.getElementById('closeCart');
+  cartIcon.onclick = () => cartSidebar.classList.add('open');
+  closeCart.onclick = () => cartSidebar.classList.remove('open');
+  
+  document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+    let total = 0;
+    let items = '';
+    cart.forEach(item => {
+      total += item.price * item.qty;
+      items += `${item.name} x${item.qty} = KES ${(item.price * item.qty).toLocaleString()}\n`;
+    });
+    alert(`M-Pesa Checkout\n\n${items}\nTotal: KES ${total.toLocaleString()}\n\nClick OK to pay.`);
+  });
+  
+  loadCart();
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Victoria's Secret Bare Vanilla Fragrance Lotion 236ml | Buy in Kenya | Free Delivery</title>
   <meta name="description" content="Buy Victoria's Secret Bare Vanilla Fragrance Lotion 236ml in Kenya. Warm vanilla & cashmere scent. Hydrating, long-lasting, non-greasy. Free delivery Nairobi & Mombasa. KES 2,900.">
   <meta name="keywords" content="Bare Vanilla Kenya, Victoria's Secret Bare Vanilla, Bare Vanilla lotion Kenya, Victoria's Secret lotion Nairobi, vanilla body lotion Kenya, VS Bare Vanilla price Kenya, buy Victoria's Secret online Kenya, fragrance lotion Kenya">
